@@ -30,10 +30,10 @@ class SawtoothWalletClient {
         const batchListBytes = await this._wrapBatchList(batches);
         await this._postBatches(batchListBytes)
             .then((result) => {
-                res.send(result).end();
+                response.send(result).end();
             })
             .catch((err) => {
-                res.status(400).send(err).end();
+                response.status(400).send(err).end();
             });
     }
 
