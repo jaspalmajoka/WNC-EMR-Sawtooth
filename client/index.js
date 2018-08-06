@@ -1,5 +1,5 @@
 // Require module's required for app
-const config = require('config');
+const config = require('./config');
 const morgan = require('morgan');
 const parser = require('body-parser');
 
