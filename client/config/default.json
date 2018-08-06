@@ -7,5 +7,7 @@
         "name": "openemr",
         "version": "1.0"
     },
-    "loglevel": "dev"
+    "keyslocation": "/root/.sawtooth/keys/",
+    "loglevel": "dev",
+    "restapi": "http://rest-api:8008"
 }
