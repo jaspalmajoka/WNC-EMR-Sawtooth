@@ -24,7 +24,7 @@ app.get('/health', (req, res) => {
 });
 
 // Sawtooth API endpoints
-app.use('/transaction', sawtooth);
+app.use('/api', sawtooth);
 
 // Validates data and used for submitting payload 
 // for the sawtooth transaction processor
