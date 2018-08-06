@@ -3,6 +3,9 @@ const config = require('config');
 const morgan = require('morgan');
 const parser = require('body-parser');
 
+// Required internal module's
+const sawtooth = require('./routes');
+
 // Create app instance
 const app = require('express')();
 
@@ -19,6 +22,9 @@ app.use(parser.urlencoded({ extended: true }));
 app.get('/health', (req, res) => {
     res.json({ success: true, message: 'GOOD !' }).end();
 });
+
+// Sawtooth API endpoints
+app.use('/transaction', sawtooth);
 
 // Validates data and used for submitting payload 
 // for the sawtooth transaction processor
