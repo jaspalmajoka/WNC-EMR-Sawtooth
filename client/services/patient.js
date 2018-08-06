@@ -7,18 +7,19 @@ const sawtoothWalletClient = new SawtoothWalletClient(client);
 
 module.exports = {
     createPatient: (req, res) => {
-        const payload = req.body;
-        const { Action, Data } = payload;
-        if (Action && Data) {
-            sawtoothWalletClient.submit(payload)
+        const { id } = req.body;
+        const Action = 'createPatient';
+        if (!id) {
+            return res.send({ success: false, message: 'ID Field Missing in payload' }).end();
+        }
+        else {
+            return sawtoothWalletClient.submit({ Action, })
                 .then((data) => {
-                    res.json({ success: true, data }).end();
+                    return res.send({ success: true, data }).end();
                 })
                 .catch((err) => {
-                    res.status(400).json({ success: true, err }).end();
+                    return res.send({ success: false, err }).end();
                 });
-        } else {
-            res.status(400).json({ success: true, nessage: 'Payload Error' }).end();
         }
     },
     getPatient: (req, res) => {
