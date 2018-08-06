@@ -5,17 +5,15 @@ const client = config.client;
 const SawtoothWalletClient = require('./../lib/SawtoothWalletClient');
 const sawtoothWalletClient = new SawtoothWalletClient(client);
 
-const _createPatient = (payload) => {
-
-}
-
-const _getPatient = (payload) => {
-
-}
-
 module.exports = {
     createPatient: (req, res) => {
-        res.json({ success: true, message: 'TODO Create Patient' })
+        sawtoothWalletClient.submit(req)
+            .then((data) => {
+                res.json({ success: true, data }).end();
+            })
+            .catch((err) => {
+                res.status(400).json({ success: true, err }).end();
+            });
     },
     getPatient: (req, res) => {
         res.json({ success: true, message: 'TODO Get Patien' })
