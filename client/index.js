@@ -11,7 +11,7 @@ const app = require('express')();
 
 // Middlewares for logging 
 // API Requests
-app.use(morgan(config.get('loglevel')));
+app.use(morgan(config.loglevel));
 // Modifiying the form data and create req.body
 app.use(parser.json());
 // Modifying the form data and extend the combined 
@@ -33,6 +33,6 @@ app.post('/submit', (req, res) => {
 });
 
 // Starts code execution and creates a server instance
-app.listen(config.get('app.port'), config.get('app.ip'), () => {
-    console.debug(`Server started at http://${config.get('app.ip')}:${config.get('app.port')}/health`);
+app.listen(config.app.port, config.app.ip, () => {
+    console.debug(`Server started at http://${config.app.ip}:${config.app.port}/health`);
 });
