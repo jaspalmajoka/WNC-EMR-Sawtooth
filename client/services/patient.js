@@ -16,6 +16,6 @@ module.exports = {
             });
     },
     getPatient: (req, res) => {
-        res.json({ success: true, message: 'TODO Get Patien' })
+        res.json({ success: true, message: 'TODO Get Patient' })
     }
 }
