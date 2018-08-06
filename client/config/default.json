@@ -1,0 +1,11 @@
+{
+    "app": {
+        "port": "3000",
+        "ip": "0.0.0.0"
+    },
+    "family": {
+        "name": "openemr",
+        "version": "1.0"
+    },
+    "loglevel": "dev"
+}
