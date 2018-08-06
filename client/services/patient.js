@@ -1,3 +1,10 @@
+const config = require('./../config');
+
+const client = config.client;
+
+const SawtoothWalletClient = require('./../lib/SawtoothWalletClient');
+const sawtoothWalletClient = new SawtoothWalletClient(client);
+
 const _createPatient = (payload) => {
 
 }

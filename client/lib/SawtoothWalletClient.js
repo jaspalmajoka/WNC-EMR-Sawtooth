@@ -8,11 +8,11 @@ const { Secp256k1PrivateKey } = require('sawtooth-sdk/signing/secp256k1');
 const config = require('./../config');
 const { hash, getUserPriKey, getUserPubKey } = require('./helper');
 
-const KEYS_LOCATION = config.keyslocation;
+const KEYS_LOCATION = process.env.KEYS_LOCATION || config.keyslocation;
 
 class SawtoothWalletClient {
     constructor(userId) {
-        const privateKeyStrBuf = getUserPriKey(userId);
+        const privateKeyStrBuf = getUserPriKey(userId, KEYS_LOCATION);
         const privateKeyStr = privateKeyStrBuf.toString().trim();
         const context = createContext('secp256k1');
         const privateKey = Secp256k1PrivateKey.fromHex(privateKeyStr);
