@@ -13,7 +13,7 @@ module.exports = {
             return res.send({ success: false, message: 'ID Field Missing in payload' }).end();
         }
         else {
-            return sawtoothWalletClient.submit({ Action, })
+            return sawtoothWalletClient.submit({ Action, Data: req.body })
                 .then((data) => {
                     return res.send({ success: true, data }).end();
                 })
