@@ -2,5 +2,6 @@
     "family": {
         "name": "openemr",
         "version": "1.0"
-    }
+    },
+    "validator_url": "tcp://validator:4004"
 }
