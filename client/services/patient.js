@@ -10,15 +10,15 @@ module.exports = {
         const { id } = req.body;
         const Action = 'createPatient';
         if (!id) {
-            return res.send({ success: false, message: 'ID Field Missing in payload' }).end();
+            return res.status(400).send({ success: false, message: 'ID Field Missing in payload' }).end();
         }
         else {
             return sawtoothWalletClient.submit({ Action, Data: req.body })
                 .then((data) => {
-                    return res.send({ success: true, data }).end();
+                    return res.status(201).send({ success: true, data }).end();
                 })
                 .catch((err) => {
-                    return res.send({ success: false, err }).end();
+                    return res.status(500).send({ success: false, err }).end();
                 });
         }
     },
