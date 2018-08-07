@@ -4,4 +4,4 @@ WORKDIR /project/contract
 
 RUN rm -rf node_modules
 
-CMD [ "npm", "start" ]
+CMD npm install && npm start
