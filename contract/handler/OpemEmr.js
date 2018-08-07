@@ -4,7 +4,7 @@ const { decodePayload, toInvalidTransaction } = require('./../lib/helper');
 
 class OpemEmr extends TransactionHandler {
     constructor() {
-        super(config.family.name, config.family.versions, family.namespaces)
+        super(config.family.name, config.family.versions, config.family.namespaces)
     }
 
     apply(txRequest, context) {
