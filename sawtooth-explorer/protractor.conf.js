@@ -30,7 +30,7 @@ exports.config = {
     'browserName': 'chrome'
   },
   directConnect: true,
-  baseUrl: process.env.BASE_URL || 'http://localhost:4200/',
+  baseUrl: process.env.BASE_URL || 'http://rest-api:4200/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,

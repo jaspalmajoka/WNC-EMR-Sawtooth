@@ -6,7 +6,7 @@ const configData = {
         name: "openemr",
         version: "1.0"
     },
-    validator_url: process.env.VALIDATOR_URL || "tcp://localhost:4004"
+    validator_url: process.env.VALIDATOR_URL || "tcp://rest-api:4004"
 };
 
 configData.family.namespace = leafHash(configData.family.name, 6);
