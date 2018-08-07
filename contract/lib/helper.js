@@ -1,12 +1,13 @@
 const { createHash } = require('crypto');
 const { InternalError, InvalidTransaction } = require('sawtooth-sdk/processor/exceptions');
+const config = require('./../config');
 const fs = require('fs');
 
 const encodePayload = (value) => Buffer.from(new String(JSON.stringify(value)));
+const leafHash = (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().slice(0, length);
 
 module.exports = {
-    leafHash: (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().slice(0, length),
-    hash: (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().slice(0, length),
+    leafHash,
     toInvalidTransaction: (err) => { throw new InvalidTransaction(err.message ? err.message : err) },
     toInternalError: (err) => { throw new InternalError(err.message ? err.message : err) },
     setEntry: (context, address, newStateValue) => {
@@ -24,4 +25,5 @@ module.exports = {
             }
         });
     },
+    createAddress: (name) => `${config.family.namespace}${leafHash(name, 64)}`,
 }
