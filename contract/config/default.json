@@ -1,7 +1,0 @@
-{
-    "family": {
-        "name": "openemr",
-        "version": "1.0"
-    },
-    "validator_url": "tcp://localhost:4004"
-}

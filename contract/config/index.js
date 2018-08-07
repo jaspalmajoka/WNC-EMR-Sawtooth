@@ -1,10 +1,15 @@
-const config = require('config');
-const { leafHash } = require('./../lib/helper');
+const { createHash } = require('crypto');
+const leafHash = (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().slice(0, length);
 
-const configData = config.util.toObject();
+const configData = {
+    family: {
+        name: "openemr",
+        version: "1.0"
+    },
+    validator_url: process.env.VALIDATOR_URL || "tcp://localhost:4004"
+};
 
-configData.validator_url = process.env.VALIDATOR_URL || config.validator_url,
-configData.family.namespace = leafHash(config.family.name, 6);
+configData.family.namespace = leafHash(configData.family.name, 6);
 configData.family.versions = [configData.family.version];
 configData.family.namespaces = [configData.family.namespace];
 

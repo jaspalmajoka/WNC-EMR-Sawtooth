@@ -6,7 +6,7 @@ module.exports = {
         const { id } = data;
         const address = createAddress(id);
         const possibleAddressValues = await context.getState([address]).catch(toInvalidTransaction);
-        const stateValueRep = possibleAddressValues[meterAddress];
+        const stateValueRep = possibleAddressValues[address];
         let stateValue;
         if (stateValue && stateValue.length) {
             stateValue = JSON.parse(stateValueRep)
