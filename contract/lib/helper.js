@@ -16,7 +16,7 @@ module.exports = {
         return context.setState(entries);
     },
     decodePayload: (buffer) => {
-        new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             try {
                 resolve(JSON.parse(buffer.toString()))
             } catch (error) {
