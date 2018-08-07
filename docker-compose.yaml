@@ -16,47 +16,47 @@
 version: '2.1'
 
 services:
-  # blocktricity-processor:
-  #   container_name: blocktricity-processor
-  #   build:
-  #     context: .
-  #     dockerfile: ./contract/Dockerfile
-  #     args:
-  #       - http_proxy
-  #       - https_proxy
-  #       - no_proxy
-  #   environment:
-  #     - 'http_proxy=${http_proxy}'
-  #     - 'https_proxy=${https_proxy}'
-  #     - 'no_proxy=rest-api,validator,${no_proxy}'
-  #   depends_on:
-  #     - validator
-  #   volumes:
-  #     - '.:/project/'
+  opememr-processor:
+    container_name: opememr-processor
+    build:
+      context: .
+      dockerfile: ./contract/Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    environment:
+      - 'http_proxy=${http_proxy}'
+      - 'https_proxy=${https_proxy}'
+      - 'no_proxy=rest-api,validator,${no_proxy}'
+    depends_on:
+      - validator
+    volumes:
+      - '.:/project/'
 
-  # blocktricity-client:
-  #   container_name: blocktricity-client
-  #   build:
-  #     context: .
-  #     dockerfile: ./client/Dockerfile
-  #     args:
-  #       - http_proxy
-  #       - https_proxy
-  #       - no_proxy
-  #   environment:
-  #     - 'http_proxy=${http_proxy}'
-  #     - 'https_proxy=${https_proxy}'
-  #     - 'no_proxy=rest-api,validator,${no_proxy}'
-  #   volumes:
-  #     - '.:/project/'
-  #   ports:
-  #     - '0.0.0.0:3000:3000'
-  #   depends_on:
-  #     - sawtooth-rest-api
-  #     - blocktricity-processor
-  #   stop_signal: SIGKILL
-  # blocktricity-simulator-api:
-  #   container_name: blocktricity-simulator-api
+  opememr-client:
+    container_name: opememr-client
+    build:
+      context: .
+      dockerfile: ./client/Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    environment:
+      - 'http_proxy=${http_proxy}'
+      - 'https_proxy=${https_proxy}'
+      - 'no_proxy=rest-api,validator,${no_proxy}'
+    volumes:
+      - '.:/project/'
+    ports:
+      - '0.0.0.0:3000:3000'
+    depends_on:
+      - sawtooth-rest-api
+      - opememr-processor
+    stop_signal: SIGKILL
+  # openemr-api:
+  #   container_name: openemr-api
   #   build:
   #     context: .
   #     dockerfile: ./smart-meter/Dockerfile
@@ -74,19 +74,7 @@ services:
   #     - '0.0.0.0:4000:4000'
   #   depends_on:
   #     - sawtooth-rest-api
-  #     - blocktricity-processor
-  #   stop_signal: SIGKILL
-  # blocktricity-simulator-0:
-  #   container_name: blocktricity-simulator-0
-  #   build:
-  #     context: .
-  #     dockerfile: ./smart-meter/DockerfileSimulator
-  #   volumes:
-  #     - '.:/project/'
-  #   # ports:
-  #   #   - '0.0.0.0:4000:4000'
-  #   depends_on:
-  #     - blocktricity-simulator-api
+  #     - opememr-processor
   #   stop_signal: SIGKILL
 
   sawtooth-rest-api:

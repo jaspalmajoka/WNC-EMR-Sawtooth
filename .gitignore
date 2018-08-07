@@ -2,3 +2,4 @@ node_modules
 client/node_modules
 swagger/node_modules
 contract/node_modules
+sawtooth-explorer/node_modules
