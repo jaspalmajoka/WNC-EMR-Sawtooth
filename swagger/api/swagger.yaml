@@ -1,0 +1,55 @@
+swagger: '2.0'
+info:
+  description: Opem EMR Blockchain API
+  version: 1.0.0
+  title: Opem EMR Blockchain API
+  # put the contact info for your development or API team
+  contact:
+    email: johnjayasingh.s@gmail.com
+
+# tags are used for organizing operations
+tags:
+- name: patient
+  description: Patient related api
+
+paths:
+  /patient:
+    post:
+      tags:
+      - patient
+      summary: Create Patient to state
+      description: Add patient entry to state
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: inventoryItem
+        description: Inventory item to add
+        schema:
+          $ref: '#/definitions/CreatePatient'
+      responses:
+        201:
+          description: Patient ID created
+        400:
+          description: invalid input, object invalid
+definitions:
+  CreatePatient:
+    type: object
+    required:
+    - id
+    properties:
+      id:
+        type: string
+        example: d701748f0851
+      document:
+        type: array
+        items: 
+          type: string
+          example: http://document.url.com/file.pdf
+# Added by API Auto Mocking Plugin
+host: localhost
+basePath: /api
+schemes:
+ - http

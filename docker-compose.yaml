@@ -40,27 +40,24 @@ services:
       - sawtooth-rest-api
       - opememr-processor
     stop_signal: SIGKILL
-  # openemr-api:
-  #   container_name: openemr-api
-  #   build:
-  #     context: .
-  #     dockerfile: ./smart-meter/Dockerfile
-  #     args:
-  #       - http_proxy
-  #       - https_proxy
-  #       - no_proxy
-  #   environment:
-  #     - 'http_proxy=${http_proxy}'
-  #     - 'https_proxy=${https_proxy}'
-  #     - 'no_proxy=rest-api,validator,${no_proxy}'
-  #   volumes:
-  #     - '.:/project/'
-  #   ports:
-  #     - '0.0.0.0:4000:4000'
-  #   depends_on:
-  #     - sawtooth-rest-api
-  #     - opememr-processor
-  #   stop_signal: SIGKILL
+  openemr-api-swagger:
+    container_name: openemr-api-swagger
+    build:
+      context: .
+      dockerfile: ./swagger/Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    environment:
+      - 'http_proxy=${http_proxy}'
+      - 'https_proxy=${https_proxy}'
+      - 'no_proxy=rest-api,validator,${no_proxy}'
+    volumes:
+      - '.:/project/'
+    ports:
+      - '0.0.0.0:3001:3001'
+    stop_signal: SIGKILL
 
   sawtooth-rest-api:
     container_name: rest-api
