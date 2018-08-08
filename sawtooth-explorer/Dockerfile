@@ -1,5 +1,7 @@
 FROM node:6-onbuild
 
+WORKDIR /project/sawtooth-explorer/
+
 RUN \
  if [ ! -z $HTTP_PROXY ] && [ -z $http_proxy ]; then \
   http_proxy=$HTTP_PROXY; \
