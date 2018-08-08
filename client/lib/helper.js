@@ -2,7 +2,7 @@ const { createHash } = require('crypto');
 const fetch = require('node-fetch');
 const fs = require('fs');
 const config = require('./../config');
-const leafHash = (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().substr(0, length);
+const leafHash = (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().slice(0, length);
 
 module.exports = {
     leafHash,
@@ -29,6 +29,6 @@ module.exports = {
                 return obj;
             }));
     },
-    createAddress: (name, usernamespace = '00', hashLength = 64) => `${config.family.namespace}${usernamespace}${leafHash(name, hashLength - usernamespace.length)}`,
+    createAddress: (name, usernamespace = '00') => `${config.family.namespace}${usernamespace}${name.length ? leafHash(name, 64 - usernamespace.length) : ''}`,
 
 }

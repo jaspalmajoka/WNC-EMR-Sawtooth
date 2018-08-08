@@ -28,7 +28,7 @@ module.exports = {
         if (id) {
             address = `${createAddress(id, config.namespace.patient)}`
         } else {
-            address = `${createAddress(id, config.namespace.patient, config.namespace.patient.length)}`
+            address = `${createAddress('', config.namespace.patient, config.namespace.patient.length)}`
         }
 
         getState(address).then((data) => {
