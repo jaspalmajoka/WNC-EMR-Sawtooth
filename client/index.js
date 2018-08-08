@@ -3,6 +3,7 @@ const config = require('./config');
 const morgan = require('morgan');
 const parser = require('body-parser');
 const express = require('express');
+const cors = require('cors');
 
 // Required internal module's
 const sawtooth = require('./routes');
@@ -11,6 +12,8 @@ const sawtooth = require('./routes');
 const app = express();
 
 // Middlewares for logging 
+// Allow CORS
+app.use(cors());
 // API Requests
 app.use(morgan(config.loglevel));
 // Modifiying the form data and create req.body
