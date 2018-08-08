@@ -19,7 +19,7 @@ app.use(parser.json());
 // property into child attribute
 app.use(parser.urlencoded({ extended: true }));
 // Static Folder
-app.use(express.static('dist'))
+app.use(express.static('sawtooth-explorer/dist'))
 
 // Health checkup endpoint
 app.get('/health', (req, res) => {

@@ -26,11 +26,3 @@ RUN rm -rf node_modules
 EXPOSE 3000
 
 CMD npm install && npm start
-
-WORKDIR /project/sawtooth-explorer
-
-RUN ls
-
-RUN npm install && npm run build
-
-RUN mv dist/ /project/client/
