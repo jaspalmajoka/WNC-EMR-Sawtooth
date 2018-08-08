@@ -1,1 +1,1 @@
-# OPEM EMR Blockchain Solution
+# Open EMR Blockchain Solution

@@ -1,7 +1,7 @@
 {
-  "name": "opem-emr-blockchain-api",
+  "name": "Open-emr-blockchain-api",
   "version": "1.0.0",
-  "description": "Opem EMR Blockchain API",
+  "description": "Open EMR Blockchain API",
   "main": "index.js",
   "scripts": {
     "prestart": "npm install",

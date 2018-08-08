@@ -1,8 +1,8 @@
 swagger: '2.0'
 info:
-  description: Opem EMR Blockchain API
+  description: Open EMR Blockchain API
   version: 1.0.0
-  title: Opem EMR Blockchain API
+  title: Open EMR Blockchain API
   # put the contact info for your development or API team
   contact:
     email: johnjayasingh.s@gmail.com
