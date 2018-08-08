@@ -1,5 +1,5 @@
 const config = require('./../config');
-
+const { getState, createAddress } = require('./../lib/helper');
 const client = config.client;
 
 const SawtoothWalletClient = require('./../lib/SawtoothWalletClient');
@@ -23,6 +23,11 @@ module.exports = {
         }
     },
     getPatient: (req, res) => {
-        res.json({ success: true, message: 'TODO Get Patient' })
+        const { id } = req.query;
+        getState(`${createAddress(id, config.namespace.patient)}`).then((data) => {
+            res.json({ success: true, data, message: 'Data retreived' });
+        }).catch((err) => {
+            res.status(500).send(err).end();
+        })
     }
 }
