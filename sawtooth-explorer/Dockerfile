@@ -29,6 +29,8 @@ RUN \
   npm config set https-proxy $https_proxy; \
  fi;
 
+WORKDIR /project/sawtooth-explorer
+
 RUN npm run build
 
 RUN mv dist ../../client/dist
