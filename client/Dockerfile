@@ -21,6 +21,8 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
 
 WORKDIR /project/client/
 
+RUN rm -rf node_modules
+
 EXPOSE 3000
 
 CMD npm install && npm start

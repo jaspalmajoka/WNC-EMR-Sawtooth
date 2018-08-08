@@ -21,4 +21,6 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
 
 WORKDIR /project/contract/
 
+RUN rm -rf node_modules
+
 CMD npm install && npm start
