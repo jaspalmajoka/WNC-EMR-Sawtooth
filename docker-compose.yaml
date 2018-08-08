@@ -74,6 +74,7 @@ services:
       - 'no_proxy=rest-api,validator,${no_proxy}'
     volumes:
       - '.:/project/'
+      - './client/:/client/'
     stop_signal: SIGKILL
 
   sawtooth-rest-api:

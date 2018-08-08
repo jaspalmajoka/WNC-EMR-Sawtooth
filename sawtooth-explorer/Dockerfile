@@ -18,4 +18,4 @@ RUN \
 
 RUN npm run build
 
-RUN mv dist/ ../client/
+RUN mv dist/ /client/
