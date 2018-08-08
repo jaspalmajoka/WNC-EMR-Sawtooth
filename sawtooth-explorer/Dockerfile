@@ -16,6 +16,4 @@ RUN \
   npm config set https-proxy $https_proxy; \
  fi;
 
-RUN npm run build
-
-RUN mv dist/ /client/
+RUN npm run build && mv dist/ /client/
