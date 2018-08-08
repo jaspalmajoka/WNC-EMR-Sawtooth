@@ -49,7 +49,7 @@ definitions:
           type: string
           example: http://document.url.com/file.pdf
 # Added by API Auto Mocking Plugin
-host: localhost
+host: 13.251.142.80:3000
 basePath: /api
 schemes:
  - http
