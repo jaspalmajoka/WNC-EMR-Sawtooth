@@ -2,12 +2,13 @@
 const config = require('./config');
 const morgan = require('morgan');
 const parser = require('body-parser');
+const express = require('express');
 
 // Required internal module's
 const sawtooth = require('./routes');
 
 // Create app instance
-const app = require('express')();
+const app = express();
 
 // Middlewares for logging 
 // API Requests
@@ -17,6 +18,8 @@ app.use(parser.json());
 // Modifying the form data and extend the combined 
 // property into child attribute
 app.use(parser.urlencoded({ extended: true }));
+// Static Folder
+app.use(express.static('dist'))
 
 // Health checkup endpoint
 app.get('/health', (req, res) => {

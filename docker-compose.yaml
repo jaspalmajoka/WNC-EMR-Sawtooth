@@ -97,5 +97,14 @@ services:
         sawtooth-validator -vvv \
           --endpoint tcp://validator:8800 \
           --bind component:tcp://eth0:4004 \
-          --bind network:tcp://eth0:8800
-      "
+          --bind network:tcp://eth0:8800"
+  rest-api-proxy:
+    image: nginx
+    container_name: sawtooth-explorer-rest-api-proxy
+    volumes:
+      - ./sawtooth-explorer/docker/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./sawtooth-explorer/dist-html:/www/ste
+    ports:
+      - "8090:8090"
+      - "8091:8091"
+    command: [nginx, '-g', 'daemon off;']
