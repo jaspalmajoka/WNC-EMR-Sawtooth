@@ -2,7 +2,7 @@ const { createHash } = require('crypto');
 const fetch = require('node-fetch');
 const fs = require('fs');
 const config = require('./../config');
-const leafHash = (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().slice(0, length);
+const leafHash = (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().substr(0, length);
 
 module.exports = {
     leafHash,
