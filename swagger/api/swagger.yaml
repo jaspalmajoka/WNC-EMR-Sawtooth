@@ -23,7 +23,6 @@ paths:
       - name: "id"
         in: "query"
         description: "Patient ID should be passed"
-        required: true
         type: "string"
       responses:
         200:
