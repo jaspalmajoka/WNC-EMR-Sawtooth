@@ -59,6 +59,23 @@ services:
       - '0.0.0.0:3001:3001'
     stop_signal: SIGKILL
 
+  sawtooth-explorer:
+    container_name: sawtooth-explorer
+    build:
+      context: .
+      dockerfile: ./sawtooth-explorer/Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    environment:
+      - 'http_proxy=${http_proxy}'
+      - 'https_proxy=${https_proxy}'
+      - 'no_proxy=rest-api,validator,${no_proxy}'
+    volumes:
+      - '.:/project/'
+    stop_signal: SIGKILL
+
   sawtooth-rest-api:
     container_name: rest-api
     image: hyperledger/sawtooth-rest-api:1.0
