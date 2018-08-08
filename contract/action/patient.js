@@ -4,11 +4,11 @@ const { createAddress, toInvalidTransaction, setEntry } = require('./../lib/help
 module.exports = {
     createPatient: async ({ context, data }) => {
         const { id } = data;
-        const address = createAddress(id);
+        const address = createAddress(id, config.namespace.patient);
         const possibleAddressValues = await context.getState([address]).catch(toInvalidTransaction);
         const stateValueRep = possibleAddressValues[address];
         let stateValue;
-        if (stateValue && stateValue.length) {
+        if (stateValueRep && stateValueRep.length) {
             stateValue = JSON.parse(stateValueRep)
             if (stateValue) {
                 return toInvalidTransaction('Patient ID already taken');
