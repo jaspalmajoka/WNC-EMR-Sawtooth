@@ -1,5 +1,10 @@
 node_modules
 client/node_modules
+client/.DS_Store
 swagger/node_modules
+swagger/.DS_Store
 contract/node_modules
+contract/.DS_Store
 sawtooth-explorer/node_modules
+sawtooth-explorer/.DS_Store
+.DS_Store
