@@ -58,7 +58,7 @@ definitions:
     properties:
       id:
         type: string
-        example: 1
+        example: P1
       document:
         type: array
         items: 
