@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:6-onbuild
 
 RUN \
  if [ ! -z $HTTP_PROXY ] && [ -z $http_proxy ]; then \
@@ -16,4 +16,4 @@ RUN \
 
 RUN npm run build
 
-RUN mv dist ../
+RUN mv dist/ ../client/
