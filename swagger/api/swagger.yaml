@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  description: Open EMR Blockchain API
+  description: Open EMR Blockchain API Endpoint to store and retreive data from State
   version: 1.0.0
   title: Open EMR Blockchain API
   # put the contact info for your development or API team
@@ -29,7 +29,7 @@ paths:
         200:
           description: Patient Details Retreived
         400:
-          description: invalid input, object invalid
+          description: invalid input, query params invalid
     post:
       tags:
       - patient
@@ -58,12 +58,12 @@ definitions:
     properties:
       id:
         type: string
-        example: d701748f0851
+        example: 1
       document:
         type: array
         items: 
           type: string
-          example: http://document.url.com/file.pdf
+          example: http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf
 # Added by API Auto Mocking Plugin
 host: 13.251.142.80:3000
 basePath: /api

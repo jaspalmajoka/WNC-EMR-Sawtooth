@@ -24,7 +24,14 @@ module.exports = {
     },
     getPatient: (req, res) => {
         const { id } = req.query;
-        getState(`${createAddress(id, config.namespace.patient)}`).then((data) => {
+        let address;
+        if (id) {
+            address = `${createAddress(id, config.namespace.patient)}`
+        } else {
+            address = `${createAddress(id, config.namespace.patient, config.namespace.patient.length)}`
+        }
+
+        getState(address).then((data) => {
             res.json({ success: true, data, message: 'Data retreived' });
         }).catch((err) => {
             res.status(500).send(err).end();

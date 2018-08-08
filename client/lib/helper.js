@@ -29,6 +29,6 @@ module.exports = {
                 return obj;
             }));
     },
-    createAddress: (name, usernamespace = '00') => `${config.family.namespace}${usernamespace}${leafHash(name, 64 - usernamespace.length)}`,
+    createAddress: (name, usernamespace = '00', hashLength = 64) => `${config.family.namespace}${usernamespace}${leafHash(name, hashLength - usernamespace.length)}`,
 
 }
