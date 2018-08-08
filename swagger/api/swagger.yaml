@@ -14,6 +14,22 @@ tags:
 
 paths:
   /patient:
+    get:
+      tags: 
+      - patient
+      summary: Create Patient to state
+      description: Add patient entry to state
+      parameters:
+      - name: "id"
+        in: "query"
+        description: "Patient ID should be passed"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: Patient Details Retreived
+        400:
+          description: invalid input, object invalid
     post:
       tags:
       - patient
