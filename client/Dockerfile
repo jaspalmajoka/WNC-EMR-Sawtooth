@@ -19,6 +19,12 @@ RUN echo "deb http://repo.sawtooth.me/ubuntu/ci xenial universe" >> /etc/apt/sou
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
     && apt-get install -y nodejs
 
+WORKDIR /project/sawtooth-explorer/
+
+RUN rm -rf node_modules
+
+RUN npm install && npm run build
+
 WORKDIR /project/client/
 
 RUN rm -rf node_modules
@@ -26,3 +32,4 @@ RUN rm -rf node_modules
 EXPOSE 3000
 
 CMD npm install && npm start
+
