@@ -17,6 +17,7 @@ Clone this project
 
 6. Run `docker-compose up` to start the docker containers for validator, client, swagger-doc and explorer.
 
+# List of API Entitity status in implementation
 
 API Entity  | Status 
 --- | --- |
