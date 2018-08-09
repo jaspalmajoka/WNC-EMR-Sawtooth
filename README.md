@@ -1,9 +1,9 @@
 # Open EMR Blockchain Solution
-
+<pre>
 Clone this project
 `git clone https://github.com/jaspalmajoka/openemr-v1.git`
  and follow the steps
-
+</pre>
 
 1. Install [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository)
 
