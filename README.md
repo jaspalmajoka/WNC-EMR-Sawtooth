@@ -21,20 +21,20 @@ Clone this project
 API Entity  | Status 
 --- | --- |
 Appointment |  
-Contact -> User |
+Contact -> `User` |
 Facility |
 Insurance |
-List -> Patient |
-Location -> Facility |
+List -> `Patient` |
+Location -> `Facility` |
 Patient | ![done](https://www.iconfinder.com/icons/299110/download/png/20 "Completed") 
-Document -> Patient |
-DocumentLink -> Patient |
-Image -> Patient |
-Prescription -> Patient |
-Resource -> User |
-ResourceLink -> Patient |
-ReviewOfSystems -> Visit -> Patient |
-ReviewOfSystemsChecks -> Visit -> Patient |
-SOAP -> Visit -> Patient |
-VisitVitals -> Visit -> Patient |
+Document -> `Patient` |
+DocumentLink -> `Patient` |
+Image -> `Patient` |
+Prescription -> `Patient` |
+Resource -> `User` |
+ResourceLink -> `Patient` |
+ReviewOfSystems -> Visit -> `Patient` |
+ReviewOfSystemsChecks -> Visit -> `Patient` |
+SOAP -> Visit -> `Patient` |
+VisitVitals -> Visit -> `Patient` |
  
