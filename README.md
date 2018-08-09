@@ -17,15 +17,16 @@ Clone this project
 
 6. Run `docker-compose up` to start the docker containers for validator, client, swagger-doc and explorer.
 
-API Entity | 
---- | 
-Appointment |
+
+API Entity  | Status 
+--- | --- |
+Appointment |  
 Contact -> User |
 Facility |
 Insurance |
 List -> Patient |
 Location -> Facility |
-Patient |
+Patient | ![done](https://www.iconfinder.com/icons/299110/download/png/20 "Completed") 
 Document -> Patient |
 DocumentLink -> Patient |
 Image -> Patient |
