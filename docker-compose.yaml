@@ -102,7 +102,7 @@ services:
     image: nginx
     container_name: sawtooth-explorer-rest-api-proxy
     volumes:
-      - ./sawtooth-explorer/docker/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
       - "8090:8090"
       - "8091:8091"
