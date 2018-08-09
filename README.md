@@ -16,3 +16,24 @@ Clone this project
 5. Run `docker-compose build` to check if the images are getting built well.
 
 6. Run `docker-compose up` to start the docker containers for validator, client, swagger-doc and explorer.
+
+API Entity | 
+--- | 
+Appointment |
+Contact -> User |
+Facility |
+Insurance |
+List -> Patient |
+Location -> Facility |
+Patient |
+Document -> Patient |
+DocumentLink -> Patient |
+Image -> Patient |
+Prescription -> Patient |
+Resource -> User |
+ResourceLink -> Patient |
+ReviewOfSystems -> Visit -> Patient |
+ReviewOfSystemsChecks -> Visit -> Patient |
+SOAP -> Visit -> Patient |
+VisitVitals -> Visit -> Patient |
+ 
