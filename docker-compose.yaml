@@ -84,8 +84,8 @@ services:
     image: hyperledger/sawtooth-validator:1.0
     # environment: 
     #   - 'SAWTOOTH_HOME=/var/'
-    volumes: 
-      - './data:/var/lib/sawtooth/'
+    # volumes: 
+    #  - './data:/var/lib/sawtooth/'
     expose:
       - 4004
     ports:
