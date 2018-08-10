@@ -42,3 +42,5 @@ app.post('/submit', (req, res) => {
 app.listen(config.app.port, config.app.ip, () => {
     console.debug(`Server started at http://${config.app.ip}:${config.app.port}/health`);
 });
+
+module.exports = app;
