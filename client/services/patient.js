@@ -49,7 +49,6 @@ module.exports = {
         })
     },
     deletePatient: (req, res) => {
-        // TODO Delete Patient Data
         const Action = 'deletePatient';
         const { id } = req.params;
         _getPatients(id, (err, data) => {
@@ -64,7 +63,6 @@ module.exports = {
         })
     },
     updatePatient: (req, res) => {
-        // TODO Update patient data
         // Can be used for the other patient related updates
         const Action = 'updatePatient';
         const { id } = req.params;
