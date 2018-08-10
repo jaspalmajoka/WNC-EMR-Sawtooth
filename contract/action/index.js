@@ -14,6 +14,5 @@ module.exports = {
             default:
                 return toInvalidTransaction(`Action ${Action} is not valid`);
         }
-
     }
 }
