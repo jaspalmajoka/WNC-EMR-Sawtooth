@@ -3,7 +3,7 @@ const { InternalError, InvalidTransaction } = require('sawtooth-sdk/processor/ex
 const fs = require('fs');
 const config = require('./../config');
 
-const encodePayload = (value) => Buffer.from(new String(JSON.stringify(value)));
+const encodePayload = (value) => value ? Buffer.from(new String(JSON.stringify(value))) : null;
 const leafHash = (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().slice(0, length);
 
 module.exports = {
