@@ -10,7 +10,7 @@ const _getPatients = (id, callback) => {
     if (id) {
         address = `${createAddress(id, config.namespace.patient)}`
     } else {
-        address = `${createAddress('', config.namespace.patient, config.namespace.patient.length)}`
+        address = `${createAddress('', config.namespace.patient)}`
     }
     getState(address)
         .then((data) => callback(null, data)).catch((err) => callback(err))
