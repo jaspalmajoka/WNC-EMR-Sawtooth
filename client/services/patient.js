@@ -36,5 +36,14 @@ module.exports = {
         }).catch((err) => {
             res.status(500).send(err).end();
         })
+    },
+    deletePatient: (req, res) => {
+        // TODO Delete Patient Data
+        res.end();
+    },
+    updatePatient: (req, res) => {
+        // TODO Update patient data
+        // Can be used for the other patient related updates
+        res.end();
     }
 }
