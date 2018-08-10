@@ -4,7 +4,7 @@ process.env.NODE_ENV = 'test';
 // Require Dependencies
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const uuid = require('uuid/v5');
+const uuid = require('uuid/v4');
 const faker = require('faker');
 const should = chai.should();
 
@@ -31,6 +31,7 @@ describe('Patient', () => {
                 .post('/api/patient')
                 .send(patientRecord)
                 .end((err, res) => {
+                    console.log(res.body);
                     res.should.have.status(200);
                     res.should.be.a('object');
                     res.should.have.property('data');

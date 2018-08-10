@@ -1,4 +1,3 @@
-const config = require('config');
 const { createHash } = require('crypto');
 
 const leafHash = (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().slice(0, length);
@@ -13,7 +12,7 @@ const configData = {
     },
     keyslocation: "/root/.sawtooth/keys/",
     loglevel: "dev",
-    restapi: "http://rest-api:8008",
+    restapi: process.env.REST_API || "http://rest-api:8008",
     client: "openemr",
     namespace: {
         patient: '10',
@@ -21,6 +20,6 @@ const configData = {
     }
 };
 
-configData.family.namespace = leafHash(config.family.name, 6);
+configData.family.namespace = leafHash(configData.family.name, 6);
 
 module.exports = configData;
