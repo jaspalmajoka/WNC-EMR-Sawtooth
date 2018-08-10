@@ -5,6 +5,17 @@ const client = config.client;
 const SawtoothWalletClient = require('./../lib/SawtoothWalletClient');
 const sawtoothWalletClient = new SawtoothWalletClient(client);
 
+const _getPatients = (id, callback) => {
+    let address;
+    if (id) {
+        address = `${createAddress(id, config.namespace.patient)}`
+    } else {
+        address = `${createAddress('', config.namespace.patient, config.namespace.patient.length)}`
+    }
+    getState(address)
+        .then((data) => callback(null, data)).catch((err) => callback(err))
+}
+
 module.exports = {
     createPatient: (req, res) => {
         const { id } = req.body;
@@ -24,17 +35,9 @@ module.exports = {
     },
     getPatient: (req, res) => {
         const { id } = req.query;
-        let address;
-        if (id) {
-            address = `${createAddress(id, config.namespace.patient)}`
-        } else {
-            address = `${createAddress('', config.namespace.patient, config.namespace.patient.length)}`
-        }
-
-        getState(address).then((data) => {
-            res.json({ success: true, data, message: 'Data retreived' });
-        }).catch((err) => {
-            res.status(500).send(err).end();
+        _getPatients(id, (err, data) => {
+            if (err) return res.status(500).send(err);
+            return res.json({ success: true, data });
         })
     },
     deletePatient: (req, res) => {
