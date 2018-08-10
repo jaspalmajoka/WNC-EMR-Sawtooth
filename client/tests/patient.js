@@ -28,7 +28,7 @@ describe('Patient', () => {
         it('should create an entry for the user', () => {
 
             chai.request(server)
-                .post('/patient')
+                .post('/api/patient')
                 .send(patientRecord)
                 .end((err, res) => {
                     res.should.have.status(200);
@@ -40,7 +40,7 @@ describe('Patient', () => {
 
         it('should retreive the created entry from blockchain state', () => {
             chai.request(server)
-                .get(`/patient?${patientRecord.id}`)
+                .get(`/api/patient?${patientRecord.id}`)
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.should.be.a('object');
