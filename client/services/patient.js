@@ -1,5 +1,5 @@
 const config = require('./../config');
-const { getState, createAddress } = require('./../lib/helper');
+const { getState, createAddress, getDiffProperties } = require('./../lib/helper');
 const client = config.client;
 
 const SawtoothWalletClient = require('./../lib/SawtoothWalletClient');
@@ -42,11 +42,45 @@ module.exports = {
     },
     deletePatient: (req, res) => {
         // TODO Delete Patient Data
-        res.end();
+        const Action = 'deletePatient';
+        const { id } = req.params;
+        _getPatients(id, (err, data) => {
+            if (err) return res.status(500).send(err);
+            return sawtoothWalletClient.submit({ Action, Data: { id } })
+                .then((data) => {
+                    return res.status(200).send({ success: true, data }).end();
+                })
+                .catch((err) => {
+                    return res.status(500).send({ success: false, err }).end();
+                });
+        })
     },
     updatePatient: (req, res) => {
         // TODO Update patient data
         // Can be used for the other patient related updates
-        res.end();
+        const Action = 'updatePatient';
+        const { id } = req.params;
+        const payload = req.body;
+        _getPatients(id, (err, data) => {
+            if (err) return res.status(500).send(err);
+            const _patient = data[0];
+            // Replace ID from params so we don't update wrong one in body
+            payload.id = id;
+            const changesMade = getDiffProperties(data, payload);
+            Object.assign(data, payload);
+            if (!data.changeHistory) {
+                data.changeHistory = [];
+            }
+            // Compared changes will be pushed and tracked on relavant patient data change history
+            data.changeHistory.push(changesMade);
+            // Once the updated values are copied to original data we submit it for blockchain
+            return sawtoothWalletClient.submit({ Action, Data: data })
+                .then((data) => {
+                    return res.status(200).send({ success: true, data }).end();
+                })
+                .catch((err) => {
+                    return res.status(500).send({ success: false, err }).end();
+                });
+        })
     }
 }

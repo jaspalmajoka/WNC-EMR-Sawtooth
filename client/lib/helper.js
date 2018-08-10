@@ -30,5 +30,22 @@ module.exports = {
             }));
     },
     createAddress: (name, usernamespace = '00') => `${config.family.namespace}${usernamespace}${name.length ? leafHash(name, 64 - usernamespace.length) : ''}`,
+    getDiffProperties: (object1, object2) => {
+        const difference = [];
+
+        for (key in object1) {
+            if (object1[key] != object2[key]) {
+                difference.push(key)
+            }
+        }
+
+        for (key in object2) {
+            if (object1[key] != object2[key]) {
+                difference.push(key)
+            }
+        }
+
+        return difference
+    }
 
 }
