@@ -26,7 +26,7 @@ module.exports = {
         const stateValueRep = possibleAddressValues[address];
         // Check if patient record is created already
         // If not deletion will not be required
-        if (!stateValuerep || stateValuerep.length === 0) {
+        if (!stateValueRep || stateValueRep.length === 0) {
             return toInvalidTransaction(`No patient record found to be created with this ${id}`);
         }
         // Since the delete request is raised this transaction 
