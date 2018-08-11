@@ -12,7 +12,7 @@ const configData = {
     },
     keyslocation: "/root/.sawtooth/keys/",
     loglevel: "dev",
-    restapi: process.env.REST_API || "http://rest-api:8008",
+    restapi: process.env.REST_API || "http://127.0.0.1:8008",
     client: "openemr",
     namespace: {
         patient: '10',

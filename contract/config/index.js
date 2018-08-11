@@ -6,7 +6,7 @@ const configData = {
         name: "openemr",
         version: "1.0"
     },
-    validator_url: process.env.VALIDATOR_URL || "tcp://validator:4004",
+    validator_url: process.env.VALIDATOR_URL || "tcp://127.0.0.1:4004",
     namespace: {
         patient: '10',
         admin: '11',

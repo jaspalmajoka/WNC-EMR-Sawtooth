@@ -9,6 +9,6 @@
     },
     "keyslocation": "/root/.sawtooth/keys/",
     "loglevel": "dev",
-    "restapi": "http://rest-api:8008",
+    "restapi": "http://127.0.0.1:8008",
     "client": "openemr"
 }
