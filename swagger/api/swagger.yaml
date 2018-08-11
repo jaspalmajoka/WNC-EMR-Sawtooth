@@ -104,7 +104,7 @@ definitions:
           type: string
           example: http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf
 # Added by API Auto Mocking Plugin
-host: 13.251.142.80:3000
+host: 18.136.137.49:3000
 basePath: /api
 schemes:
  - http
