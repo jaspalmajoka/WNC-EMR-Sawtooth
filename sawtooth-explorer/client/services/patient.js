@@ -72,16 +72,16 @@ module.exports = {
             const _patient = data[0].data;
             // Replace ID from params so we don't update wrong one in body
             payload.id = id;
-            const changesMade = getDiffProperties(_patient, payload).filter((v, i, a) => a.indexOf(v) === i);;
+            // const changesMade = getDiffProperties(_patient, payload).filter((v, i, a) => a.indexOf(v) === i);;
             Object.assign(_patient, payload);
-            if (!_patient.changeHistory) {
-                _patient.changeHistory = [];
-            }
+            // if (!_patient.changeHistory) {
+            //     _patient.changeHistory = [];
+            // }
             // Compared changes will be pushed and tracked on relavant patient data change history
-            _patient.changeHistory.push({
-                changesMade,
-                timestamp: new Date().toUTCString()
-            });
+            // _patient.changeHistory.push({
+            //     changesMade,
+            //     timestamp: new Date().toUTCString()
+            // });
             // Once the updated values are copied to original data we submit it for blockchain
             return sawtoothWalletClient.submit({ Action, Data: _patient })
                 .then((data) => {
