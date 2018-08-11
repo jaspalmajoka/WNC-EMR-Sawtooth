@@ -47,7 +47,7 @@ services:
         - https_proxy
         - no_proxy
     environment:
-      - 'HOST=18.136.137.49:3000'
+      - 'HOST=${HOST}'
     volumes:
       - '.:/project/'
     ports:
