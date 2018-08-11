@@ -72,7 +72,7 @@ module.exports = {
             const _patient = data[0].data;
             // Replace ID from params so we don't update wrong one in body
             payload.id = id;
-            const changesMade = getDiffProperties(_patient, payload);
+            const changesMade = getDiffProperties(_patient, payload).filter((v, i, a) => a.indexOf(v) === i);;
             Object.assign(_patient, payload);
             if (!_patient.changeHistory) {
                 _patient.changeHistory = [];
