@@ -35,13 +35,18 @@ module.exports = {
     },
     updatePatient: async ({ context, data }) => {
         const { id } = data;
+        console.log(`${id} Recevied`)
         const address = _createAddress(id);
         const possibleAddressValues = await context.getState([address]).catch(toInvalidTransaction);
-        const stateValuerep = possibleAddressValues[address];
+        console.log(`${possibleAddressValues} State`)
+        const stateValueRep = possibleAddressValues[address];
         let stateValue;
+        console.log(stateValueRep)
         // Check if patient record is created already
-        if (stateValuerep && stateValuerep.length) {
-            stateValue = JSON.parse(stateValuerep);
+        if (stateValueRep && stateValueRep.length) {
+            console.log(`${stateValueRep} Is there`)
+            stateValue = JSON.parse(stateValueRep);
+            console.log(`${stateValue} Is there`)
             if (!stateValue) {
                 return toInvalidTransaction(`No patient record found to be created with this ${id}`);
             }
