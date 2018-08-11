@@ -28,7 +28,7 @@ Insurance |
 List -> `Patient` |
 Location -> `Facility` |
 Patient | ![done](https://www.iconfinder.com/icons/299110/download/png/20 "Completed") 
-Document -> `Patient` |
+Document -> `Patient` | ![done](https://www.iconfinder.com/icons/299110/download/png/20 "Completed") 
 DocumentLink -> `Patient` |
 Image -> `Patient` |
 Prescription -> `Patient` |
