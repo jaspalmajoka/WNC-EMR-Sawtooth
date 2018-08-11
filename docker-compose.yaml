@@ -19,8 +19,8 @@ services:
     volumes:
       - '.:/project/'
 
-  openemr-client:
-    container_name: openemr-client
+  sawtooth-client:
+    container_name: sawtooth-client
     build:
       context: .
       dockerfile: ./sawtooth-explorer/Dockerfile

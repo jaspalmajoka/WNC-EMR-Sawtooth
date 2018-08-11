@@ -49,7 +49,7 @@ paths:
           description: Patient ID created
         400:
           description: invalid input, object invalid
-  /patient/{id}
+  /patient/{id}:
     delete:
       tags:
       - patient
@@ -58,13 +58,17 @@ paths:
       produces:
       - application/json
       parameters:
-      - in: path
-        name: id
-        schema: 
-          type: string
+      - name: id
+        in: path
+        description: "ID of that patient that need to be deleted"
         required: true
-        description: ID of the patient to be deleted
-    update:
+        type: "string"
+      responses:
+        201:
+          description: Patient ID created
+        400:
+          description: invalid input, object invalid
+    put:
       tags:
       - patient
       summary: Updates patient records
@@ -72,14 +76,21 @@ paths:
       produces:
       - application/json
       parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          required: true
-          description: ID of the patient to be updated in state
+      - name: id
+        in: path
+        description: "ID of that patient that need to be updated"
+        required: true
+        type: "string"
       - in: body
-        name
+        name: patientData
+        description: Patient Data to be updated
+        schema:
+          $ref: '#/definitions/CreatePatient'
+      responses:
+        201:
+          description: Patient ID created
+        400:
+          description: invalid input, object invalid
 definitions:
   CreatePatient:
     type: object
