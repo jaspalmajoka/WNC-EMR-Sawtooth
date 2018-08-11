@@ -71,7 +71,7 @@ export class APIService {
    */
   getItems(resourceName: string, params?: object): Observable<object[]> {
     let options: object = _.defaults(params, this.pagingDefaults);
-    let url = this.apiURL + '/' + resourceName + '?limit=' + options['pageSize'];
+    let url = this.apiURL + '/' + resourceName;
     if (params && params['head']) {
       url += '&head=' + params['head'];
     }
