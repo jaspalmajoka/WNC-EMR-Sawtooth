@@ -1,18 +1,28 @@
-### STAGE 1: Build ###
+FROM ubuntu:xenial
 
-# We label our stage as 'builder'
-FROM node:8
+ARG DEBIAN_FRONTEND=noninteractive
 
-COPY package.json package-lock.json ./
+RUN echo "deb http://repo.sawtooth.me/ubuntu/ci xenial universe" >> /etc/apt/sources.list \
+    && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8AA7AF1F1091A5FD \
+    && echo "deb http://repo.sawtooth.me/ubuntu/1.0/stable xenial universe" >> /etc/apt/sources.list \
+    && apt-get update \
+    && apt-get install -y -q --no-install-recommends \
+    apt-utils \
+    && apt-get install -y -q \
+    ca-certificates \
+    build-essential \
+    python3-sawtooth-cli \
+    curl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    && apt-get install -y nodejs
 
-## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
-RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
+EXPOSE 3000
 
-WORKDIR /ng-app
+WORKDIR /project/client
 
-COPY . .
+RUN rm -rf node_modules
 
-## Build the angular app in production mode and store the artifacts in dist folder
-RUN $(npm bin)/ng build
+CMD  npm install && npm start

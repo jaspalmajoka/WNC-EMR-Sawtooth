@@ -40,8 +40,8 @@ paths:
       - application/json
       parameters:
       - in: body
-        name: inventoryItem
-        description: Inventory item to add
+        name: patientItem
+        description: Patient item to add
         schema:
           $ref: '#/definitions/CreatePatient'
       responses:
@@ -49,6 +49,37 @@ paths:
           description: Patient ID created
         400:
           description: invalid input, object invalid
+  /patient/{id}
+    delete:
+      tags:
+      - patient
+      summary: Delete Patient from state
+      description: Delete Patient entry from blockchain state
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        schema: 
+          type: string
+        required: true
+        description: ID of the patient to be deleted
+    update:
+      tags:
+      - patient
+      summary: Updates patient records
+      description: Update patient record
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          required: true
+          description: ID of the patient to be updated in state
+      - in: body
+        name
 definitions:
   CreatePatient:
     type: object

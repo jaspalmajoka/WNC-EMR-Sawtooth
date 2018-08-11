@@ -23,7 +23,7 @@ services:
     container_name: openemr-client
     build:
       context: .
-      dockerfile: ./client/Dockerfile
+      dockerfile: ./sawtooth-explorer/Dockerfile
       args:
         - http_proxy
         - https_proxy

@@ -4,7 +4,7 @@
   "license": "Apache 2.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng build && node ./client",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -31,7 +31,16 @@
     "lodash": "^4.17.4",
     "rxjs": "5.5.2",
     "zone.js": "0.8.18",
-    "ng2-ace": "0.0.15"
+    "ng2-ace": "0.0.15",
+    "body-parser": "^1.18.3",
+    "cbor": "^4.1.1",
+    "config": "^2.0.1",
+    "cors": "^2.8.4",
+    "crypto": "^1.0.1",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "node-fetch": "^2.2.0",
+    "sawtooth-sdk": "^1.0.5"
   },
   "devDependencies": {
     "@angular/cli": "^1.5.6",
@@ -53,6 +62,11 @@
     "protractor": "5.2.0",
     "ts-node": "3.3.0",
     "tslint": "5.8.0",
-    "typescript": "~2.4.2"
+    "typescript": "~2.4.2",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "faker": "^4.1.0",
+    "mocha": "^5.2.0",
+    "uuid": "^3.3.2"
   }
 }
