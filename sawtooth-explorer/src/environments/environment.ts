@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  apiURL: process.env.PUBLIC_RESTAPI || 'http://13.251.142.80/sawtooth',
+  apiURL: 'http://18.136.137.49:8090',
   apiTimeout: 3000
 };
