@@ -22,6 +22,8 @@ module.exports = {
     deletePatient: async ({ context, data }) => {
         const { id } = data;
         const address = _createAddress(id);
+        const possibleAddressValues = await context.getState([address]).catch(toInvalidTransaction);
+        const stateValueRep = possibleAddressValues[address];
         // Check if patient record is created already
         // If not deletion will not be required
         if (!stateValuerep || stateValuerep.length === 0) {

@@ -9,7 +9,7 @@ module.exports = {
                 return createPatient({ context, data: Data });
             case 'deletePatient':
                 return deletePatient({ context, data: Data });
-            case 'updatePatien':
+            case 'updatePatient':
                 return updatePatient({ context, data: Data });
             default:
                 return toInvalidTransaction(`Action ${Action} is not valid`);
