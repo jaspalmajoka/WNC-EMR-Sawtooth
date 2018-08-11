@@ -14,8 +14,8 @@ services:
       - 'http_proxy=${http_proxy}'
       - 'https_proxy=${https_proxy}'
       - 'no_proxy=rest-api,validator,${no_proxy}'
-    depends_on:
-      - validator
+#    depends_on:
+#      - validator
     volumes:
       - '.:/project/'
 
@@ -37,7 +37,7 @@ services:
     ports:
       - '0.0.0.0:3000:3000'
     depends_on:
-      - sawtooth-rest-api
+#      - sawtooth-rest-api
       - openemr-processor
     stop_signal: SIGKILL
   openemr-api-swagger:
@@ -59,23 +59,23 @@ services:
       - '0.0.0.0:3001:3001'
     stop_signal: SIGKILL
 
-  sawtooth-rest-api:
-    container_name: rest-api
-    image: hyperledger/sawtooth-rest-api:1.0
-    expose:
-      - 8008
-    ports:
-      - '8008:8008'
-    depends_on:
-      - validator
-    entrypoint: |
-      sawtooth-rest-api -vvv --connect tcp://127.0.0.1:4004 --bind 127.0.0.1:8008
+ # sawtooth-rest-api:
+ #   container_name: rest-api
+ #   image: hyperledger/sawtooth-rest-api:1.0
+ #   expose:
+ #     - 8008
+ #   ports:
+ #     - '8008:8008'
+ #   depends_on:
+ #     - validator
+ #   entrypoint: |
+ #     sawtooth-rest-api -vvv --connect tcp://127.0.0.1:4004 --bind 127.0.0.1:8008
 
-  settings-tp:
-    image: hyperledger/sawtooth-settings-tp:1.0
-    depends_on:
-      - validator
-    command: settings-tp -vv --connect tcp://127.0.0.1:4004
+ # settings-tp:
+ #   image: hyperledger/sawtooth-settings-tp:1.0
+ #   depends_on:
+ #     - validator
+ #   command: settings-tp -vv --connect tcp://127.0.0.1:4004
 
   # validator:
   #   container_name: validator
