@@ -12,6 +12,9 @@ module.exports = {
         const Action = 'addDocument';
         const documentData = req.body;
         documentData.id = id;
+        if (!documentData.patientId) {
+            return res.status(400).send({ success: false, err: 'Field patientId is missing.' }).end();
+        }
         return sawtoothWalletClient.submit({ Action, Data: documentData })
             .then((data) => {
                 return res.status(201).send({ success: true, data }).end();
