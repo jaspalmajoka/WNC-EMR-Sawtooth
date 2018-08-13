@@ -26,12 +26,13 @@ module.exports = {
             patientStateValue.documents = [];
         }
         // delete data.patientId;
-        patientStateValue.documents.push(documentAddress);
+        patientStateValue.documents.push(documentStateValue);
+        // patientStateValue.documents.push(documentAddress);
         documentStateValue = data;
         // TODO Possibly create an asset with the document
         const entries = {
             [patientAddress]: encodePayload(patientStateValue),
-            [documentAddress]: encodePayload(documentStateValue),
+            // [documentAddress]: encodePayload(documentStateValue),
         };
         return context.setState(context, entries).catch(toInvalidTransaction);
     },
