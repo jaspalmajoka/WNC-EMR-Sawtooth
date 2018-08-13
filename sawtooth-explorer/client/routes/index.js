@@ -7,8 +7,8 @@ router.post('/patient', patient.createPatient);
 router.put('/patient/:id', patient.updatePatient);
 router.delete('/patient/:id', patient.deletePatient);
 
-router.put('/patient/:patientId/document', document.addDocument);
-router.delete('/patient/:patientId/document', document.deleteDocument);
+router.put('/patient/:id/document', document.addDocument);
+router.delete('/patient/:patientId/:id', document.deleteDocument);
 
 
 

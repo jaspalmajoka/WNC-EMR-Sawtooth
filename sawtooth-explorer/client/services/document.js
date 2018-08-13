@@ -11,7 +11,7 @@ module.exports = {
         const id = uuid();
         const Action = 'addDocument';
         const documentData = req.body;
-        const patientId = req.params.patientId;
+        const patientId = req.params.id;
         documentData.patientId = patientId;
         if (Object.keys(req.body).length >= 0) {
             return sawtoothWalletClient.submit({ Action, Data: documentData })
@@ -27,8 +27,7 @@ module.exports = {
     },
     deleteDocument: (req, res) => {
         const Action = 'deleteDocument';
-        const { id } = req.params;
-        const patientId = req.params.patientId;
+        const { patientId, id } = req.params;
         return sawtoothWalletClient.submit({ Action, Data: { id, patientId } })
             .then((data) => {
                 return res.status(200).send({ success: true, data }).end();
