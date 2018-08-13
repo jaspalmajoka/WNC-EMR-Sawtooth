@@ -28,7 +28,6 @@ services:
         - no_proxy
     environment:
       - 'REST_API=http://rest-api:8008'
-      - 'PUBLIC_RESTAPI=http://18.136.137.49:8090'
       - 'NODE_ENV=${NODE_ENV}'
     volumes:
       - '.:/project/'
