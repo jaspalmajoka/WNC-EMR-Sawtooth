@@ -1,5 +1,7 @@
-const { createPatient, deletePatient, updatePatient } = require('./patient');
 const { toInvalidTransaction } = require('./../lib/helper');
+
+const { createPatient, deletePatient, updatePatient } = require('./patient');
+const { addDocument, deleteDocument } = require('./document');
 
 module.exports = {
     performTransaction: (txRequest, context, payload) => {
