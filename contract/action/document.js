@@ -33,7 +33,7 @@ module.exports = {
             [patientAddress]: encodePayload(patientStateValue),
             [documentAddress]: encodePayload(documentStateValue),
         };
-        return setEntry(context, entries).catch(toInvalidTransaction);
+        return context.setState(context, entries).catch(toInvalidTransaction);
     },
     deleteDocument: async ({ context, data }) => {
         const { id } = data;
