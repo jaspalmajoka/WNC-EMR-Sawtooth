@@ -22,6 +22,7 @@ import {BatchDetailComponent} from './batches/batch-detail/batch-detail.componen
 import {BlockDetailComponent} from './blocks/block-detail/block-detail.component'
 import {ExplorerComponent} from './explorer/explorer.component'
 import {StateMonitorComponent} from './states/state-monitor/state-monitor.component'
+import { StateViewComponent } from './state-view/state-view.component';
 
 export const routes: Routes = [
   {
@@ -47,6 +48,11 @@ export const routes: Routes = [
   {
     path: 'state-monitor',
     component: StateMonitorComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'state',
+    component: StateViewComponent,
     pathMatch: 'full'
   },
   {

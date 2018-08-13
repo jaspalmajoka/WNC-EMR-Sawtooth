@@ -69,6 +69,7 @@ import { DynamicViewDirective } from './dynamic-views/dynamic-view-directive/dyn
 import { DynamicViewLoaderComponent } from './dynamic-views/dynamic-view-loader/dynamic-view-loader.component';
 import { Base64DecodePipe } from './pipes/base64-decode/base64-decode.pipe';
 import { UIAceDataTransformPipe } from './pipes/ui-ace-data-transform/ui-ace-data-transform.pipe';
+import { StateViewComponent } from './state-view/state-view.component';
 
 
 @NgModule({
@@ -92,7 +93,8 @@ import { UIAceDataTransformPipe } from './pipes/ui-ace-data-transform/ui-ace-dat
     DynamicViewDirective,
     DynamicViewLoaderComponent,
     Base64DecodePipe,
-    UIAceDataTransformPipe
+    UIAceDataTransformPipe,
+    StateViewComponent
   ],
   imports: [
     BrowserModule,
