@@ -1,12 +1,12 @@
 const config = require('./../config');
 const { createAddress, toInvalidTransaction, setEntry } = require('./../lib/helper');
 
-const _createAddress = (id) => createAddress(id, config.namespace.patient);
+const _createPatientAddress = (id) => createAddress(id, config.namespace.patient);
 
 module.exports = {
     createPatient: async ({ context, data }) => {
         const { id } = data;
-        const address = _createAddress(id);
+        const address = _createPatientAddress(id);
         const possibleAddressValues = await context.getState([address]).catch(toInvalidTransaction);
         const stateValueRep = possibleAddressValues[address];
         let stateValue;
@@ -21,7 +21,7 @@ module.exports = {
     },
     deletePatient: async ({ context, data }) => {
         const { id } = data;
-        const address = _createAddress(id);
+        const address = _createPatientAddress(id);
         const possibleAddressValues = await context.getState([address]).catch(toInvalidTransaction);
         const stateValueRep = possibleAddressValues[address];
         // Check if patient record is created already
@@ -36,7 +36,7 @@ module.exports = {
     updatePatient: async ({ context, data }) => {
         const { id } = data;
         console.log(`${id} Recevied`)
-        const address = _createAddress(id);
+        const address = _createPatientAddress(id);
         const possibleAddressValues = await context.getState([address]).catch(toInvalidTransaction);
         console.log(`${possibleAddressValues} State`)
         const stateValueRep = possibleAddressValues[address];

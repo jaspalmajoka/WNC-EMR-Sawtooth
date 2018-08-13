@@ -11,8 +11,10 @@ module.exports = {
         const id = uuid();
         const Action = 'addDocument';
         const documentData = req.body;
+        const patientId = req.params.patientId;
+        documentData.patientId = patientId;
         if (Object.keys(req.body).length >= 0) {
-            return sawtoothWalletClient.submit({ Action, Data: req.body })
+            return sawtoothWalletClient.submit({ Action, Data: documentData })
                 .then((data) => {
                     return res.status(201).send({ success: true, data }).end();
                 })
@@ -26,7 +28,8 @@ module.exports = {
     deleteDocument: (req, res) => {
         const Action = 'deleteDocument';
         const { id } = req.params;
-        return sawtoothWalletClient.submit({ Action, Data: { id } })
+        const patientId = req.params.patientId;
+        return sawtoothWalletClient.submit({ Action, Data: { id, patientId } })
             .then((data) => {
                 return res.status(200).send({ success: true, data }).end();
             })

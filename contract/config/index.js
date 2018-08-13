@@ -9,6 +9,7 @@ const configData = {
     validator_url: process.env.VALIDATOR_URL || "tcp://127.0.0.1:4004",
     namespace: {
         patient: '10',
+        document: '11',
         admin: '11',
     }
 };
