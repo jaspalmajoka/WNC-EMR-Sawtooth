@@ -36,6 +36,17 @@ module.exports = {
         return setEntry(context, entries).catch(toInvalidTransaction);
     },
     deleteDocument: async ({ context, data }) => {
-
+        const { id } = data;
+        const address = _createDocumentAddress(id);
+        const possibleAddressValues = await context.getState([address]).catch(toInvalidTransaction);
+        const stateValueRep = possibleAddressValues[address];
+        // Check if Document record is created already
+        // If not deletion will not be required
+        if (!stateValueRep || stateValueRep.length === 0) {
+            return toInvalidTransaction(`No Document record found to be created with this ${id}`);
+        }
+        // Since the delete request is raised this transaction 
+        // An NULL value is set mark empty
+        return setEntry(context, address, null).catch(toInvalidTransaction);
     }
 }
