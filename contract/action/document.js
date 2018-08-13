@@ -22,13 +22,13 @@ module.exports = {
         }
         patientStateValue = JSON.parse(patientStateValueRep);
         // If no document attached start fresh list
-        if (patientStateValue.documents) {
+        if (!patientStateValue.documents) {
             patientStateValue.documents = [];
         }
         delete data.patientId;
         patientStateValue.documents.push(data);
         // TODO Possibly create an asset with the document
-        return setEntry(context, address, patientStateValue).catch(toInvalidTransaction);
+        return setEntry(context, patientAddress, patientStateValue).catch(toInvalidTransaction);
     },
     deleteDocument: async ({ context, data }) => {
 
