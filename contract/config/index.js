@@ -4,7 +4,7 @@ const leafHash = (input, length) => createHash('sha512').update(input).digest('h
 const configData = {
     family: {
         name: "openemr",
-        version: "1.2"
+        version: "1.3"
     },
     validator_url: process.env.VALIDATOR_URL || "tcp://127.0.0.1:4004",
     namespace: {
