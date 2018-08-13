@@ -11,7 +11,8 @@ info:
 tags:
 - name: patient
   description: Patient related api
-
+- name: document
+  description: Document related api
 paths:
   /patient:
     get:
@@ -42,6 +43,44 @@ paths:
       - in: body
         name: patientItem
         description: Patient item to add
+        schema:
+          $ref: '#/definitions/CreatePatient'
+      responses:
+        201:
+          description: Patient ID created
+        400:
+          description: invalid input, object invalid
+  /document/{id}:
+    delete:
+      tags:
+      - document
+      summary: Delete Document from state
+      description: Delete Document entry from blockchain state
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: "ID of that Document that need to be deleted"
+        required: true
+        type: "string"
+      responses:
+        201:
+          description: Patient ID created
+        400:
+          description: invalid input, object invalid
+  /document:
+    post:
+      tags:
+      - document
+      summary: Adds document 
+      description: Adds document record
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: patientData
+        description: Patient Data to be updated
         schema:
           $ref: '#/definitions/CreatePatient'
       responses:
