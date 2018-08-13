@@ -11,24 +11,19 @@ module.exports = {
         const id = uuid();
         const Action = 'addDocument';
         const documentData = req.body;
-        const patientId = req.params.id;
-        documentData.patientId = patientId;
-        if (Object.keys(req.body).length >= 0) {
-            return sawtoothWalletClient.submit({ Action, Data: documentData })
-                .then((data) => {
-                    return res.status(201).send({ success: true, data }).end();
-                })
-                .catch((err) => {
-                    return res.status(500).send({ success: false, err }).end();
-                });
-        } else {
-            return res.status(400).send({ success: false, message: 'Payload doesn"t contain document info' }).end();
-        }
+        documentData.id = id;
+        return sawtoothWalletClient.submit({ Action, Data: documentData })
+            .then((data) => {
+                return res.status(201).send({ success: true, data }).end();
+            })
+            .catch((err) => {
+                return res.status(500).send({ success: false, err }).end();
+            });
     },
     deleteDocument: (req, res) => {
         const Action = 'deleteDocument';
-        const { patientId, id } = req.params;
-        return sawtoothWalletClient.submit({ Action, Data: { id, patientId } })
+        const { id } = req.params;
+        return sawtoothWalletClient.submit({ Action, Data: { id } })
             .then((data) => {
                 return res.status(200).send({ success: true, data }).end();
             })
