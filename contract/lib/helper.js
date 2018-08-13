@@ -8,6 +8,7 @@ const leafHash = (input, length) => createHash('sha512').update(input).digest('h
 
 module.exports = {
     leafHash,
+    encodePayload,
     toInvalidTransaction: (err) => { throw new InvalidTransaction(err.message ? err.message : err) },
     toInternalError: (err) => { throw new InternalError(err.message ? err.message : err) },
     setEntry: (context, address, newStateValue) => {

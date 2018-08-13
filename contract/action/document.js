@@ -1,5 +1,5 @@
 const config = require('./../config');
-const { createAddress, toInvalidTransaction, setEntry } = require('./../lib/helper');
+const { createAddress, toInvalidTransaction, setEntry, encodePayload } = require('./../lib/helper');
 
 const _createDocumentAddress = (id) => createAddress(id, config.namespace.document);
 const _createPatienttAddress = (id) => createAddress(id, config.namespace.patient);
@@ -25,10 +25,15 @@ module.exports = {
         if (!patientStateValue.documents) {
             patientStateValue.documents = [];
         }
-        delete data.patientId;
-        patientStateValue.documents.push(data);
+        // delete data.patientId;
+        patientStateValue.documents.push(documentAddress);
+        documentStateValue = data;
         // TODO Possibly create an asset with the document
-        return setEntry(context, patientAddress, patientStateValue).catch(toInvalidTransaction);
+        const entries = {
+            [patientAddress]: encodePayload(patientStateValue),
+            [documentAddress]: encodePayload(documentStateValue),
+        };
+        return setEntry(context, entries).catch(toInvalidTransaction);
     },
     deleteDocument: async ({ context, data }) => {
 
