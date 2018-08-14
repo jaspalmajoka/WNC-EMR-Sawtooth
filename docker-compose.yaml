@@ -50,6 +50,8 @@ services:
       - 'HOST=${HOST}'
     volumes:
       - '.:/project/'
+    depends_on: 
+      - 'sawtooth-client'
     ports:
       - '0.0.0.0:3001:3001'
     stop_signal: SIGKILL
