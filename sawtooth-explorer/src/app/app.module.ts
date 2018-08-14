@@ -70,6 +70,7 @@ import { DynamicViewLoaderComponent } from './dynamic-views/dynamic-view-loader/
 import { Base64DecodePipe } from './pipes/base64-decode/base64-decode.pipe';
 import { UIAceDataTransformPipe } from './pipes/ui-ace-data-transform/ui-ace-data-transform.pipe';
 import { StateViewComponent } from './state-view/state-view.component';
+import { TransactionLogComponent } from './transaction-log/transaction-log.component';
 
 
 @NgModule({
@@ -94,7 +95,8 @@ import { StateViewComponent } from './state-view/state-view.component';
     DynamicViewLoaderComponent,
     Base64DecodePipe,
     UIAceDataTransformPipe,
-    StateViewComponent
+    StateViewComponent,
+    TransactionLogComponent
   ],
   imports: [
     BrowserModule,
