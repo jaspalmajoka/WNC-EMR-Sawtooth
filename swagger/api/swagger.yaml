@@ -106,6 +106,43 @@ paths:
           description: Document retreived 
         400:
           description: invalid input, object invalid
+  /hospital:
+    post:
+      tags:
+      - document
+      summary: Adds hospital 
+      description: Adds hospital record
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: hospitalData
+        description: Hospital Data to be updated
+        schema:
+          $ref: '#/definitions/CreateHospital'
+      responses:
+        201:
+          description: Hospital ID created
+        400:
+          description: invalid input, object invalid
+    get:
+      tags:
+      - document
+      summary: Get Hospital data from state
+      description: Get Hospital entry from blockchain state
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: query
+        description: "ID of that Hospital that need to be retreived from state"
+        required: false
+        type: "string"
+      responses:
+        201:
+          description: Hospital data retreived 
+        400:
+          description: invalid input, object invalid
   /patient/{id}:
     delete:
       tags:
@@ -169,6 +206,15 @@ definitions:
         items: 
           type: string
           example: http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf
+  CreateHospital:
+    type: object
+    properties:
+      # id:
+      #   type: string
+      #   example: H1
+      info:
+        type: string
+        example: http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf
 # Added by API Auto Mocking Plugin
 host: 18.136.137.49:3000
 basePath: /api
