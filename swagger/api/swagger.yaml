@@ -13,6 +13,8 @@ tags:
   description: Patient related api
 - name: document
   description: Document related api
+- name: hospital
+  description: Hospital related api
 paths:
   /patient:
     get:
@@ -109,7 +111,7 @@ paths:
   /hospital:
     post:
       tags:
-      - document
+      - hospital
       summary: Adds hospital 
       description: Adds hospital record
       produces:
@@ -127,7 +129,7 @@ paths:
           description: invalid input, object invalid
     get:
       tags:
-      - document
+      - hospital
       summary: Get Hospital data from state
       description: Get Hospital entry from blockchain state
       produces:
