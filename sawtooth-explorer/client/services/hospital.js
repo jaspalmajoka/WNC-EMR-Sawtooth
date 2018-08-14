@@ -7,7 +7,14 @@ const SawtoothWalletClient = require('./../lib/SawtoothWalletClient');
 const sawtoothWalletClient = new SawtoothWalletClient(client);
 
 
-
+/**
+ * Creates patient address with supplied patient id
+ * and makes an API call to RestAPI with the address to 
+ * reteive the data of patient from state
+ * 
+ * @param {*patientId} id 
+ * @param {*Error,DataArray} callback 
+ */
 const _getHospitals = (id, callback) => {
     let address;
     if (id) {
