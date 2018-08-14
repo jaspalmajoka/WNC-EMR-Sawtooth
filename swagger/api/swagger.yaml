@@ -66,7 +66,25 @@ paths:
         type: "string"
       responses:
         201:
-          description: Patient ID created
+          description: Documetn created and attached to patient
+        400:
+          description: invalid input, object invalid
+    get:
+      tags:
+      - document
+      summary: Get Document from state
+      description: Get Document entry from blockchain state
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: "ID of that Document that need to be retreived from state"
+        required: true
+        type: "string"
+      responses:
+        201:
+          description: Document retreived 
         400:
           description: invalid input, object invalid
   /document:
@@ -82,7 +100,7 @@ paths:
         name: patientData
         description: Patient Data to be updated
         schema:
-          $ref: '#/definitions/CreatePatient'
+          $ref: '#/definitions/CreateDocument'
       responses:
         201:
           description: Patient ID created
@@ -131,6 +149,15 @@ paths:
         400:
           description: invalid input, object invalid
 definitions:
+  CreateDocument:
+    type: object
+    properties:
+      patientId:
+        type: Patient ID
+        example: P1
+      documentUrl:
+        type: string
+        example: http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf
   CreatePatient:
     type: object
     properties:
