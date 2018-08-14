@@ -2,7 +2,7 @@ const { toInvalidTransaction } = require('./../lib/helper');
 
 const { createPatient, deletePatient, updatePatient } = require('./patient');
 const { addDocument, deleteDocument } = require('./document');
-const { addHospital } = require('./hospital');
+const { addHospital, deleteHospital } = require('./hospital');
 
 module.exports = {
     performTransaction: (txRequest, context, payload) => {
@@ -20,6 +20,8 @@ module.exports = {
                 return deleteDocument({ context, data: Data });
             case 'addHospital':
                 return addHospital({ context, data: Data });
+            case 'deleteospital':
+                return deleteHospital({ context, data: Data });
             default:
                 return toInvalidTransaction(`Action ${Action} is not valid`);
         }
