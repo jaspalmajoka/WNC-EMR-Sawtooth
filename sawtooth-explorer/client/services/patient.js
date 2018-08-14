@@ -28,11 +28,14 @@ module.exports = {
     createPatient: (req, res) => {
         const { id } = req.body;
         const Action = 'createPatient';
+        const patientData = req.body;
+        patientData.timestamp = new Date().toUTCString();
+
         if (!id) {
             return res.status(400).send({ success: false, message: 'ID Field Missing in payload' }).end();
         }
         else {
-            return sawtoothWalletClient.submit({ Action, Data: req.body })
+            return sawtoothWalletClient.submit({ Action, Data: patientData })
                 .then((data) => {
                     return res.status(201).send({ success: true, data }).end();
                 })

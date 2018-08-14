@@ -39,6 +39,7 @@ module.exports = {
         const id = uuid();
         const Action = 'addDocument';
         const documentData = req.body;
+        documentData.timestamp = new Date().toUTCString();
         documentData.id = id;
         if (!documentData.patientId) {
             return res.status(400).send({ success: false, err: 'Field patientId is missing.' }).end();
