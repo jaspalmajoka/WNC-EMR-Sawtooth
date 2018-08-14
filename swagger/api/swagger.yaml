@@ -67,7 +67,7 @@ paths:
         required: true
         type: "string"
       responses:
-        201:
+        200:
           description: Documetn created and attached to patient
         400:
           description: invalid input, object invalid
@@ -145,6 +145,25 @@ paths:
           description: Hospital data retreived 
         400:
           description: invalid input, object invalid
+  /hospital/{id}:
+    delete:
+      tags:
+      - document
+      summary: Delete Hospital from state
+      description: Delete Hospital entry from blockchain state
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: "ID of that Hospital that need to be deleted"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: Hospital deleted
+        400:
+          description: invalid input, object invalid
   /patient/{id}:
     delete:
       tags:
@@ -160,7 +179,7 @@ paths:
         required: true
         type: "string"
       responses:
-        201:
+        200:
           description: Patient ID created
         400:
           description: invalid input, object invalid
