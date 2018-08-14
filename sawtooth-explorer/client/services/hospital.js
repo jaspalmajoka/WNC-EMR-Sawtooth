@@ -25,3 +25,28 @@ const _getHospitals = (id, callback) => {
     getState(address)
         .then((data) => callback(null, data)).catch((err) => callback(err));
 }
+
+module.exports = {
+    getHospital: (req, res) => {
+        const { id } = req.query;
+        _getHospitals(id, (err, data) => {
+            if (err) return res.status(500).send(err);
+            return res.json({ success: true, data });
+        });
+    },
+    addHospital: (req, res) => {
+        const id = uuid();
+        const Action = 'addHospital';
+        const hospitalData = req.body;
+        hospitalData.id = id;
+        return sawtoothWalletClient.submit({ Action, Data: hospitalData })
+            .then((data) => {
+                data.id = id;
+                return res.status(201).send({ success: true, data }).end();
+            })
+            .catch((err) => {
+                return res.status(500).send({ success: false, err }).end();
+            })
+
+    }
+}
