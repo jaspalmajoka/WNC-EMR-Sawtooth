@@ -27,7 +27,8 @@ module.exports = {
         }
         // delete data.patientId;
         // patientStateValue.documents.push(documentStateValue);
-        patientStateValue.documents.push(documentAddress);
+        // Push document ID and document Address
+        patientStateValue.documents.push({ id, address: documentAddress });
         documentStateValue = data;
         // TODO Possibly create an asset with the document
         const entries = {
