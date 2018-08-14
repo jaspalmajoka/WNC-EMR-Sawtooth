@@ -26,15 +26,15 @@ module.exports = {
             patientStateValue.documents = [];
         }
         // delete data.patientId;
-        patientStateValue.documents.push(documentStateValue);
-        // patientStateValue.documents.push(documentAddress);
+        // patientStateValue.documents.push(documentStateValue);
+        patientStateValue.documents.push(documentAddress);
         documentStateValue = data;
         // TODO Possibly create an asset with the document
         const entries = {
             [patientAddress]: encodePayload(patientStateValue),
-            // [documentAddress]: encodePayload(documentStateValue),
+            [documentAddress]: encodePayload(documentStateValue),
         };
-        return context.setState(context, entries).catch(toInvalidTransaction);
+        return context.setState(entries).catch(toInvalidTransaction);
     },
     deleteDocument: async ({ context, data }) => {
         const { id } = data;
@@ -48,6 +48,6 @@ module.exports = {
         }
         // Since the delete request is raised this transaction 
         // An NULL value is set mark empty
-        return context.deleteState(address).catch(toInvalidTransaction);
+        return context.deleteState([address]).catch(toInvalidTransaction);
     }
 }
