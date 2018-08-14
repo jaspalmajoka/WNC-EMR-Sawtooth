@@ -31,7 +31,7 @@ module.exports = {
         }
         // Since the delete request is raised this transaction 
         // An NULL value is set mark empty
-        return setEntry(context, address, null).catch(toInvalidTransaction);
+        return context.deleteState(address).catch(toInvalidTransaction);
     },
     updatePatient: async ({ context, data }) => {
         const { id } = data;

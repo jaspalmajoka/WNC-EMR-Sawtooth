@@ -16,6 +16,7 @@ const configData = {
     client: "openemr",
     namespace: {
         patient: '10',
+        document: '11',
         admin: '11',
     }
 };
