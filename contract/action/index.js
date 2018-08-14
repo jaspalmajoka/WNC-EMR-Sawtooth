@@ -20,7 +20,7 @@ module.exports = {
                 return deleteDocument({ context, data: Data });
             case 'addHospital':
                 return addHospital({ context, data: Data });
-            case 'deleteospital':
+            case 'deleteHospital':
                 return deleteHospital({ context, data: Data });
             default:
                 return toInvalidTransaction(`Action ${Action} is not valid`);
