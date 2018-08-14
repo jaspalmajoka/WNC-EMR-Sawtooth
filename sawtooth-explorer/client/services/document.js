@@ -29,7 +29,7 @@ const _getDocuments = (id, callback) => {
 
 module.exports = {
     getDocument: (req, res) => {
-        const { id } = req.params;
+        const { id } = req.query;
         _getDocuments(id, (err, data) => {
             if (err) return res.status(500).send(err);
             return res.json({ success: true, data });

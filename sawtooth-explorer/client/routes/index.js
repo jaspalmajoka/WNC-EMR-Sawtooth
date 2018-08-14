@@ -9,7 +9,7 @@ router.delete('/patient/:id', patient.deletePatient);
 
 router.post('/document', document.addDocument);
 router.delete('/document/:id', document.deleteDocument);
-router.get('/document/:id', document.getDocument);
+router.get('/document', document.getDocument);
 
 
 

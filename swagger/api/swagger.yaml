@@ -69,24 +69,6 @@ paths:
           description: Documetn created and attached to patient
         400:
           description: invalid input, object invalid
-    get:
-      tags:
-      - document
-      summary: Get Document from state
-      description: Get Document entry from blockchain state
-      produces:
-      - application/json
-      parameters:
-      - name: id
-        in: path
-        description: "ID of that Document that need to be retreived from state"
-        required: true
-        type: "string"
-      responses:
-        201:
-          description: Document retreived 
-        400:
-          description: invalid input, object invalid
   /document:
     post:
       tags:
@@ -104,6 +86,24 @@ paths:
       responses:
         201:
           description: Patient ID created
+        400:
+          description: invalid input, object invalid
+    get:
+      tags:
+      - document
+      summary: Get Document from state
+      description: Get Document entry from blockchain state
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: query
+        description: "ID of that Document that need to be retreived from state"
+        required: false
+        type: "string"
+      responses:
+        201:
+          description: Document retreived 
         400:
           description: invalid input, object invalid
   /patient/{id}:
@@ -153,7 +153,7 @@ definitions:
     type: object
     properties:
       patientId:
-        type: Patient ID
+        type: string
         example: P1
       documentUrl:
         type: string
