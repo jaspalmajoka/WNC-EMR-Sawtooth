@@ -148,7 +148,7 @@ paths:
   /hospital/{id}:
     delete:
       tags:
-      - document
+      - hospital
       summary: Delete Hospital from state
       description: Delete Hospital entry from blockchain state
       produces:
