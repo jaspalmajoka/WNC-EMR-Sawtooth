@@ -17,7 +17,7 @@ const configData = {
     namespace: {
         patient: '10',
         document: '11',
-        admin: '11',
+        hospital: '20',
     }
 };
 
