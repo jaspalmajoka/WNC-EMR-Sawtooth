@@ -17,6 +17,7 @@ module.exports = {
         }
         return sawtoothWalletClient.submit({ Action, Data: documentData })
             .then((data) => {
+                data.id = id;
                 return res.status(201).send({ success: true, data }).end();
             })
             .catch((err) => {
