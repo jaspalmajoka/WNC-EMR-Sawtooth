@@ -8,7 +8,7 @@ const configData = {
     },
     family: {
         name: "openemr",
-        version: "1.4"
+        version: "1.5"
     },
     keyslocation: "/root/.sawtooth/keys/",
     loglevel: "dev",
