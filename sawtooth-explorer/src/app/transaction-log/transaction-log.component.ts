@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { APIService } from '../services/api-service/api.service';
 
 @Component({
   selector: 'app-transaction-log',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionLogComponent implements OnInit {
 
-  constructor() { }
+  transactionData: any;
+  head: any;
+
+  constructor(private _apiService: APIService) { }
 
   ngOnInit() {
+    this._apiService.getItems('transactions')
+      .subscribe((data) => {
+        this.transactionData = data['data'];
+        this.head = data['head'];
+      })
   }
-
 }
