@@ -14,6 +14,7 @@ router.get('/document', document.getDocument);
 
 router.post('/hospital', hospital.addHospital);
 router.get('/hospital', hospital.getHospital);
+router.delete('/hospital/:id', hospital.deleteHospital);
 
 
 module.exports = router;

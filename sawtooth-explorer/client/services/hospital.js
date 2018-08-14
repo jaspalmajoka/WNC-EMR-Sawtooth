@@ -47,7 +47,17 @@ module.exports = {
             })
             .catch((err) => {
                 return res.status(500).send({ success: false, err }).end();
+            });
+    },
+    deleteHospital: (req, res) => {
+        const Action = 'deleteHospital';
+        const { id } = req.params;
+        return sawtoothWalletClient.submit({ Action, Data: { id } })
+            .then((data) => {
+                return res.status(200).send({ success: true, data }).end();
             })
-
+            .catch((err) => {
+                return res.status(500).send({ success: false, err }).end();
+            });
     }
 }
