@@ -1,0 +1,54 @@
+<!-- two line list -->
+<!-- <mat-list dense>
+  <mat-list-item *ngFor="let state of states">
+    <h3 matLine> {{state.address}} </h3>
+    <p matLine>
+      <span> {{state.data | base64}} </span>
+       <span class="demo-2"> -- {{message.content}} </span> 
+    </p>
+  </mat-list-item>
+</mat-list> -->
+
+<!-- three line list -->
+<!-- <mat-list>
+  <mat-list-item *ngFor="let message of messages">
+    <h3 matLine> {{message.from}} </h3>
+    <p matLine> {{message.subject}} </p>
+    <p matLine class="demo-2"> {{message.content}} </p>
+  </mat-list-item>
+</mat-list> -->
+<br>
+<div class="mat-elevation-z1">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- Position Column -->
+    <!-- <ng-container matColumnDef="family">
+    <th mat-header-cell *matHeaderCellDef> Family. </th>
+    <td mat-cell *matCellDef="let element"> {{element.family}} </td>
+  </ng-container> -->
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="namespace">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Namepsace &amp; Address </th>
+      <td mat-cell *matCellDef="let element"> <span class="namespace-type">{{element.namespace | uppercase}}</span> <br>{{element.address}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <!-- <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container> -->
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="data">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> State Data </th>
+      <td mat-cell *matCellDef="let element">
+        <pre [innerHTML]="element.data | base64"></pre>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr [@flyInOut]="'in'" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+</div>

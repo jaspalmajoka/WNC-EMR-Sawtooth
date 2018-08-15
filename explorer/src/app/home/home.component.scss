@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+  }
+  th.mat-column-namespace, th.mat-column-address{
+    padding-right: 10px;
+  }
+
+  th.mat-column-namespace, th.mat-column-data{
+    background: #1EAEDB;
+    color: white;
+  }
+
+  td.mat-column-namespace{
+    color: #1EAEDB;
+  }
+
+  th{
+    color: black;
+    font-weight: bolder;
+    font-size: .8em;
+
+  }
+  .namespace-type{
+    font-weight: bolder;
+  }

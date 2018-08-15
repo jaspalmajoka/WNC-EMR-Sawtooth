@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-toolbar>
+  <a routerLink='/'><img src="/assets/logo.jpg" style="
+    height:  60px;
+    padding-top:  7px;
+" alt="">&nbsp;&nbsp;</a>
+  <div class="link">
+    <a class="link" mat-button routerLinkActive='active' routerLink='state'>State</a>
+    <a class="link" mat-button routerLinkActive='active' routerLink='transactions'>Transactions</a>
+    <!-- <a mat-button routerLinkActive='active' routerLink='batches'>Batches</a> -->
+    <a class="link" mat-button routerLinkActive='active' routerLink='blocks'>Blocks</a>
+    <!-- <a class="link" mat-button routerLinkActive='active' routerLink='state-monitor'>State Monitor</a> -->
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

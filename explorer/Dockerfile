@@ -21,7 +21,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
 
 EXPOSE 3000
 
-WORKDIR /project/sawtooth-explorer
+WORKDIR /project/explorer
 
 RUN rm -rf node_modules
 

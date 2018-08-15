@@ -1,0 +1,53 @@
+.comments {
+    width: 80%;
+    padding: 0 10px 10px 20px;
+    border-left: 3px solid #000;
+    margin: 20px auto;
+    font-family: Tahoma, Arial;
+}
+
+.content {
+    background-color: #fff;
+    font-size: .9em;
+    line-height: 1.7;
+    margin-top: 10px;
+    em{
+        font-size: .8em;
+    }
+    pre{
+        background: #1edbca24;
+        padding: 15px;
+    }
+}
+
+.content:before {
+    width: 10px;
+    height: 10px;
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: -29px;
+    border: 2px solid black;
+    background-color: #1EAEDB;
+}
+
+
+p:after {
+    content: "";
+    position: absolute;
+    width: 0px;
+    top: 0;
+    height: 0;
+    left: -10px;
+    border-width: 10px 10px 10px 0px;
+    border-style: solid;
+    border-color: transparent #1EAEDB;
+}
+
+  
+ 
+  
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary{
+    background: #1EAEDB;
+}

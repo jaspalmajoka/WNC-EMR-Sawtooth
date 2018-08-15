@@ -1,0 +1,14 @@
+<div class="comments">
+  <mat-card class="content" [@flyInOut]="'in'" *ngFor="let transaction of transactions; let i=index;">
+    <mat-chip-list>
+      <mat-chip (click)="show[i]=!show[i]" color="primary" selected> {{ transaction?.Action | uppercase }}</mat-chip>
+      <mat-chip (click)="show[i]=!show[i]"> {{ transaction?.header_signature }}</mat-chip>
+    </mat-chip-list>
+    <div [hidden]="!show[i]">
+      <em>Input Payload</em>
+      <pre>{{ transaction?.Data | json }}</pre>
+    </div>
+    <!-- <div class="timieline-title">Title</div> -->
+    <!-- <pre [innerHTML]="transaction?.Data | json"></pre> -->
+  </mat-card>
+</div>

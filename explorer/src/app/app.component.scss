@@ -1,0 +1,17 @@
+.mat-button, .mat-toolbar{
+    color: #1EAEDB;
+    background: transparent;
+}
+a{
+    text-decoration: none;
+}
+a.link{
+    box-shadow: #1EAEDB 0px 1px; 
+}
+div.link{
+    box-shadow: #1EAEDB 0px 0px 1px; 
+}
+.active{
+    background: #1EAEDB;
+    color: white;
+}

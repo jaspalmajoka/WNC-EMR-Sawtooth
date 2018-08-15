@@ -1,0 +1,23 @@
+.title{
+    font-size: .7em;
+    color: #1EAEDB;
+    font-weight: bolder;
+}
+
+.highlight{
+    color: #1EAEDB;
+    font-weight: bolder;
+}
+.content {
+    background-color: #fff;
+    font-size: .9em;
+    line-height: 1.7;
+    margin-top: 10px;
+    em{
+        font-size: 1em;
+    }
+    pre{
+        background: #1edbca24;
+        padding: 15px;
+    }
+}

@@ -1,0 +1,17 @@
+<mat-card>
+  <h3>
+    Block Detail
+  </h3>
+  <mat-list dense id="batches" [@flyInOut]="'in'">
+    <h5  matLine>Block ID: {{ blockData?.header_signature }}</h5>
+    <h3 matLine>Block</h3>
+
+    <mat-list-item>Block&nbsp;<strong>{{ blockData?.header?.block_num }}</strong>&nbsp;added via&nbsp;<strong>{{ blockData?.header?.consensus
+        | base64 }}</strong>&nbsp;Consensus</mat-list-item>
+    <mat-list-item>Previous Block&nbsp;<strong><a routerLink="/blocks" [queryParams]="{id: blockData?.header?.previous_block_id }"> {{ blockData?.header?.previous_block_id }}</a></strong></mat-list-item>
+    <h3 matLine>Batches - <strong>{{ blockData?.batches?.length }}</strong></h3>
+    <mat-list-item *ngFor="let batch of blockData?.batches">
+        <strong> <a routerLink="/batches" [queryParams]="{id: batch?.header_signature, from: blockData?.header_signature}"> {{batch?.header_signature}}</a></strong>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
