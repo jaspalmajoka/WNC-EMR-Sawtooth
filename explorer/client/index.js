@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const parser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
+const fallback = require('express-history-api-fallback')
 
 // Required internal module's
 const sawtooth = require('./routes');
