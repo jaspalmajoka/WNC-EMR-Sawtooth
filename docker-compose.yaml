@@ -21,7 +21,7 @@ services:
     container_name: sawtooth-client
     build:
       context: .
-      dockerfile: ./sawtooth-explorer/Dockerfile
+      dockerfile: ./explorer/Dockerfile
       args:
         - http_proxy
         - https_proxy
