@@ -9,19 +9,19 @@ info:
 
 # tags are used for organizing operations
 tags:
-- name: user
+- name: User
   description: User related api
-- name: patient
+- name: Patient
   description: Patient related api
-- name: document
+- name: Document
   description: Document related api
-- name: hospital
+- name: Hospital
   description: Hospital related api
 paths:
   /patient:
     get:
       tags: 
-      - patient
+      - Patient
       summary: Patient from  state
       description: patient entry from state
       parameters:
@@ -36,7 +36,7 @@ paths:
           description: invalid input, query params invalid
     post:
       tags:
-      - patient
+      - Patient
       summary: Create Patient to state
       description: Add patient entry to state
       consumes:
@@ -57,7 +57,7 @@ paths:
   /document/{id}:
     delete:
       tags:
-      - document
+      - Document
       summary: Delete Document from state
       description: Delete Document entry from blockchain state
       produces:
@@ -76,7 +76,7 @@ paths:
   /document:
     post:
       tags:
-      - document
+      - Document
       summary: Adds document 
       description: Adds document record
       produces:
@@ -94,7 +94,7 @@ paths:
           description: invalid input, object invalid
     get:
       tags:
-      - document
+      - Document
       summary: Get Document from state
       description: Get Document entry from blockchain state
       produces:
@@ -113,7 +113,7 @@ paths:
   /user:
     get:
       tags: 
-      - user
+      - User
       summary: Get Users from state
       description: User entry from state
       parameters:
@@ -129,7 +129,7 @@ paths:
   /user/register:
     post:
       tags:
-      - user
+      - User
       summary: Adds user  
       description: Adds user record
       produces:
@@ -148,7 +148,7 @@ paths:
   /user/{id}:
     put:
       tags:
-      - user
+      - User
       summary: Updates user data 
       description: Updates user record
       produces:
@@ -172,7 +172,7 @@ paths:
   /user/login/{id}:
     post:
       tags:
-      - user
+      - User
       summary: Traces login transaction for user id
       description:  Traces login transaction for user id
       produces:
@@ -191,7 +191,7 @@ paths:
   /hospital:
     post:
       tags:
-      - hospital
+      - Hospital
       summary: Adds hospital 
       description: Adds hospital record
       produces:
@@ -209,7 +209,7 @@ paths:
           description: invalid input, object invalid
     get:
       tags:
-      - hospital
+      - Hospital
       summary: Get Hospital data from state
       description: Get Hospital entry from blockchain state
       produces:
@@ -228,7 +228,7 @@ paths:
   /hospital/{id}:
     delete:
       tags:
-      - hospital
+      - Hospital
       summary: Delete Hospital from state
       description: Delete Hospital entry from blockchain state
       produces:
@@ -247,7 +247,7 @@ paths:
   /patient/{id}:
     delete:
       tags:
-      - patient
+      - Patient
       summary: Delete Patient from state
       description: Delete Patient entry from blockchain state
       produces:
@@ -265,7 +265,7 @@ paths:
           description: invalid input, object invalid
     put:
       tags:
-      - patient
+      - Patient
       summary: Updates patient records
       description: Update patient record
       produces:
