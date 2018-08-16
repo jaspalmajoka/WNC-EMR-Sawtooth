@@ -34,22 +34,29 @@ module.exports = {
   },
   getState,
   /**
-   * Creates patient address with supplied patient id
+   * Creates address with supplied id
    * and makes an API call to RestAPI with the address to 
    * reteive the data of patient from state
    * 
    * @param {*id} id 
    * @param {*Error,DataArray} callback 
    */
-  getStateValues: (id, callback) => {
+  getStateValues: (id, type, res) => {
     let address;
     if (id) {
-      address = `${createAddress(id, config.namespace.user)}`
+      address = `${createAddress(id, config.namespace[type])}`
     } else {
-      address = `${createAddress('', config.namespace.user)}`
+      address = `${createAddress('', config.namespace[type])}`
     }
     getState(address)
-      .then((data) => callback(null, data)).catch((err) => callback(err))
+      .then((data) => {
+        return res.json({
+          success: true,
+          data
+        });
+      }).catch((err) => {
+        if (err) return res.status(500).send(err);
+      })
   },
   createAddress: (name, usernamespace = '00') => `${config.family.namespace}${usernamespace}${name.length ? leafHash(name, 64 - usernamespace.length) : ''}`,
   getDiffProperties: (object1, object2) => {
