@@ -11,6 +11,7 @@ const configData = {
         patient: '10',
         document: '11',
         hospital: '20',
+        user: '30',
     }
 };
 
