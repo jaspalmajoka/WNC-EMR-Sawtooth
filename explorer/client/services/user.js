@@ -28,27 +28,25 @@ module.exports = {
     register: (req, res) => {
         const { id } = req.body;
         const Action = 'userRegister';
-        const userData = req.body;
-        userData.timestamp = new Date().toUTCString();
-
+        const Data = req.body;
+        
         if (!id) {
             return res.status(400).send({ success: false, message: 'ID Field Missing in payload' }).end();
         }
         else {
-            return sawtoothWalletClient.submit({ Action, Data: userData });
+            return sawtoothWalletClient.submit({ Action, Data }, res);
         }
     },
     login: (req, res) => {
         const { id } = req.body;
         const Action = 'userLogin';
-        const userData = req.body;
-        userData.timestamp = new Date().toUTCString();
+        const Data = req.body;
 
         if (!id) {
             return res.status(400).send({ success: false, message: 'ID Field Missing in payload' }).end();
         }
         else {
-            return sawtoothWalletClient.submit({ Action, Data: userData });
+            return sawtoothWalletClient.submit({ Action, Data }, res);
         }
     }
 }
