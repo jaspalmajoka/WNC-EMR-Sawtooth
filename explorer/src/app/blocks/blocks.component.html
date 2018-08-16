@@ -3,7 +3,9 @@
     Block Detail
   </h3>
   <mat-list dense id="batches" [@flyInOut]="'in'">
-    <h5  matLine>Block ID: {{ blockData?.header_signature }}</h5>
+    <h5  matLine>Block ID:
+      <a routerLink='state' [queryParams]="{ id: blockData?.header_signature }"> {{ blockData?.header_signature }}</a>
+    </h5>
     <h3 matLine>Block</h3>
 
     <mat-list-item>Block&nbsp;<strong>{{ blockData?.header?.block_num }}</strong>&nbsp;added via&nbsp;<strong>{{ blockData?.header?.consensus
