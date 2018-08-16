@@ -21,6 +21,8 @@ const getState = (address) => {
     }));
 };
 
+const createAddress = (name, usernamespace = '00') => `${config.family.namespace}${usernamespace}${name.length ? leafHash(name, 64 - usernamespace.length) : ''}`;
+
 module.exports = {
   leafHash,
   hash: (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().slice(0, length),
@@ -58,7 +60,7 @@ module.exports = {
         if (err) return res.status(500).send(err);
       })
   },
-  createAddress: (name, usernamespace = '00') => `${config.family.namespace}${usernamespace}${name.length ? leafHash(name, 64 - usernamespace.length) : ''}`,
+  createAddress,
   getDiffProperties: (object1, object2) => {
     const difference = [];
 
