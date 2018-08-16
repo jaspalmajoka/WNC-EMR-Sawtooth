@@ -25,7 +25,7 @@ app.use(parser.urlencoded({ extended: true }));
 // Static Folder
 const root = __dirname + '/dist'
 app.use(express.static(root))
-// app.use(fallback('index.html', { root: root }))
+app.use(fallback('index.html', { root: root }))
 
 // Health checkup endpoint
 app.get('/health', (req, res) => {
