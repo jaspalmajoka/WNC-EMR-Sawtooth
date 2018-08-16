@@ -35,13 +35,7 @@ module.exports = {
             return res.status(400).send({ success: false, message: 'ID Field Missing in payload' }).end();
         }
         else {
-            return sawtoothWalletClient.submit({ Action, Data: patientData })
-                .then((data) => {
-                    return res.status(201).send({ success: true, data }).end();
-                })
-                .catch((err) => {
-                    return res.status(500).send({ success: false, err }).end();
-                });
+            return sawtoothWalletClient.submit({ Action, Data: patientData }, res);
         }
     },
     getPatient: (req, res) => {
@@ -56,13 +50,7 @@ module.exports = {
         const { id } = req.params;
         _getPatients(id, (err, data) => {
             if (err) return res.status(500).send(err);
-            return sawtoothWalletClient.submit({ Action, Data: { id } })
-                .then((data) => {
-                    return res.status(200).send({ success: true, data }).end();
-                })
-                .catch((err) => {
-                    return res.status(500).send({ success: false, err }).end();
-                });
+            return sawtoothWalletClient.submit({ Action, Data: { id } }, res);
         })
     },
     updatePatient: (req, res) => {
@@ -75,24 +63,9 @@ module.exports = {
             const _patient = data[0].data;
             // Replace ID from params so we don't update wrong one in body
             payload.id = id;
-            // const changesMade = getDiffProperties(_patient, payload).filter((v, i, a) => a.indexOf(v) === i);;
             Object.assign(_patient, payload);
-            // if (!_patient.changeHistory) {
-            //     _patient.changeHistory = [];
-            // }
-            // Compared changes will be pushed and tracked on relavant patient data change history
-            // _patient.changeHistory.push({
-            //     changesMade,
-            //     timestamp: new Date().toUTCString()
-            // });
             // Once the updated values are copied to original data we submit it for blockchain
-            return sawtoothWalletClient.submit({ Action, Data: _patient })
-                .then((data) => {
-                    return res.status(200).send({ success: true, data }).end();
-                })
-                .catch((err) => {
-                    return res.status(500).send({ success: false, err }).end();
-                });
+            return sawtoothWalletClient.submit({ Action, Data: _patient }, res);
         })
     }
 }

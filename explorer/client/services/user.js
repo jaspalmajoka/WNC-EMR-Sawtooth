@@ -35,13 +35,7 @@ module.exports = {
             return res.status(400).send({ success: false, message: 'ID Field Missing in payload' }).end();
         }
         else {
-            return sawtoothWalletClient.submit({ Action, Data: userData })
-                .then((data) => {
-                    return res.status(201).send({ success: true, data }).end();
-                })
-                .catch((err) => {
-                    return res.status(202).send({ success: false, err }).end();
-                });
+            return sawtoothWalletClient.submit({ Action, Data: userData });
         }
     },
     login: (req, res) => {
@@ -54,13 +48,7 @@ module.exports = {
             return res.status(400).send({ success: false, message: 'ID Field Missing in payload' }).end();
         }
         else {
-            return sawtoothWalletClient.submit({ Action, Data: userData })
-                .then((data) => {
-                    return res.status(201).send({ success: true, data }).end();
-                })
-                .catch((err) => {
-                    return res.status(202).send({ success: false, err }).end();
-                });
+            return sawtoothWalletClient.submit({ Action, Data: userData });
         }
     }
 }

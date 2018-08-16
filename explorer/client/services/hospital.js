@@ -40,24 +40,11 @@ module.exports = {
         const hospitalData = req.body;
         hospitalData.id = id;
         hospitalData.timestamp = new Date().toUTCString();
-        return sawtoothWalletClient.submit({ Action, Data: hospitalData })
-            .then((data) => {
-                data.id = id;
-                return res.status(201).send({ success: true, data }).end();
-            })
-            .catch((err) => {
-                return res.status(500).send({ success: false, err }).end();
-            });
+        return sawtoothWalletClient.submit({ Action, Data: hospitalData });
     },
     deleteHospital: (req, res) => {
         const Action = 'deleteHospital';
         const { id } = req.params;
-        return sawtoothWalletClient.submit({ Action, Data: { id } })
-            .then((data) => {
-                return res.status(200).send({ success: true, data }).end();
-            })
-            .catch((err) => {
-                return res.status(500).send({ success: false, err }).end();
-            });
+        return sawtoothWalletClient.submit({ Action, Data: { id } });
     }
 }

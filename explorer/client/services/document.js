@@ -39,29 +39,15 @@ module.exports = {
         const id = uuid();
         const Action = 'addDocument';
         const documentData = req.body;
-        documentData.timestamp = new Date().toUTCString();
         documentData.id = id;
         if (!documentData.patientId) {
             return res.status(400).send({ success: false, err: 'Field patientId is missing.' }).end();
         }
-        return sawtoothWalletClient.submit({ Action, Data: documentData })
-            .then((data) => {
-                data.id = id;
-                return res.status(201).send({ success: true, data }).end();
-            })
-            .catch((err) => {
-                return res.status(500).send({ success: false, err }).end();
-            });
+        return sawtoothWalletClient.submit({ Action, Data: documentData });
     },
     deleteDocument: (req, res) => {
         const Action = 'deleteDocument';
         const { id } = req.params;
-        return sawtoothWalletClient.submit({ Action, Data: { id } })
-            .then((data) => {
-                return res.status(200).send({ success: true, data }).end();
-            })
-            .catch((err) => {
-                return res.status(500).send({ success: false, err }).end();
-            });
+        return sawtoothWalletClient.submit({ Action, Data: { id } });
     }
 }

@@ -22,13 +22,25 @@ class SawtoothWalletClient {
         console.debug(`Using ${userId} credentials under ${this.address} family`);
     }
 
-    async submit(payload, response) {
+    /**
+     * 
+     * @param {*} payload 
+     * @param {*HttpResponse} res 
+     */
+    async submit(payload, res) {
+        payload.timestamp = new Date().toUTCString();
         const transaction = await this._wrapTransaction(payload)
         const transactions = [transaction];
         const batch = await this._wrapBatch(transactions);
         const batches = [batch];
         const batchListBytes = await this._wrapBatchList(batches);
-        return this._postBatches(batchListBytes)
+        return this._postBatches(batchListBytes).then((data) => {
+            Object.assign(data, payload);
+            return res.status(201).send({ success: true, data }).end();
+        })
+            .catch((err) => {
+                return res.status(500).send({ success: false, err }).end();
+            });
     }
 
     _wrapTransaction(payload) {
