@@ -6,6 +6,6 @@ swagger/node_modules
 swagger/.DS_Store
 contract/node_modules
 contract/.DS_Store
-sawtooth-explorer/node_modules
-sawtooth-explorer/.DS_Store
+explorer/node_modules
+explorer/.DS_Store
 .DS_Store
