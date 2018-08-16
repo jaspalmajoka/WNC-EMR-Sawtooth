@@ -22,8 +22,8 @@ paths:
     get:
       tags: 
       - patient
-      summary: Create Patient to state
-      description: Add patient entry to state
+      summary: Patient from  state
+      description: patient entry from state
       parameters:
       - name: "id"
         in: "query"
@@ -110,6 +110,22 @@ paths:
           description: Document retreived 
         400:
           description: invalid input, object invalid
+  /user:
+    get:
+      tags: 
+      - user
+      summary: Get Users from state
+      description: User entry from state
+      parameters:
+      - name: "id"
+        in: "query"
+        description: "User ID should be passed"
+        type: "string"
+      responses:
+        200:
+          description: User Details Retreived
+        400:
+          description: invalid input, query params invalid
   /user/register:
     post:
       tags:
