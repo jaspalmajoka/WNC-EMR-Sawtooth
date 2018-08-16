@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environment } from './../../environments/environment';
 import { Observable } from 'rxjs';
@@ -38,13 +38,12 @@ export class ApiService {
   getItems(resourceName: string, params?: object): Observable<any> {
     let options: object = _.defaults(params, this.pagingDefaults);
     let url = this.apiURL + '/' + resourceName;
-    if (params && params['head']) {
-      url += '&head=' + params['head'];
-    }
-    if (params && params['start']) {
-      url += '&start=' + params['start'];
-    }
+    // let paramsObj = new HttpParams();
 
+    if (params && params['head']) {
+      // paramsObj.set('head', params['head']);
+      url += '?head=' + params['head'];
+    }
     return this._httpClient.get(url);
   }
 

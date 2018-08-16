@@ -3,6 +3,7 @@ import { ApiService } from '../service/api.service';
 import { environment } from './../../environments/environment';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -29,29 +30,35 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class HomeComponent implements OnInit {
   states: any = [];
+  showBack: string = '';
   displayedColumns: string[] = ['namespace', 'data'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private _apiService: ApiService) { }
+  constructor(private _apiService: ApiService, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this._apiService
-      .getItems('state')
-      .subscribe((data) => {
-        this.states = data['data'];
-        this.dataSource.data = this.states.map((obj) => {
-          return {
-            family: obj.address.substr(0, 6),
-            namespace: environment.namespace[obj.address.substr(6, 2)] || "#NA",
-            address: obj.address,
-            data: obj.data
-          }
-        }).filter((obj) => obj.family !== '000000');
-      });
+    this._activatedRoute.queryParams.subscribe((query) => {
+      if (query.head) {
+        this.showBack = query.head;
+      }
+      this._apiService
+        .getItems('state', query)
+        .subscribe((data) => {
+          this.states = data['data'];
+          this.dataSource.data = this.states.map((obj) => {
+            return {
+              family: obj.address.substr(0, 6),
+              namespace: environment.namespace[obj.address.substr(6, 2)] || "#NA",
+              address: obj.address,
+              data: obj.data
+            }
+          }).filter((obj) => obj.family !== '000000');
+        });
+    })
   }
 
 }

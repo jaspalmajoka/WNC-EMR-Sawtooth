@@ -17,6 +17,10 @@
     <p matLine class="demo-2"> {{message.content}} </p>
   </mat-list-item>
 </mat-list> -->
+<mat-toolbar *ngIf="showBack">
+  <a routerLink='/blocks' [queryParams]="{id: showBack}" color='primary' mat-button>Back</a>
+  Batch ID&nbsp;<strong class="title">{{ showBack }}</strong>
+</mat-toolbar>
 <br>
 <div class="mat-elevation-z1">
   <table mat-table [dataSource]="dataSource" matSort>
