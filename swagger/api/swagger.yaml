@@ -9,6 +9,8 @@ info:
 
 # tags are used for organizing operations
 tags:
+- name: user
+  description: User related api
 - name: patient
   description: Patient related api
 - name: document
