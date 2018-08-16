@@ -43,11 +43,11 @@ module.exports = {
         if (!documentData.patientId) {
             return res.status(400).send({ success: false, err: 'Field patientId is missing.' }).end();
         }
-        return sawtoothWalletClient.submit({ Action, Data: documentData });
+        return sawtoothWalletClient.submit({ Action, Data: documentData }, res);
     },
     deleteDocument: (req, res) => {
         const Action = 'deleteDocument';
         const { id } = req.params;
-        return sawtoothWalletClient.submit({ Action, Data: { id } });
+        return sawtoothWalletClient.submit({ Action, Data: { id } }, res);
     }
 }
