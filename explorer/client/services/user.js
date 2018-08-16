@@ -16,9 +16,9 @@ const sawtoothWalletClient = new SawtoothWalletClient(client);
 const _getPatients = (id, callback) => {
     let address;
     if (id) {
-        address = `${createAddress(id, config.namespace.patient)}`
+        address = `${createAddress(id, config.namespace.user)}`
     } else {
-        address = `${createAddress('', config.namespace.patient)}`
+        address = `${createAddress('', config.namespace.user)}`
     }
     getState(address)
         .then((data) => callback(null, data)).catch((err) => callback(err))
