@@ -40,11 +40,11 @@ module.exports = {
         const hospitalData = req.body;
         hospitalData.id = id;
         hospitalData.timestamp = new Date().toUTCString();
-        return sawtoothWalletClient.submit({ Action, Data: hospitalData });
+        return sawtoothWalletClient.submit({ Action, Data: hospitalData }, res);
     },
     deleteHospital: (req, res) => {
         const Action = 'deleteHospital';
         const { id } = req.params;
-        return sawtoothWalletClient.submit({ Action, Data: { id } });
+        return sawtoothWalletClient.submit({ Action, Data: { id } }, res);
     }
 }
