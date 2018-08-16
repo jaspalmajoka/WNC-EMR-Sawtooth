@@ -108,6 +108,68 @@ paths:
           description: Document retreived 
         400:
           description: invalid input, object invalid
+  /user/register:
+    post:
+      tags:
+      - user
+      summary: Adds user  
+      description: Adds user record
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: userData
+        description: User Data to be stored
+        schema:
+          $ref: '#/definitions/CreatePatient'
+      responses:
+        201:
+          description: User Info created
+        400:
+          description: invalid input, object invalid
+  /user/{id}:
+    put:
+      tags:
+      - user
+      summary: Updates user data 
+      description: Updates user record
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: "ID of that User that needs to be updated"
+        required: true
+        type: "string"
+      - in: body
+        name: userData
+        description: User Data to be stored
+        schema:
+          $ref: '#/definitions/CreatePatient'
+      responses:
+        201:
+          description: User Data updated
+        400:
+          description: invalid input, object invalid
+  /user/login/{id}:
+    post:
+      tags:
+      - user
+      summary: Traces login transaction for user id
+      description:  Traces login transaction for user id
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: "ID of that User that needs to be traced as login"
+        required: true
+        type: "string"
+      responses:
+        201:
+          description: Hospital ID created
+        400:
+          description: invalid input, object invalid
   /hospital:
     post:
       tags:

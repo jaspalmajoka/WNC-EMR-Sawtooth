@@ -17,7 +17,7 @@ router.post('/hospital', hospital.addHospital);
 router.get('/hospital', hospital.getHospital);
 router.delete('/hospital/:id', hospital.deleteHospital);
 
-router.post('/user/login', user.login);
+router.post('/user/login/:id', user.login);
 router.post('/user/register', user.register);
 router.put('/user/:id', user.update);
 

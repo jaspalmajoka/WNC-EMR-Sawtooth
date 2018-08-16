@@ -38,9 +38,9 @@ module.exports = {
         }
     },
     login: (req, res) => {
-        const { id } = req.body;
+        const { id } = req.params;
         const Action = 'userLogin';
-        const Data = req.body;
+        const Data = req.params;
 
         if (!id) {
             return res.status(400).send({ success: false, message: 'ID Field Missing in payload' }).end();
@@ -50,9 +50,10 @@ module.exports = {
         }
     },
     update: (req, res) => {
-        const { id } = req.body;
+        const { id } = req.params;
         const Action = 'userUpdate';
         const Data = req.body;
+        Data.id = id;
 
         if (!id) {
             return res.status(400).send({ success: false, message: 'ID Field Missing in payload' }).end();
