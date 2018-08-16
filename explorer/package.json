@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "sawtooth keygen openemr --force && ng build && node ./client",
+    "start": "ng build && node ./client",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

@@ -26,6 +26,8 @@ services:
         - http_proxy
         - https_proxy
         - no_proxy
+    volumes: 
+      - './keys:/root/.sawtooth/keys/'
     environment:
       - 'REST_API=http://rest-api:8008'
       - 'NODE_ENV=${NODE_ENV}'
