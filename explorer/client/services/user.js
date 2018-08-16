@@ -48,5 +48,17 @@ module.exports = {
         else {
             return sawtoothWalletClient.submit({ Action, Data }, res);
         }
+    },
+    update: (req, res) => {
+        const { id } = req.body;
+        const Action = 'userUpdate';
+        const Data = req.body;
+
+        if (!id) {
+            return res.status(400).send({ success: false, message: 'ID Field Missing in payload' }).end();
+        }
+        else {
+            return sawtoothWalletClient.submit({ Action, Data }, res);
+        }
     }
 }

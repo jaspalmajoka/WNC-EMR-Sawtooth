@@ -19,7 +19,7 @@ router.delete('/hospital/:id', hospital.deleteHospital);
 
 router.post('/user/login', user.login);
 router.post('/user/register', user.register);
-// router.post('/user/info', user.info);
+router.put('/user/:id', user.update);
 
 
 module.exports = router;
