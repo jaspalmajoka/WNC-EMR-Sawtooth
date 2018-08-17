@@ -1,11 +1,20 @@
 const config = require('./../config');
-const { createAddress, toInvalidTransaction, setEntry } = require('./../lib/helper');
+const {
+    createAddress,
+    toInvalidTransaction,
+    setEntry
+} = require('./../lib/helper');
 
 const _createPatientAddress = (id) => createAddress(id, config.namespace.patient);
 
 module.exports = {
-    createPatient: async ({ context, data }) => {
-        const { id } = data;
+    createPatient: async ({
+        context,
+        data
+    }) => {
+        const {
+            id
+        } = data;
         const address = _createPatientAddress(id);
         const possibleAddressValues = await context.getState([address]).catch(toInvalidTransaction);
         const stateValueRep = possibleAddressValues[address];
@@ -19,8 +28,13 @@ module.exports = {
         stateValue = data;
         return setEntry(context, address, stateValue).catch(toInvalidTransaction);
     },
-    deletePatient: async ({ context, data }) => {
-        const { id } = data;
+    deletePatient: async ({
+        context,
+        data
+    }) => {
+        const {
+            id
+        } = data;
         const address = _createPatientAddress(id);
         const possibleAddressValues = await context.getState([address]).catch(toInvalidTransaction);
         const stateValueRep = possibleAddressValues[address];
@@ -33,8 +47,13 @@ module.exports = {
         // An NULL value is set mark empty
         return context.deleteState([address]).catch(toInvalidTransaction);
     },
-    updatePatient: async ({ context, data }) => {
-        const { id } = data;
+    updatePatient: async ({
+        context,
+        data
+    }) => {
+        const {
+            id
+        } = data;
         const address = _createPatientAddress(id);
         const possibleAddressValues = await context.getState([address]).catch(toInvalidTransaction);
         const stateValueRep = possibleAddressValues[address];

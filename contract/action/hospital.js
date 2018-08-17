@@ -1,11 +1,21 @@
 const config = require('./../config');
-const { createAddress, toInvalidTransaction, setEntry, encodePayload } = require('./../lib/helper');
+const {
+    createAddress,
+    toInvalidTransaction,
+    setEntry,
+    encodePayload
+} = require('./../lib/helper');
 
 const _createHospitalAddress = (id) => createAddress(id, config.namespace.hospital);
 
 module.exports = {
-    addHospital: async ({ context, data }) => {
-        const { id } = data;
+    addHospital: async ({
+        context,
+        data
+    }) => {
+        const {
+            id
+        } = data;
         const hospitalAddress = _createHospitalAddress(id);
         const possibleAddressValues = await context.getState([hospitalAddress]).catch(toInvalidTransaction);
         let hospitalStateValueRep = possibleAddressValues[hospitalAddress];
@@ -19,8 +29,13 @@ module.exports = {
         stateValue = data;
         return setEntry(context, hospitalAddress, stateValue).catch(toInvalidTransaction);
     },
-    deleteHospital: async ({ context, data }) => {
-        const { id } = data;
+    deleteHospital: async ({
+        context,
+        data
+    }) => {
+        const {
+            id
+        } = data;
         const hospitalAddress = _createHospitalAddress(id);
         const possibleAddressValues = await context.getState([hospitalAddress]).catch(toInvalidTransaction);
         const stateValueRep = possibleAddressValues[hospitalAddress];
