@@ -31,24 +31,34 @@ module.exports = {
         switch (Action) {
             case 'createPatient':
                 promise = createPatient;
+                break;
             case 'deletePatient':
                 promise = deletePatient;
+                break;
             case 'updatePatient':
                 promise = updatePatient;
+                break;
             case 'addDocument':
                 promise = addDocument;
+                break;
             case 'deleteDocument':
                 promise = deleteDocument;
+                break;
             case 'addHospital':
                 promise = addHospital;
+                break;
             case 'deleteHospital':
                 promise = deleteHospital;
+                break;
             case 'userRegister':
                 promise = userRegister;
+                break;
             case 'userLogin':
                 promise = userLogin;
+                break;
             case 'userUpdate':
                 promise = userUpdate;
+                break;
             default:
                 return toInvalidTransaction(`Action ${Action} is not valid`);
         }
