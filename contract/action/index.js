@@ -15,6 +15,11 @@ const {
     addHospital,
     deleteHospital
 } = require('./hospital');
+const {
+    userLogin,
+    userRegister,
+    userUpdate
+} = require('./user');
 
 module.exports = {
     performTransaction: (txRequest, context, payload) => {
