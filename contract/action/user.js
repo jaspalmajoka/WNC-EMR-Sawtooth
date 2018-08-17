@@ -6,7 +6,7 @@ const {
     encodePayload
 } = require('./../lib/helper');
 
-const _createUserAddress = (id) = createAddress(id, config.namespace.user);
+const _createUserAddress = (id) => createAddress(id, config.namespace.user);
 
 module.exports = {
     userLogin: async ({
