@@ -21,7 +21,6 @@ module.exports = {
     const Action = 'addHospital';
     const hospitalData = req.body;
     hospitalData.id = id;
-    hospitalData.timestamp = new Date().toUTCString();
     return sawtoothWalletClient.submit({
       Action,
       Data: hospitalData

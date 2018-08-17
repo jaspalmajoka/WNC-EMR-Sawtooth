@@ -16,7 +16,6 @@ module.exports = {
     } = req.body;
     const Action = 'createPatient';
     const patientData = req.body;
-    patientData.timestamp = new Date().toUTCString();
 
     if (!id) {
       return res.status(400).send({
