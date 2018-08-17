@@ -40,15 +40,12 @@ module.exports = {
     const {
       id
     } = req.params;
-    _getPatients(id, (err, data) => {
-      if (err) return res.status(500).send(err);
-      return sawtoothWalletClient.submit({
-        Action,
-        Data: {
-          id
-        }
-      }, res);
-    })
+    return sawtoothWalletClient.submit({
+      Action,
+      Data: {
+        id
+      }
+    }, res);
   },
   updatePatient: (req, res) => {
     // Can be used for the other patient related updates
