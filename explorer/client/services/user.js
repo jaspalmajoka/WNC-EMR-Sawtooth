@@ -7,7 +7,7 @@ const {
 const client = config.client;
 
 const SawtoothWalletClient = require('./../lib/SawtoothWalletClient');
-const sawtoothWalletClient = new SawtoothWalletClient(client);
+const sawtoothWalletClient = new SawtoothWalletClient(client, config.namespace.user);
 
 module.exports = {
   getUser: (req, res) => {

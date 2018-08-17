@@ -18,13 +18,14 @@ const config = require('./../config');
 const {
   hash,
   getUserPriKey,
-  getUserPubKey
+  getUserPubKey,
+  createAddress
 } = require('./helper');
 
 const KEYS_LOCATION = process.env.KEYS_LOCATION || config.keyslocation;
 
 class SawtoothWalletClient {
-  constructor(userId) {
+  constructor(userId, type) {
     const privateKeyStrBuf = getUserPriKey(userId, KEYS_LOCATION);
     const privateKeyStr = privateKeyStrBuf.toString().trim();
     const context = createContext('secp256k1');
@@ -32,6 +33,8 @@ class SawtoothWalletClient {
     this.signer = new CryptoFactory(context).newSigner(privateKey);
     this.publicKey = this.signer.getPublicKey().asHex();
     this.address = config.family.namespace;
+    this.type = type;
+    this.responseAddress = `${createAddress(id, config.namespace[type])}`
     console.debug(`Using ${userId} credentials under ${this.address} family`);
   }
 
@@ -51,6 +54,7 @@ class SawtoothWalletClient {
         if (data && data.link) {
           // Will return batch id along with batch status url
           data.batch_id = data.link.split('?id=')[1];
+          data.address = this.responseAddress;
         }
         Object.assign(data, payload);
         return res.status(201).send({
