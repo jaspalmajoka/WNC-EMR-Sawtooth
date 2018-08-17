@@ -27,50 +27,34 @@ module.exports = {
             Action,
             Data
         } = payload;
+        let promise;
         switch (Action) {
             case 'createPatient':
-                return createPatient({
-                    context,
-                    data: Data
-                });
+                promise = createPatient;
             case 'deletePatient':
-                return deletePatient({
-                    context,
-                    data: Data
-                });
+                promise = deletePatient;
             case 'updatePatient':
-                return updatePatient({
-                    context,
-                    data: Data
-                });
+                promise = updatePatient;
             case 'addDocument':
-                return addDocument({
-                    context,
-                    data: Data
-                });
+                promise = addDocument;
             case 'deleteDocument':
-                return deleteDocument({
-                    context,
-                    data: Data
-                });
+                promise = deleteDocument;
             case 'addHospital':
-                return addHospital({
-                    context,
-                    data: Data
-                });
+                promise = addHospital;
             case 'deleteHospital':
-                return deleteHospital({
-                    context,
-                    data: Data
-                });
+                promise = deleteHospital;
             case 'userRegister':
-                return;
+                promise = userRegister;
             case 'userLogin':
-                return;
+                promise = userLogin;
             case 'userUpdate':
-                return;
+                promise = userUpdate;
             default:
                 return toInvalidTransaction(`Action ${Action} is not valid`);
         }
+        return promise({
+            context,
+            data: Data
+        });
     }
 }
