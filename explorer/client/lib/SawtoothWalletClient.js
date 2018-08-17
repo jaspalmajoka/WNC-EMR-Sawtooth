@@ -48,6 +48,10 @@ class SawtoothWalletClient {
     const batches = [batch];
     const batchListBytes = await this._wrapBatchList(batches);
     return this._postBatches(batchListBytes).then((data) => {
+        if (data && data.link) {
+          // Will return batch id along with batch status url
+          data.batch_id = data.link.split('?id=')[1];
+        }
         Object.assign(data, payload);
         return res.status(201).send({
           success: true,
