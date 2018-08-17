@@ -53,7 +53,7 @@ class SawtoothWalletClient {
         if (data && data.link) {
           // Will return batch id along with batch status url
           data.batch_id = data.link.split('?id=')[1];
-          data.address = payload.Data.id ? `${createAddress(payload.id, config.namespace[type])}` : "";
+          data.address = payload.Data && payload.Data.id ? `${createAddress(payload.Data.id, config.namespace[type])}` : "";
         }
         Object.assign(data, payload);
         return res.status(201).send({
