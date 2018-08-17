@@ -21,15 +21,22 @@ app.use(morgan(config.loglevel));
 app.use(parser.json());
 // Modifying the form data and extend the combined 
 // property into child attribute
-app.use(parser.urlencoded({ extended: true }));
+app.use(parser.urlencoded({
+  extended: true
+}));
 // Static Folder
 const root = __dirname + '/dist'
 app.use(express.static(root))
-app.use(fallback('index.html', { root: root }))
+app.use(fallback('index.html', {
+  root: root
+}))
 
 // Health checkup endpoint
 app.get('/health', (req, res) => {
-    res.json({ success: true, message: 'GOOD !' }).end();
+  res.json({
+    success: true,
+    message: 'GOOD !'
+  }).end();
 });
 
 // Sawtooth API endpoints
@@ -38,12 +45,12 @@ app.use('/api', sawtooth);
 // Validates data and used for submitting payload 
 // for the sawtooth transaction processor
 app.post('/submit', (req, res) => {
-    res.end();
+  res.end();
 });
 
 // Starts code execution and creates a server instance
 app.listen(config.app.port, config.app.ip, () => {
-    console.debug(`Server started at http://${config.app.ip}:${config.app.port}/health`);
+  console.debug(`Server started at http://${config.app.ip}:${config.app.port}/health`);
 });
 
 module.exports = app;

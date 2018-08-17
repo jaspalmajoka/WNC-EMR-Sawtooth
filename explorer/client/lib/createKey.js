@@ -1,4 +1,7 @@
-const { createContext, CryptoFactory } = require('sawtooth-sdk/signing')
+const {
+  createContext,
+  CryptoFactory
+} = require('sawtooth-sdk/signing')
 const fs = require('fs');
 const config = require('./../config');
 
