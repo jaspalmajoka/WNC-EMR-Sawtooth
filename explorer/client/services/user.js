@@ -41,6 +41,7 @@ module.exports = {
     } = req.params;
     const Action = 'userLogin';
     const Data = req.params;
+    Data.timestamp = new Date().toUTCString();
 
     if (!id) {
       return res.status(400).send({
