@@ -34,7 +34,6 @@ class SawtoothWalletClient {
     this.publicKey = this.signer.getPublicKey().asHex();
     this.address = config.family.namespace;
     this.type = type;
-    this.responseAddress = `${createAddress(id, config.namespace[type])}`
     console.debug(`Using ${userId} credentials under ${this.address} family`);
   }
 
@@ -54,7 +53,7 @@ class SawtoothWalletClient {
         if (data && data.link) {
           // Will return batch id along with batch status url
           data.batch_id = data.link.split('?id=')[1];
-          data.address = this.responseAddress;
+          data.address = payload.id ? `${createAddress(payload.id, config.namespace[type])}` : "";
         }
         Object.assign(data, payload);
         return res.status(201).send({
