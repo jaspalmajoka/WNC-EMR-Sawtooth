@@ -3,6 +3,7 @@ const {
 } = require('crypto');
 const fetch = require('node-fetch');
 const fs = require('fs');
+const path = require('path');
 const config = require('./../config');
 const leafHash = (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().slice(0, length);
 
@@ -26,12 +27,12 @@ const createAddress = (name, usernamespace = '00') => `${config.family.namespace
 module.exports = {
   leafHash,
   hash: (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().slice(0, length),
-  getUserPriKey: (userid, path) => {
-    var userprivkeyfile = `${path}${userid}.priv`;
+  getUserPriKey: (userid, pathDir) => {
+    var userprivkeyfile = path.join(pathDir, `${userid}.priv`);
     return fs.readFileSync(userprivkeyfile);
   },
-  getUserPubKey: (userid) => {
-    var userpubkeyfile = `${path}${userid}.pub`;
+  getUserPubKey: (userid, path) => {
+    var userpubkeyfile = path.join(pathDir, `${userid}.pub`);
     return fs.readFileSync(userpubkeyfile);
   },
   getState,

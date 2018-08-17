@@ -54,6 +54,7 @@ module.exports = {
         const userValuesRep = possibleAddressValues[userAddress];
 
         let stateValue;
+        console.log(userValuesRep)
         if (userValuesRep && userValuesRep.length) {
             stateValue = JSON.parse(userValuesRep);
             if (stateValue) {

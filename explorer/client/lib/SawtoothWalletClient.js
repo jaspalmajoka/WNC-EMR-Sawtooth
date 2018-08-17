@@ -13,6 +13,7 @@ const fetch = require('node-fetch');
 const {
   Secp256k1PrivateKey
 } = require('sawtooth-sdk/signing/secp256k1');
+const path = require('path');
 
 const config = require('./../config');
 const {
@@ -22,8 +23,9 @@ const {
   createAddress
 } = require('./helper');
 
-const KEYS_LOCATION = process.env.KEYS_LOCATION || config.keyslocation;
 
+const KEYS_LOCATION = process.env.KEYS_LOCATION || path.join(__dirname, config.keyslocation);
+console.log(KEYS_LOCATION);
 class SawtoothWalletClient {
   constructor(userId, type) {
     const privateKeyStrBuf = getUserPriKey(userId, KEYS_LOCATION);

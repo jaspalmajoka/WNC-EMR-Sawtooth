@@ -10,9 +10,9 @@ const configData = {
   },
   family: {
     name: "openemr",
-    version: "1.7"
+    version: "1.8"
   },
-  keyslocation: "/root/.sawtooth/keys/",
+  keyslocation: "keys",
   loglevel: "dev",
   restapi: process.env.REST_API || "http://localhost:8008",
   client: "openemr",
