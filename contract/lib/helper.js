@@ -1,5 +1,10 @@
-const { createHash } = require('crypto');
-const { InternalError, InvalidTransaction } = require('sawtooth-sdk/processor/exceptions');
+const {
+    createHash
+} = require('crypto');
+const {
+    InternalError,
+    InvalidTransaction
+} = require('sawtooth-sdk/processor/exceptions');
 const fs = require('fs');
 const config = require('./../config');
 
@@ -9,8 +14,12 @@ const leafHash = (input, length) => createHash('sha512').update(input).digest('h
 module.exports = {
     leafHash,
     encodePayload,
-    toInvalidTransaction: (err) => { throw new InvalidTransaction(err.message ? err.message : err) },
-    toInternalError: (err) => { throw new InternalError(err.message ? err.message : err) },
+    toInvalidTransaction: (err) => {
+        throw new InvalidTransaction(err.message ? err.message : err)
+    },
+    toInternalError: (err) => {
+        throw new InternalError(err.message ? err.message : err)
+    },
     setEntry: (context, address, newStateValue) => {
         const entries = {
             [address]: encodePayload(newStateValue),

@@ -1,7 +1,15 @@
-const { TransactionHandler } = require('sawtooth-sdk/processor/handler');
+const {
+    TransactionHandler
+} = require('sawtooth-sdk/processor/handler');
 const config = require('./../config');
-const { decodePayload, toInvalidTransaction, toInternalError } = require('./../lib/helper');
-const { performTransaction } = require('./../action');
+const {
+    decodePayload,
+    toInvalidTransaction,
+    toInternalError
+} = require('./../lib/helper');
+const {
+    performTransaction
+} = require('./../action');
 
 class OpemEmr extends TransactionHandler {
     constructor() {

@@ -1,4 +1,6 @@
-const { createHash } = require('crypto');
+const {
+    createHash
+} = require('crypto');
 const leafHash = (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().slice(0, length);
 
 const configData = {
@@ -19,4 +21,4 @@ configData.family.namespace = leafHash(configData.family.name, 6);
 configData.family.versions = [configData.family.version];
 configData.family.namespaces = [configData.family.namespace];
 
-module.exports = configData; 
+module.exports = configData;

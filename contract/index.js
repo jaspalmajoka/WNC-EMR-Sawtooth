@@ -1,6 +1,10 @@
-const { TransactionProcessor } = require('sawtooth-sdk/processor');
+const {
+    TransactionProcessor
+} = require('sawtooth-sdk/processor');
 const config = require('./config');
-const { OpenEmr } = require('./handler');
+const {
+    OpenEmr
+} = require('./handler');
 
 // Register Transaction Processor 
 const transactionProcessor = new TransactionProcessor(config.validator_url);
