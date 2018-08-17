@@ -38,7 +38,7 @@ module.exports = {
         }
         stateValue.logins.push(timestamp);
         // If any data is supplied otherthan id and timestamp its appended
-        Object.assign(stateValue, data);
+        // Object.assign(stateValue, data);
         return setEntry(context, userAddress, stateValue);
     },
     userRegister: async ({
