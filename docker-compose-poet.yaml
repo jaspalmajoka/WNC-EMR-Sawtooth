@@ -390,33 +390,34 @@ services:
     #   - './keys:/root/.sawtooth/keys/'
     environment:
       - 'REST_API=http://rest-api-0:8008'
-      - 'NODE_ENV=${NODE_ENV}'
+      - 'HOST=13.251.142.80:3000'
     # volumes:
       # - '.:/project/'
     ports:
       - '0.0.0.0:3000:3000'
+      - '0.0.0.0:3001:3001'
     depends_on:
       - rest-api-0
       - openemr-processor-0
     stop_signal: SIGKILL
-  openemr-api-swagger:
-    container_name: openemr-api-swagger
-    build:
-      context: ./swagger
-      # dockerfile: ./swagger/Dockerfile
-      args:
-        - http_proxy
-        - https_proxy
-        - no_proxy
-    environment:
-      - 'HOST=13.251.142.80:3000'
-    # volumes:
-    #   - '.:/project/'
-    depends_on: 
-      - 'sawtooth-client'
-    ports:
-      - '0.0.0.0:3001:3001'
-    stop_signal: SIGKILL
+  # openemr-api-swagger:
+  #   container_name: openemr-api-swagger
+  #   build:
+  #     context: ./swagger
+  #     # dockerfile: ./swagger/Dockerfile
+  #     args:
+  #       - http_proxy
+  #       - https_proxy
+  #       - no_proxy
+  #   environment:
+  #     - 'HOST=13.251.142.80:3000'
+  #   # volumes:
+  #   #   - '.:/project/'
+  #   depends_on: 
+  #     - 'sawtooth-client'
+  #   ports:
+  #     - '0.0.0.0:3001:3001'
+  #   stop_signal: SIGKILL
 
   # sawtooth-rest-api:
   #   container_name: rest-api
