@@ -1,4 +1,4 @@
-version: '2.0'
+version: '3.0'
 
 services:
   openemr-processor:
@@ -31,32 +31,15 @@ services:
     #   - './keys:/root/.sawtooth/keys/'
     environment:
       - 'REST_API=http://rest-api:8008'
-      - 'NODE_ENV=${NODE_ENV}'
+      - 'HOST=${HOST}'
     # volumes:
       # - './explorer:/usr/src/app'
     ports:
       - '0.0.0.0:3000:3000'
+      - '0.0.0.0:3000:3001'
     depends_on:
       - sawtooth-rest-api
       - openemr-processor
-    stop_signal: SIGKILL
-  openemr-api-swagger:
-    container_name: openemr-api-swagger
-    build:
-      context: ./swagger
-      # dockerfile: ./swagger/Dockerfile
-      args:
-        - http_proxy
-        - https_proxy
-        - no_proxy
-    environment:
-      - 'HOST=${HOST}'
-    # volumes:
-      # - './swagger:/usr/src/app'
-    depends_on: 
-      - 'sawtooth-client'
-    ports:
-      - '0.0.0.0:3001:3001'
     stop_signal: SIGKILL
 
   sawtooth-rest-api:

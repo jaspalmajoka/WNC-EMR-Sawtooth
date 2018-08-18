@@ -8,6 +8,7 @@ const fallback = require('express-history-api-fallback')
 
 // Required internal module's
 const sawtooth = require('./routes');
+require('./docs/index');
 
 // Create app instance
 const app = express();
