@@ -335,6 +335,13 @@ definitions:
         example: P1
       data:
         type: object
+          properties:
+            name:
+              type: string
+              example: John Doe
+            phone:
+              type: string
+              example: 121231232
   CreateHospital:
     type: object
     properties:
