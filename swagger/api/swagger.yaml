@@ -297,7 +297,7 @@ definitions:
         example: P1
       documentUrl:
         type: string
-        example: http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf
+        example: http://un12/pdf-sample.pdf
   CreateUser:
     type: object
     properties:
@@ -306,6 +306,13 @@ definitions:
         example: P1
       data:
         type: object
+          properties:
+            name:
+              type: string
+              example: John Doe
+            phone:
+              type: string
+              example: 121231232
   UpdateUser:
     type: object
     properties:
@@ -326,11 +333,8 @@ definitions:
       id:
         type: string
         example: P1
-      document:
-        type: array
-        items: 
-          type: string
-          example: http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf
+      data:
+        type: object
   CreateHospital:
     type: object
     properties:
