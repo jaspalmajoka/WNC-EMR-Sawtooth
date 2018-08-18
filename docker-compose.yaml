@@ -20,14 +20,13 @@ services:
   sawtooth-client:
     container_name: sawtooth-client
     build:
-      context: ./contract
+      context: ./explorer
       # dockerfile: ./explorer/Dockerfile
       args:
         - http_proxy
         - https_proxy
         - no_proxy
-    command: |
-          npm run start-dev
+    command: npm run start-dev
     # volumes: 
     #   - './keys:/root/.sawtooth/keys/'
     environment:
@@ -44,7 +43,7 @@ services:
   openemr-api-swagger:
     container_name: openemr-api-swagger
     build:
-      context: ./contract
+      context: ./swagger
       # dockerfile: ./swagger/Dockerfile
       args:
         - http_proxy
