@@ -306,13 +306,13 @@ definitions:
         example: P1
       data:
         type: object
-          properties:
-            name:
-              type: string
-              example: John Doe
-            phone:
-              type: string
-              example: 121231232
+        properties:
+          name:
+            type: string
+            example: John Doe
+          phone:
+            type: string
+            example: 121231232
   UpdateUser:
     type: object
     properties:
@@ -335,13 +335,13 @@ definitions:
         example: P1
       data:
         type: object
-          properties:
-            name:
-              type: string
-              example: John Doe
-            phone:
-              type: string
-              example: 121231232
+        properties:
+          name:
+            type: string
+            example: John Doe
+          phone:
+            type: string
+            example: 121231232
   CreateHospital:
     type: object
     properties:
