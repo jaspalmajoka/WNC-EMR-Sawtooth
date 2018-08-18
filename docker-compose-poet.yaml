@@ -409,7 +409,7 @@ services:
         - https_proxy
         - no_proxy
     environment:
-      - 'HOST=${HOST}'
+      - 'HOST=13.251.142.80:3000'
     # volumes:
     #   - '.:/project/'
     depends_on: 
