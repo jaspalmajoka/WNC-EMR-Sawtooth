@@ -130,12 +130,13 @@ paths:
     post:
       tags:
       - User
-      summary: Adds user  
-      description: Adds user record
+      summary: Register user  
+      description: Register user record
       produces:
       - application/json
       parameters:
       - in: body
+        required: true
         name: userData
         description: User Data to be stored
         schema:
@@ -179,6 +180,7 @@ paths:
         required: true
         type: "string"
       - in: body
+        required: true
         name: userData
         description: User Data to be stored
         schema:
@@ -302,22 +304,22 @@ definitions:
       id:
         type: string
         example: P1
-      document:
-        type: array
-        items: 
-          type: string
-          example: mail
+      data:
+        type: object
   UpdateUser:
     type: object
     properties:
-      id:
-        type: string
-        example: P1
-      document:
+      changes:
         type: array
         items: 
-          type: string
-          example: mail
+          type: object
+          properties:
+            field:
+              type: string
+              example: P1
+            value:
+              type: string
+              example: P1
   CreatePatient:
     type: object
     properties:
