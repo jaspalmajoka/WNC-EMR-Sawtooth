@@ -4,8 +4,8 @@ services:
   openemr-processor:
     container_name: openemr-processor
     build:
-      context: .
-      dockerfile: ./contract/Dockerfile
+      context: ./contract
+      # dockerfile: ./contract/Dockerfile
       args:
         - http_proxy
         - https_proxy
@@ -20,8 +20,8 @@ services:
   sawtooth-client:
     container_name: sawtooth-client
     build:
-      context: .
-      dockerfile: ./explorer/Dockerfile
+      context: ./contract
+      # dockerfile: ./explorer/Dockerfile
       args:
         - http_proxy
         - https_proxy
@@ -44,8 +44,8 @@ services:
   openemr-api-swagger:
     container_name: openemr-api-swagger
     build:
-      context: .
-      dockerfile: ./swagger/Dockerfile
+      context: ./contract
+      # dockerfile: ./swagger/Dockerfile
       args:
         - http_proxy
         - https_proxy
