@@ -208,46 +208,6 @@ services:
           --bind rest-api-4:8008"
     stop_signal: SIGKILL
 
-  intkey-tp-0:
-    image: hyperledger/sawtooth-intkey-tp-python:1.0
-    container_name: sawtooth-intkey-tp-python-default-0
-    expose:
-      - 4004
-    command: intkey-tp-python -C tcp://validator-0:4004
-    stop_signal: SIGKILL
-
-  intkey-tp-1:
-    image: hyperledger/sawtooth-intkey-tp-python:1.0
-    container_name: sawtooth-intkey-tp-python-default-1
-    expose:
-      - 4004
-    command: intkey-tp-python -C tcp://validator-1:4004
-    stop_signal: SIGKILL
-
-  intkey-tp-2:
-    image: hyperledger/sawtooth-intkey-tp-python:1.0
-    container_name: sawtooth-intkey-tp-python-default-2
-    expose:
-      - 4004
-    command: intkey-tp-python -C tcp://validator-2:4004
-    stop_signal: SIGKILL
-
-  intkey-tp-3:
-    image: hyperledger/sawtooth-intkey-tp-python:1.0
-    container_name: sawtooth-intkey-tp-python-default-3
-    expose:
-      - 4004
-    command: intkey-tp-python -C tcp://validator-3:4004
-    stop_signal: SIGKILL
-
-  intkey-tp-4:
-    image: hyperledger/sawtooth-intkey-tp-python:1.0
-    container_name: sawtooth-intkey-tp-python-default-4
-    expose:
-      - 4004
-    command: intkey-tp-python -C tcp://validator-4:4004
-    stop_signal: SIGKILL
-
   settings-tp-0:
     image: hyperledger/sawtooth-settings-tp:1.0
     container_name: sawtooth-settings-tp-default-0
@@ -337,3 +297,83 @@ services:
     environment:
       PYTHONPATH: /project/sawtooth-core/consensus/poet/common
     stop_signal: SIGKILL
+  openemr-processor:
+    container_name: openemr-processor
+    build:
+      context: .
+      dockerfile: ./contract/Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    environment:
+      - 'VALIDATOR_URL=tcp://validator-0:4004'
+    depends_on:
+      - validator
+    volumes:
+      - '.:/project/'
+
+  sawtooth-client:
+    container_name: sawtooth-client
+    build:
+      context: .
+      dockerfile: ./explorer/Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    # volumes: 
+    #   - './keys:/root/.sawtooth/keys/'
+    environment:
+      - 'REST_API=http://rest-api-0:8008'
+      - 'NODE_ENV=${NODE_ENV}'
+    volumes:
+      - '.:/project/'
+    ports:
+      - '0.0.0.0:3000:3000'
+    depends_on:
+      - sawtooth-rest-api
+      - openemr-processor
+    stop_signal: SIGKILL
+  openemr-api-swagger:
+    container_name: openemr-api-swagger
+    build:
+      context: .
+      dockerfile: ./swagger/Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    environment:
+      - 'HOST=${HOST}'
+    volumes:
+      - '.:/project/'
+    depends_on: 
+      - 'sawtooth-client'
+    ports:
+      - '0.0.0.0:3001:3001'
+    stop_signal: SIGKILL
+
+  # sawtooth-rest-api:
+  #   container_name: rest-api
+  #   image: hyperledger/sawtooth-rest-api:1.0
+  #   expose:
+  #     - 8008
+  #   ports:
+  #     - '8008:8008'
+  #   depends_on:
+  #     - validator-0
+  #   entrypoint: |
+  #     sawtooth-rest-api -vvv
+  #       --connect tcp://validator-0:4004
+  #       --bind sawtooth-rest-api:8008
+
+  rest-api-proxy:
+    image: nginx
+    container_name: sawtooth-explorer-rest-api-proxy
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "8090:8090"
+      - "8091:8091"
+    command: [nginx, '-g', 'daemon off;']

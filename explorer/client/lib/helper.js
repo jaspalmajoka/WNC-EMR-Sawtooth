@@ -53,6 +53,7 @@ module.exports = {
     }
     getState(address)
       .then((data) => {
+        data.address = address;
         return res.json({
           success: true,
           data
