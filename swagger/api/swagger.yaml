@@ -295,9 +295,9 @@ definitions:
       patientId:
         type: string
         example: P1
-      documentUrl:
-        type: string
-        example: http://un12/pdf-sample.pdf
+      data:
+        type: object
+        example: { "data": "patient document", "location": "http://download.pdf" }
   CreateUser:
     type: object
     properties:
@@ -345,12 +345,12 @@ definitions:
   CreateHospital:
     type: object
     properties:
-      # id:
-      #   type: string
-      #   example: H1
-      info:
+      id:
         type: string
-        example: http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf
+        example: H1
+      data:
+        type: object
+        example: { "info": "hospital" }
 # Added by API Auto Mocking Plugin
 host: 18.136.137.49:3000
 basePath: /api
