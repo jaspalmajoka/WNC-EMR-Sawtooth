@@ -17,10 +17,9 @@ module.exports = {
     return getStateValues(id, 'hospital', res);
   },
   addHospital: (req, res) => {
-    const id = uuid();
     const Action = 'addHospital';
     const hospitalData = req.body;
-    hospitalData.id = id;
+    // hospitalData.id = id;
     return sawtoothWalletClient.submit({
       Action,
       Data: hospitalData
