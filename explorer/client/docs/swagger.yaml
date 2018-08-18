@@ -268,8 +268,8 @@ paths:
     put:
       tags:
       - Patient
-      summary: Updates patient records
-      description: Update patient record
+      summary: Pass in the complete updated data to Update the patient record
+      description: Pass in the complete updated data to Update the patient record
       produces:
       - application/json
       parameters:
