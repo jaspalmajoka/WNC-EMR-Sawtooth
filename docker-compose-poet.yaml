@@ -313,8 +313,8 @@ services:
       - 'VALIDATOR_URL=tcp://validator-0:4004'
     depends_on:
       - validator-0
-    volumes:
-      - '.:/project/'
+    # volumes:
+    #   - '.:/project/'
   openemr-processor-1:
     container_name: openemr-processor-1
     build:
@@ -328,8 +328,8 @@ services:
       - 'VALIDATOR_URL=tcp://validator-1:4004'
     depends_on:
       - validator-1
-    volumes:
-      - '.:/project/'
+    # volumes:
+      # - '.:/project/'
   openemr-processor-2:
     container_name: openemr-processor-2
     build:
@@ -343,8 +343,8 @@ services:
       - 'VALIDATOR_URL=tcp://validator-2:4004'
     depends_on:
       - validator-2
-    volumes:
-      - '.:/project/'
+    # volumes:
+      # - '.:/project/'
   openemr-processor-3:
     container_name: openemr-processor-3
     build:
@@ -358,8 +358,8 @@ services:
       - 'VALIDATOR_URL=tcp://validator-3:4004'
     depends_on:
       - validator-3
-    volumes:
-      - '.:/project/'
+    # volumes:
+      # - '.:/project/'
   openemr-processor-4:
     container_name: openemr-processor-4
     build:
@@ -373,8 +373,8 @@ services:
       - 'VALIDATOR_URL=tcp://validator-4:4004'
     depends_on:
       - validator-4
-    volumes:
-      - '.:/project/'
+    # volumes:
+      # - '.:/project/'
 
   sawtooth-client:
     container_name: sawtooth-client
@@ -391,8 +391,8 @@ services:
     environment:
       - 'REST_API=http://rest-api-0:8008'
       - 'NODE_ENV=${NODE_ENV}'
-    volumes:
-      - '.:/project/'
+    # volumes:
+      # - '.:/project/'
     ports:
       - '0.0.0.0:3000:3000'
     depends_on:
@@ -410,8 +410,8 @@ services:
         - no_proxy
     environment:
       - 'HOST=${HOST}'
-    volumes:
-      - '.:/project/'
+    # volumes:
+    #   - '.:/project/'
     depends_on: 
       - 'sawtooth-client'
     ports:
