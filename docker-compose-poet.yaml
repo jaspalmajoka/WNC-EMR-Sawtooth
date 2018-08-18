@@ -153,6 +153,8 @@ services:
     container_name: sawtooth-rest-api-default-0
     expose:
       - 8008
+    ports:
+      - '8008:8008'
     command: |
       bash -c "
         sawtooth-rest-api \
