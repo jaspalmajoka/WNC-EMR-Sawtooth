@@ -92,6 +92,7 @@ module.exports = {
         if (!stateValue.changes) {
             stateValue.changes = [];
         }
+        changes.timestamp = timestamp;
         stateValue.changes.push(changes);
         return setEntry(context, userAddress, stateValue);
     },
