@@ -297,8 +297,9 @@ services:
     environment:
       PYTHONPATH: /project/sawtooth-core/consensus/poet/common
     stop_signal: SIGKILL
-  openemr-processor:
-    container_name: openemr-processor
+
+  openemr-processor-0:
+    container_name: openemr-processor-0
     build:
       context: .
       dockerfile: ./contract/Dockerfile
@@ -308,6 +309,67 @@ services:
         - no_proxy
     environment:
       - 'VALIDATOR_URL=tcp://validator-0:4004'
+    depends_on:
+      - validator
+    volumes:
+      - '.:/project/'
+
+   openemr-processor-1:
+    container_name: openemr-processor-1
+    build:
+      context: .
+      dockerfile: ./contract/Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    environment:
+      - 'VALIDATOR_URL=tcp://validator-1:4004'
+    depends_on:
+      - validator
+    volumes:
+      - '.:/project/'
+   openemr-processor-2:
+    container_name: openemr-processor-2
+    build:
+      context: .
+      dockerfile: ./contract/Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    environment:
+      - 'VALIDATOR_URL=tcp://validator-2:4004'
+    depends_on:
+      - validator
+    volumes:
+      - '.:/project/'
+   openemr-processor-3:
+    container_name: openemr-processor-3
+    build:
+      context: .
+      dockerfile: ./contract/Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    environment:
+      - 'VALIDATOR_URL=tcp://validator-3:4004'
+    depends_on:
+      - validator
+    volumes:
+      - '.:/project/'
+   openemr-processor-4:
+    container_name: openemr-processor-4
+    build:
+      context: .
+      dockerfile: ./contract/Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    environment:
+      - 'VALIDATOR_URL=tcp://validator-4:4004'
     depends_on:
       - validator
     volumes:
