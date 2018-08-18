@@ -1,0 +1,7 @@
+version: '2.0'
+
+services:
+  openemr-api-swagger:
+    container_name: openemr-api-swagger
+    environment:
+      - 'HOST=localhost:3000'
