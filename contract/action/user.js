@@ -70,7 +70,8 @@ module.exports = {
     }) => {
         const {
             id,
-            changes
+            changes,
+            timestamp
         } = data;
         const userAddress = _createUserAddress(id);
         const possibleAddressValues = await context.getState([userAddress]).catch(toInvalidTransaction);
