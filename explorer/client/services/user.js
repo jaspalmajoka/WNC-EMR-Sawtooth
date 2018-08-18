@@ -69,7 +69,7 @@ module.exports = {
         success: false,
         message: 'id field Missing in payload'
       }).end();
-    } else if (!changes) {
+    } else if (!changes || changes.length === 0) {
       return res.status(400).send({
         success: false,
         message: 'changes field Missing in payload'
