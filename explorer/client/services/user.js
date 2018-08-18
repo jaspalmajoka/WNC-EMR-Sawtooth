@@ -57,7 +57,6 @@ module.exports = {
   },
   update: (req, res) => {
     const {
-      id,
       changes
     } = req.params;
     const Action = 'userUpdate';

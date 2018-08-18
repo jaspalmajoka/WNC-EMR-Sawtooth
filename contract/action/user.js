@@ -9,6 +9,29 @@ const {
 const _createUserAddress = (id) => createAddress(id, config.namespace.user);
 
 module.exports = {
+    userRegister: async ({
+        context,
+        data
+    }) => {
+        const {
+            id
+        } = data;
+        const userAddress = _createUserAddress(id);
+        const possibleAddressValues = await context.getState([userAddress]).catch(toInvalidTransaction);
+
+        const userValuesRep = possibleAddressValues[userAddress];
+
+        let stateValue;
+        if (userValuesRep && userValuesRep.length) {
+            stateValue = JSON.parse(userValuesRep);
+            if (stateValue) {
+                return toInvalidTransaction('User ID already registered');
+            }
+        }
+
+        stateValue = data;
+        return setEntry(context, userAddress, stateValue);
+    },
     userLogin: async ({
         context,
         data
@@ -41,12 +64,13 @@ module.exports = {
         // Object.assign(stateValue, data);
         return setEntry(context, userAddress, stateValue);
     },
-    userRegister: async ({
+    userUpdate: async ({
         context,
         data
     }) => {
         const {
-            id
+            id,
+            changes
         } = data;
         const userAddress = _createUserAddress(id);
         const possibleAddressValues = await context.getState([userAddress]).catch(toInvalidTransaction);
@@ -54,23 +78,20 @@ module.exports = {
         const userValuesRep = possibleAddressValues[userAddress];
 
         let stateValue;
-        console.log(userValuesRep)
-        if (userValuesRep && userValuesRep.length) {
-            stateValue = JSON.parse(userValuesRep);
-            if (stateValue) {
-                return toInvalidTransaction('User ID already registered');
-            }
+        if (!userValuesRep || userValuesRep.length === 0) {
+            return toInvalidTransaction('User Id is not registered');
         }
-
-        stateValue = data;
+        stateValue = JSON.parse(userValuesRep);
+        if (!stateValue) {
+            return toInvalidTransaction('State doesn"t contain values');
+        }
+        if (!timestamp) {
+            return toInvalidTransaction('Timestamp is not supplied');
+        }
+        if (!stateValue.changes) {
+            stateValue.changes = [];
+        }
+        stateValue.changes.push(changes);
         return setEntry(context, userAddress, stateValue);
-    },
-    userUpdate: async ({
-        context,
-        data
-    }) => {
-        const {
-            id
-        } = data;
     },
 };
