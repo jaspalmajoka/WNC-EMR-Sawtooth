@@ -14,8 +14,8 @@ services:
       - 'VALIDATOR_URL=tcp://validator:4004'
     depends_on:
       - validator
-    volumes:
-      - '.:/project/'
+    # volumes:
+      # - './contract:/usr/src/app'
 
   sawtooth-client:
     container_name: sawtooth-client
@@ -33,8 +33,8 @@ services:
     environment:
       - 'REST_API=http://rest-api:8008'
       - 'NODE_ENV=${NODE_ENV}'
-    volumes:
-      - '.:/project/'
+    # volumes:
+      # - './explorer:/usr/src/app'
     ports:
       - '0.0.0.0:3000:3000'
     depends_on:
@@ -52,8 +52,8 @@ services:
         - no_proxy
     environment:
       - 'HOST=${HOST}'
-    volumes:
-      - '.:/project/'
+    # volumes:
+      # - './swagger:/usr/src/app'
     depends_on: 
       - 'sawtooth-client'
     ports:
