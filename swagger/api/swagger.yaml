@@ -139,10 +139,29 @@ paths:
         name: userData
         description: User Data to be stored
         schema:
-          $ref: '#/definitions/CreatePatient'
+          $ref: '#/definitions/CreateUser'
       responses:
         201:
           description: User Info created
+        400:
+          description: invalid input, object invalid
+  /user/login/{id}:
+    post:
+      tags:
+      - User
+      summary: Traces login transaction for user id
+      description:  Traces login transaction for user id
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: "ID of that User that needs to be traced as login"
+        required: true
+        type: "string"
+      responses:
+        201:
+          description: Hospital ID created
         400:
           description: invalid input, object invalid
   /user/{id}:
@@ -163,29 +182,10 @@ paths:
         name: userData
         description: User Data to be stored
         schema:
-          $ref: '#/definitions/CreatePatient'
+          $ref: '#/definitions/UpdateUser'
       responses:
         201:
           description: User Data updated
-        400:
-          description: invalid input, object invalid
-  /user/login/{id}:
-    post:
-      tags:
-      - User
-      summary: Traces login transaction for user id
-      description:  Traces login transaction for user id
-      produces:
-      - application/json
-      parameters:
-      - name: id
-        in: path
-        description: "ID of that User that needs to be traced as login"
-        required: true
-        type: "string"
-      responses:
-        201:
-          description: Hospital ID created
         400:
           description: invalid input, object invalid
   /hospital:
@@ -296,6 +296,28 @@ definitions:
       documentUrl:
         type: string
         example: http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf
+  CreateUser:
+    type: object
+    properties:
+      id:
+        type: string
+        example: P1
+      document:
+        type: array
+        items: 
+          type: string
+          example: mail
+  UpdateUser:
+    type: object
+    properties:
+      id:
+        type: string
+        example: P1
+      document:
+        type: array
+        items: 
+          type: string
+          example: mail
   CreatePatient:
     type: object
     properties:

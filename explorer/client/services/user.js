@@ -57,7 +57,8 @@ module.exports = {
   },
   update: (req, res) => {
     const {
-      id
+      id,
+      changes
     } = req.params;
     const Action = 'userUpdate';
     const Data = req.body;
@@ -66,7 +67,12 @@ module.exports = {
     if (!id) {
       return res.status(400).send({
         success: false,
-        message: 'ID Field Missing in payload'
+        message: 'id field Missing in payload'
+      }).end();
+    } else if (!changes) {
+      return res.status(400).send({
+        success: false,
+        message: 'changes field Missing in payload'
       }).end();
     } else {
       return sawtoothWalletClient.submit({
