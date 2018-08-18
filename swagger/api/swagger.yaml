@@ -306,13 +306,7 @@ definitions:
         example: P1
       data:
         type: object
-        properties:
-          name:
-            type: string
-            example: John Doe
-          phone:
-            type: string
-            example: 121231232
+        example: { "name": "John Doe", "phone":"121231232" }
   UpdateUser:
     type: object
     properties:
