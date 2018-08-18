@@ -57,8 +57,11 @@ module.exports = {
   },
   update: (req, res) => {
     const {
-      changes
+      id
     } = req.params;
+    const {
+      changes
+    } = req.body;
     const Action = 'userUpdate';
     const Data = req.body;
     Data.id = id;
