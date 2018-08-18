@@ -24,5 +24,3 @@ EXPOSE 3000
 WORKDIR /project/explorer
 
 RUN rm -rf node_modules
-
-CMD  npm install && npm start

@@ -26,6 +26,8 @@ services:
         - http_proxy
         - https_proxy
         - no_proxy
+      command: npm install && npm start-dev
+
     # volumes: 
     #   - './keys:/root/.sawtooth/keys/'
     environment:
