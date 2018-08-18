@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start-dev": "ng build && node ./client",
-    "start": "ng build --prod && node ./client",
+    "start-dev": "npm install && ng build && node ./client",
+    "start": "npm install && ng build --prod && node ./client",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
