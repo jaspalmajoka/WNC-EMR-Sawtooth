@@ -282,7 +282,7 @@ paths:
         name: patientData
         description: Patient Data to be updated
         schema:
-          $ref: '#/definitions/CreatePatient'
+          $ref: '#/definitions/UpdatePatient'
       responses:
         201:
           description: Patient ID created
@@ -322,6 +322,21 @@ definitions:
               type: string
               example: P1
   CreatePatient:
+    type: object
+    properties:
+      id:
+        type: string
+        example: P1
+      data:
+        type: object
+        properties:
+          name:
+            type: string
+            example: John Doe
+          phone:
+            type: string
+            example: 121231232
+  UpdatePatient:
     type: object
     properties:
       id:

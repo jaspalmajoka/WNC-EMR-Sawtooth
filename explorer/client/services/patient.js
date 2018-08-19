@@ -54,17 +54,9 @@ module.exports = {
       id
     } = req.params;
     const payload = req.body;
-    _getPatients(id, (err, data) => {
-      if (err) return res.status(500).send(err);
-      const _patient = data[0].data;
-      // Replace ID from params so we don't update wrong one in body
-      payload.id = id;
-      Object.assign(_patient, payload);
-      // Once the updated values are copied to original data we submit it for blockchain
-      return sawtoothWalletClient.submit({
-        Action,
-        Data: _patient
-      }, res);
-    })
+    return sawtoothWalletClient.submit({
+      Action,
+      Data: payload
+    }, res);
   }
 }
