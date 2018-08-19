@@ -11,33 +11,17 @@ Clone this project
 
 3. Install [NVM (node & npm)](https://github.com/creationix/nvm#installation) and run `nvm install 8` to install node and npm LTS (as of documenting)
 
-4. Move into `cd sawtooth-explorer` and run `npm install && npm run build` which will build the project and move the dist file into `./client/dist` directory. The public IP of the hosted environemt needs to be updated in this sawtooth angular project.
-
-5. Run `docker-compose build` to check if the images are getting built well.
-
-6. Run `docker-compose up` to start the docker containers for validator, client, swagger-doc and explorer.
+4. Run `docker-compose up --build` this will start the client, explorer and other sawtooth components as docker containers.
+5. File `nginx.conf` needs to be updated incase of deployment with required changes. update the private ip info in this configuration.
+6. Ovrride docker-compose file configurations in similar file `docker-compose-dev.yaml`.
+7. Start multiple-compose configurations by running command `docker-compose -f docker-compose.yaml -f docker-compose-dev.yaml up --build`
 
 # List of API Entitity status in implementation
 
 API Entity  | Status 
 --- | --- |
-Appointment |  
-Contact -> `User` |
-Facility |
-Insurance |
-List -> `Patient` |
-Location -> `Facility` |
 User | ![done](https://www.iconfinder.com/icons/299110/download/png/20 "Completed") 
 Hospital | ![done](https://www.iconfinder.com/icons/299110/download/png/20 "Completed") 
 Patient | ![done](https://www.iconfinder.com/icons/299110/download/png/20 "Completed") 
 Document -> `Patient` | ![done](https://www.iconfinder.com/icons/299110/download/png/20 "Completed") 
-DocumentLink -> `Patient` |
-Image -> `Patient` |
-Prescription -> `Patient` |
-Resource -> `User` |
-ResourceLink -> `Patient` |
-ReviewOfSystems -> Visit -> `Patient` |
-ReviewOfSystemsChecks -> Visit -> `Patient` |
-SOAP -> Visit -> `Patient` |
-VisitVitals -> Visit -> `Patient` |
  
