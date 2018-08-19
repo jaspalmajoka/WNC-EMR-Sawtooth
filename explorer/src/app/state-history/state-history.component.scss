@@ -29,3 +29,9 @@ pre {
   background: black !important;
   color: white !important;
 }
+
+.mat-accent .mat-slider-thumb,
+.mat-accent .mat-slider-thumb-label,
+.mat-accent .mat-slider-track-fill {
+  background-color: #49b1dd;
+}
