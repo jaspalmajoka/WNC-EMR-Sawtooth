@@ -9,3 +9,5 @@ export const environment = {
     '00': 'settings',
   }
 };
+
+import 'zone.js/dist/zone-error';  // Included with Angular CLI.
