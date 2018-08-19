@@ -2,7 +2,8 @@ const config = require('./../config');
 const {
     createAddress,
     toInvalidTransaction,
-    setEntry
+    setEntry,
+    toInvalidPayload
 } = require('./../lib/helper');
 
 const _createPatientAddress = (id) => createAddress(id, config.namespace.patient);
@@ -15,6 +16,9 @@ module.exports = {
         const {
             id
         } = data;
+        if (!id) {
+            return toInvalidPayload('id');
+        }
         const address = _createPatientAddress(id);
         const possibleAddressValues = await context.getState([address]).catch(toInvalidTransaction);
         const stateValueRep = possibleAddressValues[address];
@@ -35,6 +39,9 @@ module.exports = {
         const {
             id
         } = data;
+        if (!id) {
+            return toInvalidPayload('id');
+        }
         const address = _createPatientAddress(id);
         const possibleAddressValues = await context.getState([address]).catch(toInvalidTransaction);
         const stateValueRep = possibleAddressValues[address];
@@ -54,6 +61,9 @@ module.exports = {
         const {
             id
         } = data;
+        if (!id) {
+            return toInvalidPayload('id');
+        }
         const address = _createPatientAddress(id);
         const possibleAddressValues = await context.getState([address]).catch(toInvalidTransaction);
         const stateValueRep = possibleAddressValues[address];

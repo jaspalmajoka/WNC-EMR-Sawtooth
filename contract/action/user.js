@@ -3,7 +3,8 @@ const {
     createAddress,
     toInvalidTransaction,
     setEntry,
-    encodePayload
+    encodePayload,
+    toInvalidPayload
 } = require('./../lib/helper');
 
 const _createUserAddress = (id) => createAddress(id, config.namespace.user);
@@ -16,6 +17,9 @@ module.exports = {
         const {
             id
         } = data;
+        if (!id) {
+            return toInvalidPayload('id');
+        }
         const userAddress = _createUserAddress(id);
         const possibleAddressValues = await context.getState([userAddress]).catch(toInvalidTransaction);
 
@@ -40,6 +44,12 @@ module.exports = {
             id,
             timestamp
         } = data;
+        if (!id) {
+            return toInvalidPayload('id');
+        }
+        if (!timestamp) {
+            return toInvalidPayload('timestamp');
+        }
         const userAddress = _createUserAddress(id);
         const possibleAddressValues = await context.getState([userAddress]).catch(toInvalidTransaction);
 
@@ -48,9 +58,6 @@ module.exports = {
         let stateValue = {};
         if (!userValuesRep || userValuesRep.length === 0) {
             return toInvalidTransaction('User ID is not registered');
-        }
-        if (!timestamp) {
-            return toInvalidTransaction('Timestamp is not supplied');
         }
         stateValue = JSON.parse(userValuesRep);
         if (!stateValue) {
@@ -73,6 +80,12 @@ module.exports = {
             changes,
             timestamp
         } = data;
+        if (!id) {
+            return toInvalidPayload('id');
+        }
+        if (!timestamp) {
+            return toInvalidPayload('timestamp');
+        }
         const userAddress = _createUserAddress(id);
         const possibleAddressValues = await context.getState([userAddress]).catch(toInvalidTransaction);
 
@@ -85,9 +98,6 @@ module.exports = {
         stateValue = JSON.parse(userValuesRep);
         if (!stateValue) {
             return toInvalidTransaction('State doesn"t contain values');
-        }
-        if (!timestamp) {
-            return toInvalidTransaction('Timestamp is not supplied');
         }
         if (!stateValue.changes) {
             stateValue.changes = [];

@@ -3,6 +3,7 @@ const {
     createAddress,
     toInvalidTransaction,
     setEntry,
+    toInvalidPayload,
     encodePayload
 } = require('./../lib/helper');
 
@@ -16,6 +17,9 @@ module.exports = {
         const {
             id
         } = data;
+        if (!id) {
+            return toInvalidPayload('id');
+        }
         const hospitalAddress = _createHospitalAddress(id);
         const possibleAddressValues = await context.getState([hospitalAddress]).catch(toInvalidTransaction);
         let hospitalStateValueRep = possibleAddressValues[hospitalAddress];
@@ -36,6 +40,9 @@ module.exports = {
         const {
             id
         } = data;
+        if (!id) {
+            return toInvalidPayload('id');
+        }
         const hospitalAddress = _createHospitalAddress(id);
         const possibleAddressValues = await context.getState([hospitalAddress]).catch(toInvalidTransaction);
         const stateValueRep = possibleAddressValues[hospitalAddress];
