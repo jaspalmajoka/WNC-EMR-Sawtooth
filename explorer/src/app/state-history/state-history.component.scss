@@ -25,4 +25,9 @@ pre {
 
 .data-preview {
   width: 62%;
+  max-height: 400px;
+  .mat-card {
+    background: black;
+    color: white;
+  }
 }
