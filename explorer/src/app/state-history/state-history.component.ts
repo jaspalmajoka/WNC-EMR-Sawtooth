@@ -24,7 +24,7 @@ export class StateHistoryComponent implements OnInit {
     this._apiService.getItems('blocks').subscribe((blocks) => {
       const data = blocks['data'];
       this.heads = data.map(obj => obj.header_signature);
-      this.index = this.heads.length;
+      this.index = this.heads.length - 1;
     });
   }
 
@@ -42,11 +42,11 @@ export class StateHistoryComponent implements OnInit {
     })
   }
   onChange() {
-    this.head = this.heads[this.heads.length - this.index - 1];
+    this.head = this.heads[this.heads.length - this.index];
     this.loadState();
   }
 
-  onSubmit(){
+  onSubmit() {
     this.loadState();
   }
 }
