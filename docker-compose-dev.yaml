@@ -5,3 +5,4 @@ services:
     container_name: sawtooth-client
     environment:
       - 'HOST=localhost:3000'
+    command: npm run start-local

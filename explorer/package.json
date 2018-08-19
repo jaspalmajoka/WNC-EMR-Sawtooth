@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start-dev": "ng build && node ./client",
+    "start-local": "ng build --configuration=local && node ./client",
     "start": "ng build --prod && node ./client",
     "api": "node ./client",
     "build": "ng build",
