@@ -5,6 +5,7 @@ import { StateComponent } from './state/state.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { BlocksComponent } from './blocks/blocks.component';
 import { BatchesComponent } from './batches/batches.component';
+import { StateHistoryComponent } from './state-history/state-history.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,9 @@ const routes: Routes = [
   },
   {
     path: 'batches', component: BatchesComponent
+  },
+  {
+    path: 'history', pathMatch: 'full', component: StateHistoryComponent
   },
   {
     path: '**', redirectTo: 'state'

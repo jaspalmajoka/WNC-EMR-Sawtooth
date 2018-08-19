@@ -14,6 +14,8 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { Base64Pipe } from './shared/base64.pipe';
 import { BlocksComponent } from './blocks/blocks.component';
 import { BatchesComponent } from './batches/batches.component';
+import { StateHistoryComponent } from './state-history/state-history.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,14 +26,17 @@ import { BatchesComponent } from './batches/batches.component';
     TransactionsComponent,
     Base64Pipe,
     BlocksComponent,
-    BatchesComponent
+    BatchesComponent,
+    StateHistoryComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [ApiService, Base64Pipe],
   bootstrap: [AppComponent]

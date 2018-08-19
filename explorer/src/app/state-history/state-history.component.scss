@@ -1,0 +1,24 @@
+input {
+  padding: 10px;
+  font-size: 1em;
+  width: 70%;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+pre {
+  margin-left: 100px;
+}
+
+.slider {
+  // display: flex;
+  // justify-content: start;
+  font-size: 2em;
+  .mat-slider{
+    width: 70%;
+  }
+}

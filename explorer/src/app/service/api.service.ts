@@ -54,8 +54,15 @@ export class ApiService {
    * @param id {string} - unique identifier for retrieving the item from the API
    * @return {Observable} - observable watching the results of the API request
    */
-  getItemByID(resourceName: string, id: string): Observable<object> {
-    return this._httpClient.get(this.apiURL + '/' + resourceName + '/' + id)
+  getItemByID(resourceName: string, id: string, params?: object): Observable<object> {
+    let url = this.apiURL + '/' + resourceName  + '/' + id;
+    // let paramsObj = new HttpParams();
+
+    if (params && params['head']) {
+      // paramsObj.set('head', params['head']);
+      url += '?head=' + params['head'];
+    }
+    return this._httpClient.get(url)
   }
 
 }
