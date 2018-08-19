@@ -67,7 +67,7 @@ module.exports = {
         } else {
             return toInvalidTransaction(`No patient record found to be created with this ${id}`);
         }
-        Object.assign(stateValue, data);
+        stateValue = data;
         return setEntry(context, address, stateValue).catch(toInvalidTransaction);
     }
 }

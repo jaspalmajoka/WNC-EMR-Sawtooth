@@ -10,7 +10,7 @@ const configData = {
   },
   family: {
     name: "openemr",
-    version: "2.0"
+    version: "2.1"
   },
   keyslocation: "keys",
   loglevel: "dev",
