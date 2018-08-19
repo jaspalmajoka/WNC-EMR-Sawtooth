@@ -26,12 +26,12 @@ services:
         - http_proxy
         - https_proxy
         - no_proxy
-    command: npm run start-dev
+    command: npm run start-local
     # volumes: 
     #   - './keys:/root/.sawtooth/keys/'
     environment:
       - 'REST_API=http://rest-api:8008'
-      - 'HOST=${HOST}'
+      - 'HOST=localhost:3000'
     # volumes:
       # - './explorer:/usr/src/app'
     ports:
@@ -89,7 +89,7 @@ services:
     image: nginx
     container_name: sawtooth-explorer-rest-api-proxy
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx-local.conf:/etc/nginx/nginx.conf:ro
     ports:
       - "8090:8090"
       - "8091:8091"

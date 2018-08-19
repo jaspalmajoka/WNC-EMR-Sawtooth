@@ -4,9 +4,9 @@ services:
   sawtooth-client:
     container_name: sawtooth-client
     environment:
-      - 'HOST=localhost:3000'
-    command: npm run start-local
+      - 'HOST=18.136.137.49:3000'
+    command: npm run start-dev
   rest-api-proxy:
     container_name: sawtooth-explorer-rest-api-proxy
     volumes:
-      - ./nginx-local.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx-dev.conf:/etc/nginx/nginx.conf:ro
