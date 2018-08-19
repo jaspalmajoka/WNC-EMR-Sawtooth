@@ -6,7 +6,7 @@
 </div>
 <div class="slider">
   <span>
-    <pre>Block:- {{ index }}            <mat-slider [max]="heads.length" (change)="onChange()" thumbLabel="true" [(ngModel)]="index" [value]="index"></mat-slider></pre>
+    <pre>Block:- {{ index }}            <mat-slider [max]="heads.length-1" (change)="onChange()" thumbLabel="true" [(ngModel)]="index" [value]="index"></mat-slider></pre>
   </span>
 </div>
 <div class="state flex">
