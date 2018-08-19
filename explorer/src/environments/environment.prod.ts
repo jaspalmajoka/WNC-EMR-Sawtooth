@@ -6,5 +6,6 @@ export const environment = {
     '11': 'document',
     '20': 'hospital',
     '30': 'user',
+    '00': 'settings',
   }
 };
