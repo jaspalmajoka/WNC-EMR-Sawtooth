@@ -339,9 +339,6 @@ definitions:
   UpdatePatient:
     type: object
     properties:
-      id:
-        type: string
-        example: P1
       data:
         type: object
         properties:
