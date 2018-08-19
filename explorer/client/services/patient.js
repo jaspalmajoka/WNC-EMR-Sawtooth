@@ -54,6 +54,7 @@ module.exports = {
       id
     } = req.params;
     const payload = req.body;
+    payload.id = id;
     return sawtoothWalletClient.submit({
       Action,
       Data: payload
