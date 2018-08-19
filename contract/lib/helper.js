@@ -15,8 +15,10 @@ module.exports = {
     leafHash,
     encodePayload,
     toInvalidTransaction: (err) => {
-        console.trace();
         throw new InvalidTransaction(err.message ? err.message : err)
+    },
+    toInvalidPayload: (field)=>{
+        throw new InvalidTransaction(`${field} field is not supplied in the payload`);
     },
     toInternalError: (err) => {
         throw new InternalError(err.message ? err.message : err)
