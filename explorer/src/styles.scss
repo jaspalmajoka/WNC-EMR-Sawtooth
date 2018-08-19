@@ -2,11 +2,20 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
 }
 
-*{
-    font-family: 'Roboto', sans-serif;
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.data-preview {
+  padding-bottom: 10px;
+  pre {
+    max-height: 200px;
+    overflow: scroll;
+    max-width: 700px;
+    text-overflow: ellipsis;
+  }
 }

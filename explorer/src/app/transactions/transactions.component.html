@@ -4,7 +4,7 @@
       <mat-chip (click)="show[i]=!show[i]" color="primary" selected> {{ transaction?.Action | uppercase }}</mat-chip>
       <mat-chip (click)="show[i]=!show[i]"> {{ transaction?.header_signature }}</mat-chip>
     </mat-chip-list>
-    <div [hidden]="!show[i]">
+    <div class="data-preview" [hidden]="!show[i]">
       <em>Input Payload</em>
       <pre>{{ transaction?.Data | json }}</pre>
     </div>

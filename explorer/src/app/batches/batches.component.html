@@ -7,7 +7,7 @@
 <mat-card *ngFor="let transaction of batchesData?.data?.transactions;let i=index;" class="mat-elevation-z2">
   <div [@flyInOut]="'in'">
     <strong>ID&nbsp;<span class="highlight">{{ transaction?.header_signature }}</span></strong>
-    <div class="content">
+    <div class="data-preview" class="content">
       <em>Input Payload</em>
       <pre>{{ transaction?.payload | base64 }}</pre>
     </div>
