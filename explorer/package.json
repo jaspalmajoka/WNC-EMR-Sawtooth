@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start-dev": "ng build && node ./client",
+    "start-dev": "ng build --configuration=dev && node ./client",
     "start-local": "ng build --configuration=local && node ./client",
     "start": "ng build --prod && node ./client",
     "api": "node ./client",
