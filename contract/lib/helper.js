@@ -15,15 +15,18 @@ module.exports = {
     leafHash,
     encodePayload,
     toInvalidTransaction: (err) => {
+        console.trace();
         throw new InvalidTransaction(err.message ? err.message : err)
     },
     toInternalError: (err) => {
         throw new InternalError(err.message ? err.message : err)
     },
     setEntry: (context, address, newStateValue) => {
+        console.log(newStateValue);
         const entries = {
             [address]: encodePayload(newStateValue),
         };
+        console.log(entries);
         return context.setState(entries);
     },
     decodePayload: (buffer) => {
