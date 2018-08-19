@@ -1,5 +1,5 @@
 <div class="flex">
-  <input matInput type="text" placeholder="state address" [(ngModel)]="address">
+  <input matInput type="text" (submit)="onSubmit()" placeholder="state address" [(ngModel)]="address">
   <button mat-button *ngIf="address" matSuffix mat-icon-button aria-label="Clear" (click)="address=''">
     <mat-icon>close</mat-icon>
   </button>
@@ -9,8 +9,8 @@
     <pre>Block:- {{ index }}            <mat-slider [max]="heads.length" (change)="onChange()" thumbLabel="true" [(ngModel)]="index" [value]="index"></mat-slider></pre>
   </span>
 </div>
-<div class="state">
-  <mat-card>
+<div class="state flex">
+  <mat-card class="data-preview">
     <pre [innerHTML]="state | base64"></pre>
   </mat-card>
 </div>

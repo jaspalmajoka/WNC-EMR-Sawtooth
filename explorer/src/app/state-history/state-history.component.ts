@@ -45,4 +45,8 @@ export class StateHistoryComponent implements OnInit {
     this.head = this.heads[this.heads.length - this.index - 1];
     this.loadState();
   }
+
+  onSubmit(){
+    this.loadState();
+  }
 }
