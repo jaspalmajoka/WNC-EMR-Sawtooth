@@ -29,7 +29,7 @@ module.exports = {
     if (!config.user_types.includes(type)) {
       return res.status(400).send({
         success: false,
-        message: `type ${type} is not valid. Valid Keys are ${JSON.stringify(config.user_types)}`
+        message: `type ${type} is not valid. Valid Keys are ${config.user_types}`
       }).end();
     } else if (!id) {
       return res.status(400).send({
@@ -66,9 +66,6 @@ module.exports = {
     const {
       id
     } = req.params;
-    const {
-      changes
-    } = req.body;
     const Action = 'userUpdate';
     const Data = req.body;
     Data.id = id;
@@ -78,12 +75,8 @@ module.exports = {
         success: false,
         message: 'id field Missing in payload'
       }).end();
-    } else if (!changes || changes.length === 0) {
-      return res.status(400).send({
-        success: false,
-        message: 'changes field Missing in payload'
-      }).end();
-    } else {
+    } 
+    else {
       return sawtoothWalletClient.submit({
         Action,
         Data
