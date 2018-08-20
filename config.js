@@ -21,13 +21,14 @@ const obj = {
     keyslocation: process.env.KEY_LOCATION || "keys",
     loglevel: "dev",
     restapi: process.env.REST_API || "http://localhost:8008",
-    client: process.env.FAMILY_NAME || FAMILY_NAME,
+    client: FAMILY_NAME,
     namespace: {
         patient: '10',
         document: '11',
         hospital: '20',
         user: '30',
-    }
+    },
+    user_types: ['patient', 'doctor', 'reception', 'attendant']
 }
 
 
