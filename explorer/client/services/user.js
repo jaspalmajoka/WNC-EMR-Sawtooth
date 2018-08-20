@@ -29,7 +29,7 @@ module.exports = {
     if (!config.user_types.includes(type)) {
       return res.status(400).send({
         success: false,
-        message: `type ${type} is not valid. Valid Keys are ${JSON.stringify(Object.keys(config.user_types))}`
+        message: `type ${type} is not valid. Valid Keys are ${JSON.stringify(config.user_types)}`
       }).end();
     } else if (!id) {
       return res.status(400).send({
