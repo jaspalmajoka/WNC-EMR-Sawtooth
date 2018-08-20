@@ -58,7 +58,7 @@ module.exports = {
                 promise = userLogin;
                 break;
             case 'userUpdate':
-                Data.timestamp = payload.timestamp;
+                // Data.timestamp = payload.timestamp;
                 promise = userUpdate;
                 break;
             default:

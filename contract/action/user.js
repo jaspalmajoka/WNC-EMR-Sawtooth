@@ -76,15 +76,10 @@ module.exports = {
         data
     }) => {
         const {
-            id,
-            changes,
-            timestamp
+            id
         } = data;
         if (!id) {
             return toInvalidPayload('id');
-        }
-        if (!timestamp) {
-            return toInvalidPayload('timestamp');
         }
         const userAddress = _createUserAddress(id);
         const possibleAddressValues = await context.getState([userAddress]).catch(toInvalidTransaction);
@@ -99,11 +94,7 @@ module.exports = {
         if (!stateValue) {
             return toInvalidTransaction('State doesn"t contain values');
         }
-        if (!stateValue.changes) {
-            stateValue.changes = [];
-        }
-        changes.timestamp = timestamp;
-        stateValue.changes.push(changes);
+        Object.assign(stateValue, data);
         return setEntry(context, userAddress, stateValue);
     },
 };
