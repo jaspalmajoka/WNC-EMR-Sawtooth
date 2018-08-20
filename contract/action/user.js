@@ -21,8 +21,8 @@ module.exports = {
         if (!id) {
             return toInvalidPayload('id');
         }
-        if(!config.namespace[type]){
-            return toInvalidTransaction('The supplied user')
+        if (!config.namespace[type]) {
+            return toInvalidTransaction(`The ${type} supplied user`);
         }
         const userAddress = createAddress(id, config.namespace[type]);
         const possibleAddressValues = await context.getState([userAddress]).catch(toInvalidTransaction);

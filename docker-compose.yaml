@@ -26,7 +26,7 @@ services:
         - http_proxy
         - https_proxy
         - no_proxy
-    command: npm run start-local
+    command: npm run start-noop
     # volumes: 
     #   - './keys:/root/.sawtooth/keys/'
     environment:

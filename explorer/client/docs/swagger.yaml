@@ -126,7 +126,7 @@ paths:
           description: User Details Retreived
         400:
           description: invalid input, query params invalid
-  /user/register:
+  /user/register/{userType}:
     post:
       tags:
       - User
@@ -135,6 +135,11 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: userType
+        in: path
+        description: "User type"
+        required: true
+        type: "string"
       - in: body
         required: true
         name: userData

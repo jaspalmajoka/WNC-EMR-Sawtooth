@@ -20,7 +20,7 @@ router.delete('/hospital/:id', hospital.deleteHospital);
 
 router.get('/user', user.getUser);
 router.post('/user/login/:id', user.login);
-router.post('/user/register', user.register);
+router.post('/user/register/:type', user.register);
 router.put('/user/:id', user.update);
 
 router.get('/config', (req, res) => {

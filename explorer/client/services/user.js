@@ -20,8 +20,12 @@ module.exports = {
     const {
       id
     } = req.body;
+    const {
+      type
+    } = req.params;
     const Action = 'userRegister';
     const Data = req.body;
+    Data.type = type;
 
     if (!id) {
       return res.status(400).send({
