@@ -13,7 +13,7 @@ const {
 
 class OpemEmr extends TransactionHandler {
     constructor() {
-        super(config.family.name, config.family.versions, config.family.namespaces)
+        super(config.family.name, [config.family.version], config.family.namespace)
     }
 
     apply(txRequest, context) {
