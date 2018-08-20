@@ -3,6 +3,7 @@ const patient = require('./../services/patient');
 const document = require('./../services/document');
 const hospital = require('./../services/hospital');
 const user = require('./../services/user');
+const config = require('./../config');
 
 router.get('/patient', patient.getPatient);
 router.post('/patient', patient.createPatient);
@@ -21,6 +22,10 @@ router.get('/user', user.getUser);
 router.post('/user/login/:id', user.login);
 router.post('/user/register', user.register);
 router.put('/user/:id', user.update);
+
+router.get('/config', (req, res) => {
+  res.json(config).end();
+});
 
 
 module.exports = router;
