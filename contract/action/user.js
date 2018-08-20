@@ -15,12 +15,13 @@ module.exports = {
         data
     }) => {
         const {
-            id
+            id,
+            type
         } = data;
         if (!id) {
             return toInvalidPayload('id');
         }
-        const userAddress = _createUserAddress(id);
+        const userAddress = createAddress(id, config.namespace[type]);
         const possibleAddressValues = await context.getState([userAddress]).catch(toInvalidTransaction);
 
         const userValuesRep = possibleAddressValues[userAddress];
