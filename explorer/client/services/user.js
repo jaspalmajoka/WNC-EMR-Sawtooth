@@ -26,8 +26,12 @@ module.exports = {
     const Action = 'userRegister';
     const Data = req.body;
     Data.type = type;
-
-    if (!id) {
+    if (!config.namespace[type]) {
+      return res.status(400).send({
+        success: false,
+        message: `type ${type} is not valid. Valid Keys are ${JSON.stringify(Object.keys(config.namespace))}`
+      }).end();
+    } else if (!id) {
       return res.status(400).send({
         success: false,
         message: 'ID Field Missing in payload'
