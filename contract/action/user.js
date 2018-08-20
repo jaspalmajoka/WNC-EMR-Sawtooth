@@ -15,8 +15,7 @@ module.exports = {
         data
     }) => {
         const {
-            id,
-            type
+            id
         } = data;
         if (!id) {
             return toInvalidPayload('id');
