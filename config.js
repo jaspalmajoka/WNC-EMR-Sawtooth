@@ -31,4 +31,4 @@ const obj = {
 }
 
 
-module.exports = configData;
+module.exports = obj;
