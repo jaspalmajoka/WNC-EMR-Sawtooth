@@ -48,7 +48,6 @@ module.exports = {
             address: documentAddress
         });
         documentStateValue = data;
-        // TODO Possibly create an asset with the document
         const entries = {
             [patientAddress]: encodePayload(patientStateValue),
             [documentAddress]: encodePayload(documentStateValue),

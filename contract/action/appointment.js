@@ -41,13 +41,29 @@ module.exports = {
         // Get state representation of the address
         const providerStateRep = possibleAddressValues[providerAddress];
         const patientStateRep = possibleAddressValues[patientAddress];
-        const appointemtnStateRep = possibleAddressValues[patientAddress];
+        const appointmentStateRep = possibleAddressValues[patientAddress];
 
 
-        if (!providerStateRep || providerStateRep.length === 0) {
+        if (providerStateRep && providerStateRep.length !== 0) {
             providerStateValue = JSON.parse(providerStateRep);
         }
         providerStateValue = deepmerge(providerStateValue, provider);
 
+        if (patientStateRep && patientStateRep.length !== 0) {
+            patientStateValue = JSON.parse(patientStateRep);
+        }
+        patientStateValue = deepmerge(patientStateValue, patient);
+
+        if (appointmentStateRep && appointmentStateRep.length !== 0) {
+            appointmentStateValue = JSON.parse(appointmentStateRep);
+        }
+        appointmentStateValue = deepmerge(appointmentStateValue, appointment);
+
+        const entries = {
+            [patientAddress]: encodePayload(patientStateValue),
+            [appointmentAddress]: encodePayload(appointmentStateValue),
+            [providerAddress]: encodePayload(providerStateValue),
+        };
+        return context.setState(entries).catch(toInvalidTransaction);
     }
 };
