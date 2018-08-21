@@ -341,6 +341,42 @@ definitions:
           phone:
             type: string
             example: 121231232
+  CreateAppointment:
+    type: object
+    properties:
+      id:
+        type: string
+        example: APP1
+      provider:
+        type: object
+        properties:
+          id:
+            type: string
+            example: P1
+          name:
+            type: string
+            example: John Doe
+      patient:
+        type: object
+        properties:
+          id:
+            type: string
+            example: P1
+          name:
+            type: string
+            example: Robin Williams
+      appointment:
+        type: object
+        properties:
+          id:
+            type: string
+            example: P1
+          location:
+            type: string
+            example: Mumbai
+          phone:
+            type: string
+            example: 121231232
   UpdatePatient:
     type: object
     properties:
