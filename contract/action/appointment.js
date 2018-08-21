@@ -63,11 +63,17 @@ module.exports = {
             providerStateValue.appointments = [];
         }
         providerStateValue.appointments.push(appointmentAddress);
+        providerStateValue.appointments = providerStateValue.appointments.filter((item, pos, self) => {
+            return self.indexOf(item) == pos;
+        })
 
         if (!patientStateValue.appointments) {
             patientStateValue.appointments = [];
         }
         patientStateValue.appointments.push(appointmentAddress);
+        patientStateValue.appointments = patientStateValue.appointments.filter((item, pos, self) => {
+            return self.indexOf(item) == pos;
+        })
 
         appointmentStateValue.provider = providerAddress;
         appointmentStateValue.patient = patientAddress;
