@@ -37,12 +37,7 @@ module.exports = {
         } catch (err) {
             return toInvalidTransaction('Error while creating address for ID');
         }
-        const possibleAddressValues = await context.getState([providerAddress, patientAddress, appointmentAddress]).catch((err) => {
-            return toInvalidTransaction({
-                err,
-                message: `${JSON.stringify(err)} While fetching possible address value`
-            });
-        });
+        const possibleAddressValues = await context.getState([providerAddress, patientAddress, appointmentAddress]).catch(toInvalidTransaction);
         // Get state representation of the address
         const providerStateRep = possibleAddressValues[providerAddress];
         const patientStateRep = possibleAddressValues[patientAddress];
@@ -82,11 +77,6 @@ module.exports = {
             [appointmentAddress]: encodePayload(appointmentStateValue),
             [providerAddress]: encodePayload(providerStateValue),
         };
-        return context.setState(entries).catch((err) => {
-            return toInvalidTransaction({
-                err,
-                message: `${JSON.stringify(err)} While setting address values`
-            })
-        });
+        return context.setState(entries).catch(toInvalidTransaction);
     }
 };
