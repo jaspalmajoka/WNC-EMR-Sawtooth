@@ -20,7 +20,8 @@ const {
   hash,
   getUserPriKey,
   getUserPubKey,
-  createAddress
+  createAddress,
+  removeEmpty
 } = require('./helper');
 
 

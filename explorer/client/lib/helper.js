@@ -22,16 +22,18 @@ const getState = (address) => {
     }));
 };
 
+const removeEmpty = (obj) => {
+  Object.keys(obj).forEach(key => {
+    if (obj[key] && typeof obj[key] === 'object') removeEmpty(obj[key]);
+    else if (obj[key] == null || !obj[key]) delete obj[key];
+  });
+};
+
 const createAddress = (name, usernamespace = '00') => `${config.family.namespace}${usernamespace}${name.length ? leafHash(name, 64 - usernamespace.length) : ''}`;
 
 module.exports = {
   leafHash,
-  removeEmpty: (obj) => {
-    Object.keys(obj).forEach(key => {
-      if (obj[key] && typeof obj[key] === 'object') removeEmpty(obj[key]);
-      else if (obj[key] == null) delete obj[key];
-    });
-  },
+  removeEmpty,
   hash: (input, length) => createHash('sha512').update(input).digest('hex').toLowerCase().slice(0, length),
   getUserPriKey: (userid, pathDir) => {
     var userprivkeyfile = path.join(pathDir, `${userid}.priv`);
