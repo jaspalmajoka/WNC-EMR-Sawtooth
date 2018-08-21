@@ -59,15 +59,15 @@ module.exports = {
         }
         appointmentStateValue = deepmerge(appointmentStateValue, appointment);
 
-        if (!provider.appointments) {
-            provider.appointments = [];
+        if (!providerStateValue.appointments) {
+            providerStateValue.appointments = [];
         }
-        provider.appointments.push(appointmentAddress);
+        providerStateValue.appointments.push(appointmentAddress);
 
-        if (!patient.appointments) {
-            patient.appointments = [];
+        if (!patientStateValue.appointments) {
+            patientStateValue.appointments = [];
         }
-        patient.appointments.push(appointmentAddress);
+        patientStateValue.appointments.push(appointmentAddress);
 
         appointmentStateValue.provider = providerAddress;
         appointmentStateValue.patient = patientAddress;
