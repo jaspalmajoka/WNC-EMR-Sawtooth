@@ -12,7 +12,7 @@ services:
         - no_proxy
     environment:
       - 'VALIDATOR_URL=tcp://validator:4004'
-      - 'VERSION=2.3'
+      - 'VERSION=2.4'
     depends_on:
       - validator
     volumes:
@@ -33,7 +33,7 @@ services:
     environment:
       - 'REST_API=http://rest-api:8008'
       - 'HOST=localhost:3000'
-      - 'VERSION=2.3'
+      - 'VERSION=2.4'
     volumes:
       - '.:/config'
     ports:
