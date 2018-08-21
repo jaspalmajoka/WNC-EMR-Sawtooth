@@ -11,6 +11,8 @@ info:
 tags:
 - name: User
   description: User related api
+- name: Appointment
+  description: Appointment related api
 - name: Patient
   description: Patient related api
 - name: Document
@@ -18,6 +20,42 @@ tags:
 - name: Hospital
   description: Hospital related api
 paths:
+  /appointment:
+    # get:
+    #   tags: 
+    #   - Patient
+    #   summary: Patient from  state
+    #   description: patient entry from state
+    #   parameters:
+    #   - name: "id"
+    #     in: "query"
+    #     description: "Patient ID should be passed"
+    #     type: "string"
+    #   responses:
+    #     200:
+    #       description: Patient Details Retreived
+    #     400:
+    #       description: invalid input, query params invalid
+    post:
+      tags:
+      - Appointment
+      summary: Create Appointment, Provider, Patient to state
+      description: Add Appointment entry to state
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: patientItem
+        description: Patient item to add
+        schema:
+          $ref: '#/definitions/CreatePatient'
+      responses:
+        201:
+          description: Patient ID created
+        400:
+          description: invalid input, object invalid
   /patient:
     get:
       tags: 

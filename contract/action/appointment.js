@@ -59,6 +59,19 @@ module.exports = {
         }
         appointmentStateValue = deepmerge(appointmentStateValue, appointment);
 
+        if (!provider.appointments) {
+            provider.appointments = [];
+        }
+        provider.appointments.push(appointmentAddress);
+
+        if (!patient.appointments) {
+            patient.appointments = [];
+        }
+        patient.appointments.push(appointmentAddress);
+
+        appointmentStateValue.provider = providerAddress;
+        appointmentStateValue.patient = patientAddress;
+
         const entries = {
             [patientAddress]: encodePayload(patientStateValue),
             [appointmentAddress]: encodePayload(appointmentStateValue),
