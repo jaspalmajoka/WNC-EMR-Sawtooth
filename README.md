@@ -24,4 +24,6 @@ User | ![done](https://www.iconfinder.com/icons/299110/download/png/20 "Complete
 Hospital | ![done](https://www.iconfinder.com/icons/299110/download/png/20 "Completed") 
 Patient | ![done](https://www.iconfinder.com/icons/299110/download/png/20 "Completed") 
 Document -> `Patient` | ![done](https://www.iconfinder.com/icons/299110/download/png/20 "Completed") 
- 
+Medicne |
+Precription |
+Inventory |
