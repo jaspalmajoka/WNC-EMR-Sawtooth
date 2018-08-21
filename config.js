@@ -24,9 +24,11 @@ const obj = {
     client: FAMILY_NAME,
     namespace: {
         patient: '10',
-        document: '11',
         hospital: '20',
         user: '30',
+        provider: '40',
+        document: '11',
+        appointment: '22',
     },
     user_types: ['patient', 'doctor', 'reception', 'attendant']
 }

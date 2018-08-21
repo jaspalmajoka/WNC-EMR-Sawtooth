@@ -2,7 +2,7 @@ module.exports = {
   createAppointment: (req, res) => {
     const Action = 'createAppointment';
     const appointmentData = req.body;
-    if (appointmentData.id &&
+    if (
       typeof appointmentData.appointment === 'object' &&
       appointmentData.appointment.id &&
       typeof appointmentData.patient === 'object' &&

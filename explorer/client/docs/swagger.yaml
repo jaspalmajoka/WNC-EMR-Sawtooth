@@ -344,9 +344,9 @@ definitions:
   CreateAppointment:
     type: object
     properties:
-      id:
-        type: string
-        example: APP1
+      # id:
+      #   type: string
+      #   example: APP1
       provider:
         type: object
         properties:
@@ -370,7 +370,7 @@ definitions:
         properties:
           id:
             type: string
-            example: P1
+            example: APP1
           location:
             type: string
             example: Mumbai

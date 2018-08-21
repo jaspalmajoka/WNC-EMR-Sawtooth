@@ -1,0 +1,53 @@
+const config = require('./../config');
+const deepmerge = require('deepmerge');
+
+const {
+    createAddress,
+    toInvalidTransaction,
+    setEntry,
+    toInvalidPayload,
+    encodePayload
+} = require('./../lib/helper');
+
+const _createProviderAddress = (id) => createAddress(id, config.namespace.provider);
+const _createPatientAddress = (id) => createAddress(id, config.namespace.patient);
+const _createAppointmentAddress = (id) => createAddress(id, config.namespace.appointment);
+
+module.exports = {
+    createAppointment: async ({
+        context,
+        data
+    }) => {
+        const {
+            appointment,
+            patient,
+            provider
+        } = data;
+        let providerAddress;
+        let patientAddress;
+        let appointmentAddress;
+        let providerStateValue = {};
+        let patientStateValue = {};
+        let appointmentStateValue = {};
+
+        try {
+            providerAddress = _createProviderAddress(provider.id);
+            patientAddress = _createPatientAddress(patient.id);
+            appointmentAddress = _createAppointmentAddress(appointment.id);
+        } catch (err) {
+            return toInvalidTransaction('Error while creating address for ID');
+        }
+        const possibleAddressValues = await context.getState([providerAddress, patientAddress, appointmentAddress]).then(toInvalidTransaction);
+        // Get state representation of the address
+        const providerStateRep = possibleAddressValues[providerAddress];
+        const patientStateRep = possibleAddressValues[patientAddress];
+        const appointemtnStateRep = possibleAddressValues[patientAddress];
+
+
+        if (!providerStateRep || providerStateRep.length === 0) {
+            providerStateValue = JSON.parse(providerStateRep);
+        }
+        providerStateValue = deepmerge(providerStateValue, provider);
+
+    }
+};

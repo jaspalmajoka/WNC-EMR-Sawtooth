@@ -20,6 +20,9 @@ const {
     userRegister,
     userUpdate
 } = require('./user');
+const {
+    createAppointment
+} = require('./appointment');
 
 module.exports = {
     performTransaction: (txRequest, context, payload) => {
@@ -61,6 +64,9 @@ module.exports = {
                 // Data.timestamp = payload.timestamp;
                 promise = userUpdate;
                 break;
+            case 'createAppointment':
+                Data.timestamp = payload.timestamp;
+                promise = createAppointment;
             default:
                 return toInvalidTransaction(`Action ${Action} is not valid`);
         }

@@ -12,6 +12,7 @@
   "dependencies": {
     "config": "^2.0.1",
     "crypto": "^1.0.1",
+    "deepmerge": "^2.1.1",
     "sawtooth-sdk": "^1.0.5"
   }
 }
