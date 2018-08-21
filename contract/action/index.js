@@ -67,6 +67,7 @@ module.exports = {
             case 'createAppointment':
                 Data.timestamp = payload.timestamp;
                 promise = createAppointment;
+                break;
             default:
                 return toInvalidTransaction(`Action ${Action} is not valid`);
         }
