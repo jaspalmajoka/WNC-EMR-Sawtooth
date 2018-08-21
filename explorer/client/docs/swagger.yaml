@@ -50,7 +50,7 @@ paths:
         name: patientItem
         description: Patient item to add
         schema:
-          $ref: '#/definitions/CreatePatient'
+          $ref: '#/definitions/CreateAppointment'
       responses:
         201:
           description: Patient ID created
