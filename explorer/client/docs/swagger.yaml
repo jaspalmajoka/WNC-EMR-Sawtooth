@@ -19,7 +19,18 @@ tags:
   description: Document related api
 - name: Hospital
   description: Hospital related api
+- name: Config
+  description: Config related api
 paths:
+  /config:
+    get:
+      tags: 
+      - Config
+      summary: Config from  node app instance
+      description: Config file data
+      responses:
+        200:
+          description: Config Details Retreived
   /appointment:
     # get:
     #   tags: 

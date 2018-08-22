@@ -16,6 +16,14 @@ Clone this project
 6. Ovrride docker-compose file configurations in similar file `docker-compose-dev.yaml`.
 7. Start multiple-compose configurations by running command `docker-compose -f docker-compose.yaml -f docker-compose-dev.yaml up --build`
 
+# What Blockchain Contains
+Each Block Contains -> [Batches] -> [Transactions] -> <Payload> -> {Action, Data, Timestamp}
+				   -> States -> [Address, Data], {Head}
+Passing Head 			& ->  Head -> [Address, Data]
+Passing State 		 	& ->  Head, State -> {Address, Data}
+Passing State & Head 	& ->  Head, State -> {Address, Data}
+
+
 # List of API Entitity status in implementation
 
 API Entity  | Status 
