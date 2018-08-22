@@ -23,6 +23,9 @@ Passing Head 			& ->  Head -> [Address, Data]
 Passing State 		 	& ->  Head, State -> {Address, Data}
 Passing State & Head 	& ->  Head, State -> {Address, Data}
 
+# Sawtooth Flow 
+
+![done](https://raw.githubusercontent.com/jaspalmajoka/openemr-v1/master/Sawtooth.jpg?token=AJ65mlFCAPOtuwFrS6de0epNHXvlMKOzks5bhtCdwA%3D%3D "Completed")
 
 # List of API Entitity status in implementation
 
@@ -36,7 +39,4 @@ Document -> `Patient` | ![done](https://www.iconfinder.com/icons/299110/download
 Medicne |
 Precription |
 Inventory |
-
-
-[logo]: https://github.com/jaspalmajoka/openemr-v1/blob/master/Sawtooth.jpg "Logo Title Text 2"
-
+ 
