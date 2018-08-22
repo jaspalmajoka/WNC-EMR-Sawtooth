@@ -36,3 +36,7 @@ Document -> `Patient` | ![done](https://www.iconfinder.com/icons/299110/download
 Medicne |
 Precription |
 Inventory |
+
+
+[logo]: https://github.com/jaspalmajoka/openemr-v1/blob/master/Sawtooth.jpg "Logo Title Text 2"
+
