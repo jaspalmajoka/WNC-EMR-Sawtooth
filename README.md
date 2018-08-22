@@ -38,5 +38,5 @@ Precription |
 Inventory |
 
 
-[logo]: https://github.com/jaspalmajoka/openemr-v1/blob/master/Sawtooth.jpg "Logo Title Text 2"
+[logo]: https://raw.githubusercontent.com/jaspalmajoka/openemr-v1/master/Sawtooth.jpg?token=AJ65mlFCAPOtuwFrS6de0epNHXvlMKOzks5bhtCdwA%3D%3D "Logo Title Text 2"
 
