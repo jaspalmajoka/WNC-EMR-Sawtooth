@@ -48,7 +48,6 @@ class SawtoothWalletClient {
   async submit(payload, res) {
     // removeEmpty(payload);
     payload.timestamp = new Date().toUTCString();
-    payload.Data.timestamp = new Date().toUTCString();
     const transaction = await this._wrapTransaction(payload)
     const transactions = [transaction];
     const batch = await this._wrapBatch(transactions);
