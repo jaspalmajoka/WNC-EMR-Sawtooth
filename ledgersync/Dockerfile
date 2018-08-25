@@ -4,12 +4,12 @@ RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
 
-COPY package*.json /usr/local/app
+COPY package.json /usr/local/app
 
-RUN npm install
+# RUN 
 
 COPY . /usr/src/app
 
 EXPOSE 3002
 
-CMD ["npm", "start"]
+CMD npm install && npm start

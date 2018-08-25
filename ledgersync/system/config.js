@@ -19,6 +19,17 @@ const initConfigValue = (key, defaultValue = null) => {
     config[key] = process.env[key] || config[key] || defaultValue
 }
 
+// Setup non-sensitive config variable with sensible defaults,
+// if not set in environment variables or config.json
+initConfigValue('PORT', 3000)
+initConfigValue('RETRY_WAIT', 5000)
+initConfigValue('DEFAULT_SUBMIT_WAIT', 5000000)
+initConfigValue('VALIDATOR_URL', 'tcp://localhost:4004')
+initConfigValue('DB_HOST', 'localhost')
+initConfigValue('DB_PORT', 28015)
+initConfigValue('DB_NAME', 'supply_chain')
+initConfigValue('SIGNING_ALGORITHM', 'secp256k1')
+
 // Setup sensitive variable, warning user if using defaults
 initConfigValue('JWT_SECRET')
 initConfigValue('PRIVATE_KEY')

@@ -30,8 +30,6 @@ services:
       - 'RESTAPI_URL=http://rest-api:8008'
       - 'VALIDATOR_URL=tcp://validator:4004'
       - 'DB_HOST=mongodb'
-    volumes:
-      - '.:/config'
     ports:
       - '0.0.0.0:3002:3002'
     depends_on:
