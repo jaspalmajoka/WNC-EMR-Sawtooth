@@ -1,0 +1,30 @@
+{
+  "name": "openemr-ledgersync",
+  "version": "1.0.0",
+  "description": "Sawtooth OpemEMR Sync State & Block Delta",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/johnsjai_pwc/sawtooth-openemr.git"
+  },
+  "author": "John S",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/johnsjai_pwc/sawtooth-openemr/issues"
+  },
+  "homepage": "https://gitlab.com/johnsjai_pwc/sawtooth-openemr#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "lodash": "^4.17.10",
+    "mongoose": "^5.2.9",
+    "protobufjs": "~6.8.8",
+    "request": "^2.88.0",
+    "sawtooth-sdk": "^1.0.5"
+  }
+}

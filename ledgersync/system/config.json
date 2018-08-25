@@ -1,0 +1,19 @@
+{
+    "JWT_SECRET": "shhhhh",
+    "PRIVATE_KEY": "1111111111111111111111111111111111111111111111111111111111111111",
+    "PORT": 3003,
+    "VALIDATOR_URL": "tcp://localhost:4004",
+    "RESTAPI_URL": "http://localhost:8008",
+    "DB_HOST": "localhost",
+    "DB_PORT": 27017,
+    "DB_NAME": "openemr",
+    "NAMESPACE": {
+        "10": "patient",
+        "20": "hospital",
+        "30": "user",
+        "40": "provider",
+        "00": "settings",
+        "11": "document",
+        "22": "appointment"
+    }
+}
