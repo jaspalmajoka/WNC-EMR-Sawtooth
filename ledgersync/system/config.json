@@ -1,7 +1,7 @@
 {
     "JWT_SECRET": "shhhhh",
     "PRIVATE_KEY": "1111111111111111111111111111111111111111111111111111111111111111",
-    "PORT": 3003,
+    "PORT": 3002,
     "VALIDATOR_URL": "tcp://localhost:4004",
     "RESTAPI_URL": "http://localhost:8008",
     "DB_HOST": "localhost",
