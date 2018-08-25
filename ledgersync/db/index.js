@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
 const config = require('./../system/config');
 
 const BlockSchema = require('./schema/block');
+BlockSchema.plugin(mongoosePaginate);
 
 const Block = mongoose.model('blocks', BlockSchema);
 
@@ -42,8 +44,11 @@ const deleteInvalid = () => {
     }).exec();
 }
 
-const list = () => {
-    return Block.find().exec();
+const list = (query = {}, options = {
+    page: 1,
+    limit: 10
+}) => {
+    return Block.paginate();
 }
 
 module.exports = {

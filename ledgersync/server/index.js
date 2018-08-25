@@ -24,7 +24,7 @@ app.get('/config', (req, res) => {
 
 app.get('/data', (req, res) => {
     db
-        .list()
+        .list({}, req.query)
         .then(data => {
             res.json(data).end();
         });
