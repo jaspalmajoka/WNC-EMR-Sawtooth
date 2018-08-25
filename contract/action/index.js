@@ -13,7 +13,8 @@ const {
 } = require('./document');
 const {
     addHospital,
-    deleteHospital
+    deleteHospital,
+    updateHospital
 } = require('./hospital');
 const {
     userLogin,
@@ -47,8 +48,12 @@ module.exports = {
             case 'deleteDocument':
                 promise = deleteDocument;
                 break;
+            // Common function for Add and Update Hospital
             case 'addHospital':
                 promise = addHospital;
+                break;
+            case 'updateHospital':
+                promise = updateHospital;
                 break;
             case 'deleteHospital':
                 promise = deleteHospital;

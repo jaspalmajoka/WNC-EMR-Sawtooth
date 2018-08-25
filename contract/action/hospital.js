@@ -20,6 +20,7 @@ module.exports = {
         if (!id) {
             return toInvalidPayload('id');
         }
+        let stateValue = {};
         const hospitalAddress = _createHospitalAddress(id);
         const possibleAddressValues = await context.getState([hospitalAddress]).catch(toInvalidTransaction);
         let hospitalStateValueRep = possibleAddressValues[hospitalAddress];
@@ -31,6 +32,27 @@ module.exports = {
             }
         }
         stateValue = data;
+        return setEntry(context, hospitalAddress, stateValue).catch(toInvalidTransaction);
+    },
+    updateHospital: async ({
+        context,
+        data
+    }) => {
+        const {
+            id
+        } = data;
+        if (!id) {
+            return toInvalidPayload('id');
+        }
+        let stateValue = {};
+        const hospitalAddress = _createHospitalAddress(id);
+        const possibleAddressValues = await context.getState([hospitalAddress]).catch(toInvalidTransaction);
+        let hospitalStateValueRep = possibleAddressValues[hospitalAddress];
+        // Check if hospital exists with same id
+        if (hospitalStateValueRep && hospitalStateValueRep.length) {
+            stateValue = JSON.parse(hospitalStateValueRep);
+        }
+        Object.assign(stateValue, data);
         return setEntry(context, hospitalAddress, stateValue).catch(toInvalidTransaction);
     },
     deleteHospital: async ({
