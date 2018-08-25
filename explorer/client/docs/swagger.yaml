@@ -282,6 +282,24 @@ paths:
         400:
           description: invalid input, object invalid
   /hospital/{id}:
+    put:
+      tags:
+      - Hospital
+      summary: Adds hospital 
+      description: Adds hospital record
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: hospitalData
+        description: Hospital Data to be updated
+        schema:
+          $ref: '#/definitions/UpdateHospital'
+      responses:
+        201:
+          description: Hospital ID created
+        400:
+          description: invalid input, object invalid
     delete:
       tags:
       - Hospital
@@ -365,16 +383,8 @@ definitions:
     type: object
     properties:
       changes:
-        type: array
-        items: 
-          type: object
-          properties:
-            field:
-              type: string
-              example: P1
-            value:
-              type: string
-              example: P1
+        type: string
+        example: P1
   CreatePatient:
     type: object
     properties:
@@ -444,6 +454,12 @@ definitions:
       id:
         type: string
         example: H1
+      data:
+        type: object
+        example: { "info": "hospital" }
+  UpdateHospital:
+    type: object
+    properties:
       data:
         type: object
         example: { "info": "hospital" }
