@@ -19,6 +19,7 @@ router.get('/document', document.getDocument);
 
 router.post('/hospital', hospital.addHospital);
 router.get('/hospital', hospital.getHospital);
+router.put('/hospital/:id', hospital.updateHospital);
 router.delete('/hospital/:id', hospital.deleteHospital);
 
 router.get('/user', user.getUser);

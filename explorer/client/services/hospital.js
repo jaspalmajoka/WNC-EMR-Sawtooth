@@ -16,6 +16,15 @@ module.exports = {
     } = req.query;
     return getStateValues(id, 'hospital', res);
   },
+  updateHospital: (req, res) => {
+    const Action = 'updateHospital';
+    const hospitalData = req.body;
+    // hospitalData.id = id;
+    return sawtoothWalletClient.submit({
+      Action,
+      Data: hospitalData
+    }, res);
+  },
   addHospital: (req, res) => {
     const Action = 'addHospital';
     const hospitalData = req.body;
