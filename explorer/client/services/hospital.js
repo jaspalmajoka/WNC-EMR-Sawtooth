@@ -18,8 +18,11 @@ module.exports = {
   },
   updateHospital: (req, res) => {
     const Action = 'updateHospital';
+    const {
+      id
+    } = req.params;
     const hospitalData = req.body;
-    // hospitalData.id = id;
+    hospitalData.id = id;
     return sawtoothWalletClient.submit({
       Action,
       Data: hospitalData
