@@ -285,11 +285,16 @@ paths:
     put:
       tags:
       - Hospital
-      summary: Adds hospital 
-      description: Adds hospital record
+      summary: Updates hospital 
+      description: Updates hospital record
       produces:
       - application/json
       parameters:
+      - name: id
+        in: path
+        description: "ID of that Hospital that need to be updaed"
+        required: true
+        type: "string"
       - in: body
         name: hospitalData
         description: Hospital Data to be updated
