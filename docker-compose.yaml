@@ -38,13 +38,14 @@ services:
       - sawtooth-rest-api
       - openemr-processor
     stop_signal: SIGKILL
-    
+
   mongodb:
     image: douglaszuqueto/alpine-mongodb:latest
     container_name: mongodb
     ports:
       - 27017:27017
-
+    volumes:
+      - mongodb-data:/data/db
   sawtooth-client:
     container_name: sawtooth-client
     build:
@@ -123,3 +124,6 @@ services:
       - "8090:8090"
       - "8091:8091"
     command: [nginx, '-g', 'daemon off;']
+volumes:
+  mongodb-data:
+    driver: local
