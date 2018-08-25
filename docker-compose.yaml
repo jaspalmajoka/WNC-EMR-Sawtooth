@@ -29,7 +29,7 @@ services:
     environment:
       - 'RESTAPI_URL=http://rest-api:8008'
       - 'VALIDATOR_URL=tcp://validator:4004'
-      - 'DB_HOST=mongo'
+      - 'DB_HOST=mongodb'
     volumes:
       - '.:/config'
     ports:
@@ -38,6 +38,12 @@ services:
       - sawtooth-rest-api
       - openemr-processor
     stop_signal: SIGKILL
+    
+  mongodb:
+    image: douglaszuqueto/alpine-mongodb:latest
+    container_name: mongodb
+    ports:
+      - 27017:27017
 
   sawtooth-client:
     container_name: sawtooth-client
